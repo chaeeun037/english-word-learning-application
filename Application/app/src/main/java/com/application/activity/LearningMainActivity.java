@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.application.R;
 import com.application.databinding.ActivityLearningBinding;
 
-public class LearningActivity extends AppCompatActivity {
+public class LearningMainActivity extends AppCompatActivity {
     private ActivityLearningBinding binding;
 
     @Override

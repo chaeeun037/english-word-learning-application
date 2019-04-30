@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LearningActivity"
+            android:name=".activity.LearningMainActivity"
             android:screenOrientation="landscape" />
     </application>
 

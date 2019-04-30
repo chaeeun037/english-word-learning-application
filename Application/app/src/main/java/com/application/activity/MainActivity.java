@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     private EWLApplication application;
 
     public String point;
-    public final String buttonLabel1 = "학습";
-    public final String buttonLabel2 = "게임";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLearningButtonClick() {
-        Intent intent = new Intent(MainActivity.this, LearningActivity.class);
+        Intent intent = new Intent(MainActivity.this, LearningMainActivity.class);
         startActivity(intent);
     }
 }

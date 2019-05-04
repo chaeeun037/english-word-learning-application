@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.application.R;
 
-public class MainFragment extends Fragment {
+public class MainMenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return inflater.inflate(R.layout.fragment_learning_theme, container, false);
     }
 }

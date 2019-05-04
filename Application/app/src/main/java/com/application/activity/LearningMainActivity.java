@@ -14,6 +14,6 @@ public class LearningMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_learning);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_learning_main);
     }
 }

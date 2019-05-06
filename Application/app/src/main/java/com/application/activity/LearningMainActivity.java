@@ -6,10 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.application.R;
-import com.application.databinding.ActivityLearningBinding;
+import com.application.databinding.ActivityLearningMainBinding;
 
 public class LearningMainActivity extends AppCompatActivity {
-    private ActivityLearningBinding binding;
+    private ActivityLearningMainBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

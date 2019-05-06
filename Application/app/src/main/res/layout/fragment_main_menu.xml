@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="activity"
-            type="com.application.activity.MainActivity" />
+            name="fragment"
+            type="com.application.fragment.MainMenuFragment" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -12,14 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".activity.MainActivity">
-
-        <TextView
-            android:id="@+id/txtPoint"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{activity.point}"
-            android:textSize="24sp" />
+        tools:context=".fragment.MainHeaderFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:onClick="@{() -> activity.onLearningButtonClick()}"
                 android:text="학습" />
 
             <Button

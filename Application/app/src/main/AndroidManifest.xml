@@ -25,6 +25,12 @@
         <activity
             android:name=".activity.LearningMainActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.LearningVoiceActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.LearningHandwriteActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

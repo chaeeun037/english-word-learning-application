@@ -14,11 +14,11 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-        <fragment
-            android:id="@+id/fragment_main_header"
-            android:name="com.application.fragment.MainHeaderFragment"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@{activity.point}"/>
+
         <fragment
             android:id="@+id/fragment_main_menu"
             android:name="com.application.fragment.MainMenuFragment"

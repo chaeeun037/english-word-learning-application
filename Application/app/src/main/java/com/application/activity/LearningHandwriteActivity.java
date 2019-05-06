@@ -6,14 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.application.R;
-import com.application.databinding.ActivityLearningBinding;
+import com.application.databinding.ActivityLearningHandwriteBinding;
 
 public class LearningHandwriteActivity extends AppCompatActivity {
-    private ActivityLearningBinding binding;
+    private ActivityLearningHandwriteBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_learning_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_learning_handwrite);
     }
 }

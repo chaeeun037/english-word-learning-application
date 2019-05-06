@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class EWLApplication extends Application {
 
-    private Integer point = 0;
+    private Integer point = 50;
 
     public Integer getPoint() {
         return point;

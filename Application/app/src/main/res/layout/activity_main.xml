@@ -14,38 +14,15 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-        <TextView
-            android:id="@+id/txtPoint"
+        <fragment
+            android:id="@+id/fragment_main_header"
+            android:name="com.application.fragment.MainHeaderFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{activity.point}"
-            android:textSize="24sp" />
-
-        <LinearLayout
+            android:layout_height="wrap_content" />
+        <fragment
+            android:id="@+id/fragment_main_menu"
+            android:name="com.application.fragment.MainMenuFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_learning"
-                style="@style/Widget.AppCompat.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:onClick="@{() -> activity.onLearningButtonClick()}"
-                android:text="학습" />
-
-            <Button
-                android:id="@+id/btn_game"
-                style="@style/Widget.AppCompat.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:text="게임" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </layout>

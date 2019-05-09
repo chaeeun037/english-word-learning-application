@@ -2,23 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        tools:context=".activity.LearningVoiceActivity">
-    </LinearLayout>
-
     <Button
         android:id="@+id/speakButton"
-        android:layout_width="128px"
-        android:layout_height="128px"
+        android:layout_width="256px"
+        android:layout_height="256px"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/megaphone"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp" />
+        android:background="@drawable/speakchick" />
 
 </layout>

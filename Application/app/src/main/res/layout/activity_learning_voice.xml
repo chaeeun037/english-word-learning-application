@@ -2,11 +2,39 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
-        android:id="@+id/speakButton"
-        android:layout_width="256px"
-        android:layout_height="256px"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/speakchick" />
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".activity.LearningVoiceActivity">
 
+        <Button
+          android:id="@+id/speakButton"
+          android:layout_width="256px"
+          android:layout_height="256px"
+          android:layout_alignParentStart="true"
+          android:background="@drawable/speakchick" />
+      
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Learning Voice activity입니다." />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이전 단계로"
+            android:onClick="onPrevButtonClick"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="다음 단계로"
+            android:onClick="onNextButtonClick"/>
+
+    </LinearLayout>
 </layout>

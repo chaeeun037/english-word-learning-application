@@ -14,15 +14,21 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="홈"
+            android:onClick="onHomeButtonClick" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{activity.point}"/>
-
-        <fragment
-            android:id="@+id/fragment_main_menu"
-            android:name="com.application.fragment.MainMenuFragment"
+            android:text="@{activity.point}"
+            android:textSize="24dp" />
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 </layout>

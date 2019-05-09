@@ -43,15 +43,6 @@ public class LearningVoiceActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        if(tts!=null){
-            tts.stop();
-            tts.shutdown();
-            tts = null;
-        }
-    }
 
     public void onPrevButtonClick(View v) {
         Intent intent = new Intent(LearningVoiceActivity.this, LearningMainActivity.class);

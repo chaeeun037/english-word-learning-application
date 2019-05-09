@@ -5,36 +5,29 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        tools:context=".activity.LearningVoiceActivity">
+        android:orientation="vertical"
+        tools:context=".fragment.LearningHandwriteFragment">
 
-        <Button
-          android:id="@+id/speakButton"
-          android:layout_width="256px"
-          android:layout_height="256px"
-          android:layout_alignParentStart="true"
-          android:background="@drawable/speakchick" />
-      
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Learning Voice activity입니다." />
+            android:text="Learning Handwrite fragment입니다." />
 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onPrevButtonClick"
-            android:background="@drawable/leftarrow" />
+            android:background="@drawable/leftarrow"
+            android:onClick="onHandwritePrevButtonClick" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onNextButtonClick"
-            android:background="@drawable/rightarrow" />
+            android:background="@drawable/rightarrow"
+            android:onClick="onHandwriteNextButtonClick" />
 
     </LinearLayout>
 </layout>

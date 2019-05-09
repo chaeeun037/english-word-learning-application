@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="MainMenuFragment"
             type="com.application.fragment.MainMenuFragment" />
@@ -26,8 +27,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="@{MainMenuFragment.learningButton}"
-                android:onClick="onLearningButtonClick"/>
+                android:onClick="onLearningButtonClick"
+                android:text="@{MainMenuFragment.learningButton}" />
 
             <Button
                 style="@style/Widget.AppCompat.Button"

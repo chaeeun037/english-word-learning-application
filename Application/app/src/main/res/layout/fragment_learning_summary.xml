@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        tools:context=".activity.LearningMainActivity">
+        android:orientation="vertical"
+        tools:context=".fragment.LearningSummaryFragment">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Learning Main activity입니다." />
+            android:text="Learning summary fragment입니다." />
 
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onNextButtonClick"
-            android:background="@drawable/rightarrow" />
+            android:background="@drawable/rightarrow"
+            android:onClick="onSummaryNextButtonClick" />
 
         <ImageView
             android:id="@+id/imageView2"

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <variable
+            name="activity"
+            type="com.application.activity.LearningActivity" />
+    </data>
+
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".fragment.LearningThemeFragment">
+        tools:context=".activity.LearningActivity">
 
-        <TextView
-            android:id="@+id/textView"
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Theme fragment입니다." />
+            android:layout_height="wrap_content" />
 
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:onClick="onThemeButtonClick"
-            android:text="Theme선택" />
     </LinearLayout>
 </layout>

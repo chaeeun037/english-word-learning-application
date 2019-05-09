@@ -20,10 +20,11 @@ public class MainMenuFragment extends Fragment {
 
 
     public void onLearningButtonClick(View view) {
-        Log.d("learning","learning button click");
+        Log.d("learning", "learning button click");
     }
+
     public void onGameButtonClick(View view) {
-        Log.d("game","game button click");
+        Log.d("game", "game button click");
     }
 
     public static MainMenuFragment newInstance() {

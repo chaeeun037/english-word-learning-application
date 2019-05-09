@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="activity"
             type="com.application.activity.MainActivity" />
@@ -17,14 +18,15 @@
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:text="홈"
-            android:onClick="onHomeButtonClick" />
+            android:onClick="onHomeButtonClick"
+            android:text="홈" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@{activity.point}"
             android:textSize="24dp" />
+
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"

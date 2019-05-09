@@ -19,10 +19,10 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onNextButtonClick"
-            android:text="다음 단계로" />
+            android:background="@drawable/rightarrow" />
 
         <ImageView
             android:id="@+id/imageView2"

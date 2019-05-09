@@ -23,7 +23,7 @@ public class LearningVoiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_learning_voice);
 
         speakButton = (Button) findViewById(R.id.speakButton);
 

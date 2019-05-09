@@ -17,17 +17,17 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이전 단계로"
-            android:onClick="onPrevButtonClick"/>
+            android:onClick="onPrevButtonClick"
+            android:background="@drawable/leftarrow" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="다음 단계로"
-            android:onClick="onNextButtonClick"/>
+            android:onClick="onNextButtonClick"
+            android:background="@drawable/rightarrow" />
 
     </LinearLayout>
 </layout>

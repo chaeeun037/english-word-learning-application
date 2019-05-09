@@ -7,7 +7,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        tools:context=".activity.LearningHandwriteActivity">
+        tools:context=".activity.LearningHandwriteActivity2">
+
+        <Button
+
+            android:id="@+id/penButton"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:onClick="penButtonClicked"
+
+            android:text="Pen" />
+
+        <Button
+
+            android:id="@+id/eraserButton"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:onClick="eraserButtonClicked"
+
+            android:text="Eraser" />
 
         <TextView
             android:id="@+id/textView2"
@@ -17,15 +41,21 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="128px"
+            android:layout_height="128px"
             android:onClick="onPrevButtonClick"
             android:background="@drawable/leftarrow" />
 
+        <com.application.activity.LearningHandwriteActivity2
+            android:id="@+id/shadowCanvas"
+            android:layout_width="512px"
+            android:layout_height="512px"
+            android:layout_weight = "1"/>
+
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="128px"
+            android:layout_height="128px"
             android:onClick="onNextButtonClick"
             android:background="@drawable/rightarrow" />
 

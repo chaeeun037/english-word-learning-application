@@ -23,19 +23,22 @@
 
             <Button
                 style="@style/Widget.AppCompat.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400px"
+                android:layout_height="400px"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:text="@{MainMenuFragment.learningButton}"
                 android:onClick="onLearningButtonClick"
-                android:text="@{MainMenuFragment.learningButton}" />
+                android:background="@drawable/learning"/>
+
 
             <Button
                 style="@style/Widget.AppCompat.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="400px"
+                android:layout_height="400px"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:background="@drawable/game"
                 android:text="@{MainMenuFragment.gameButton}" />
 
         </LinearLayout>

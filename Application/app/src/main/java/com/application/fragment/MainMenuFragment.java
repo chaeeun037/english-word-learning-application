@@ -15,8 +15,8 @@ public class MainMenuFragment extends Fragment {
 
     private FragmentMainMenuBinding binding;
 
-    public String learningButton = "학습";
-    public String gameButton = "게임";
+    public String learningButton = "";
+    public String gameButton = "";
 
 
     public void onLearningButtonClick(View view) {

@@ -8,5 +8,19 @@
         android:orientation="vertical"
         android:gravity="center"
         tools:context=".activity.LearningMainActivity">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Learning Main activity입니다." />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="다음 단계로"
+            android:onClick="onNextButtonClick"/>
     </LinearLayout>
 </layout>

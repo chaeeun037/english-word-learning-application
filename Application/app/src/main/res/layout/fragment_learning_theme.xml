@@ -7,5 +7,16 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".fragment.LearningThemeFragment">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Theme fragment입니다." />
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:text="Theme선택"
+            android:onClick="onThemeButtonClick"/>
     </LinearLayout>
 </layout>

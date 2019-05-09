@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="fragment"
+            name="MainMenuFragment"
             type="com.application.fragment.MainMenuFragment" />
     </data>
 
@@ -21,22 +21,21 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_learning"
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="학습" />
+                android:text="@{MainMenuFragment.learningButton}"
+                android:onClick="onLearningButtonClick"/>
 
             <Button
-                android:id="@+id/btn_game"
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:text="게임" />
+                android:text="@{MainMenuFragment.gameButton}" />
 
         </LinearLayout>
     </LinearLayout>

@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.LearningWordActivity"></activity>
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="landscape">
@@ -24,14 +23,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LearningMainActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.LearningVoiceActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".activity.LearningHandwriteActivity"
-            android:screenOrientation="landscape" />
+            android:name=".activity.LearningActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -13,10 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Unit fragment입니다." />
+
         <Button
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:text="Unit선택"
-            android:onClick="onUnitButtonClick"/>
+            android:onClick="onUnitButtonClick"
+            android:text="Unit선택" />
     </LinearLayout>
 </layout>

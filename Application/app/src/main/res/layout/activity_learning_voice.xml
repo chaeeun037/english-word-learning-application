@@ -9,6 +9,13 @@
         android:gravity="center"
         tools:context=".activity.LearningVoiceActivity">
 
+        <Button
+          android:id="@+id/speakButton"
+          android:layout_width="256px"
+          android:layout_height="256px"
+          android:layout_alignParentStart="true"
+          android:background="@drawable/speakchick" />
+      
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"

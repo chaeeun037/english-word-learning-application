@@ -6,7 +6,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".fragment.LearningThemeFragment">
+        tools:context=".fragment.LearningThemeFragment"
+        android:background="@drawable/theme_unit_background">
 
         <TextView
             android:id="@+id/textView"

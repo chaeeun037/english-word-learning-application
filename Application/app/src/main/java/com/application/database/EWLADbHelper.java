@@ -10,6 +10,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "EWLA.db";
+<<<<<<< HEAD
 
     private static final String SQL_CREATE_THEME_ENTRIES =
             String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s NUMERIC, %s INTEGER)",
@@ -27,6 +28,8 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                     UnitContract.Unit.UNIT_NAME_TITLE,
                     UnitContract.Unit.UNIT_NAME_HASCROWN);
 
+=======
+>>>>>>> 8d7deac... 앱 이름 MARKET GO로 변경 / DB 연결 중...
     private static final String SQL_CREATE_WORD_ENTRIES =
             String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s INTEGER, %s TEXT, %s TEXT, %s TEXT, %s TEXT)",
                     WordContract.WordEntry.TABLE_NAME,
@@ -37,6 +40,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                     WordContract.WordEntry.COLUMN_NAME_ENGLISH,
                     WordContract.WordEntry.COLUMN_NAME_SHADOW_SRC);
 
+<<<<<<< HEAD
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + WordContract.WordEntry.TABLE_NAME;
@@ -47,6 +51,11 @@ public class EWLADbHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_UNIT =
             "DROP TABLE IF EXISTS " + UnitContract.Unit.TABLE_NAME;
 
+=======
+    private static final String SQL_DELETE_ENTRIES =
+            "DROP TABLE IF EXISTS " + WordContract.WordEntry.TABLE_NAME;
+
+>>>>>>> 8d7deac... 앱 이름 MARKET GO로 변경 / DB 연결 중...
     public static EWLADbHelper getsInstance(Context context) {
         if (sInstance == null) {
             sInstance = new EWLADbHelper(context);
@@ -60,19 +69,26 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+<<<<<<< HEAD
 
         db.execSQL(SQL_CREATE_WORD_ENTRIES);
         db.execSQL(SQL_CREATE_THEME_ENTRIES);
         db.execSQL(SQL_CREATE_UNIT_ENTRIES);
 
+=======
+        db.execSQL(SQL_CREATE_WORD_ENTRIES);
+>>>>>>> 8d7deac... 앱 이름 MARKET GO로 변경 / DB 연결 중...
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion == DB_VERSION) {
             db.execSQL(SQL_DELETE_ENTRIES);
+<<<<<<< HEAD
             db.execSQL(SQL_DELETE_THEME);
             db.execSQL(SQL_DELETE_UNIT);
+=======
+>>>>>>> 8d7deac... 앱 이름 MARKET GO로 변경 / DB 연결 중...
             onCreate(db);
         }
     }

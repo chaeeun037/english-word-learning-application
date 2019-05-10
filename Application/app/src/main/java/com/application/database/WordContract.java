@@ -16,8 +16,11 @@ public final class WordContract {
         public static final String COLUMN_NAME_ENGLISH = "english";
         public static final String COLUMN_NAME_SHADOW_SRC= "shadowSrc";
     }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 8d7deac... 앱 이름 MARKET GO로 변경 / DB 연결 중...
 }

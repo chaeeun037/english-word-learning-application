@@ -5,7 +5,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+<<<<<<< HEAD
         android:orientation="horizontal"
+=======
+        android:orientation="vertical"
+>>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
         tools:context=".fragment.LearningUnitFragment"
         android:background="@drawable/theme_unit_background">
 

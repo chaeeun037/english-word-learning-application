@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-
         <variable
             name="activity"
             type="com.application.activity.MainActivity" />
@@ -18,6 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:padding="8dp"
             android:gravity="right"
             android:orientation="horizontal">
@@ -27,20 +27,34 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:background="@drawable/coin" />
+=======
+            android:orientation="horizontal"
+            android:gravity="right">
+>>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_gravity="center"
+=======
+>>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
                 android:text="@{activity.point}"
                 android:textSize="24dp" />
 
             <Button
+<<<<<<< HEAD
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/home"
                 android:onClick="onHomeButtonClick" />
+=======
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="onHomeButtonClick"
+                android:text="홈" />
+>>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
         </LinearLayout>
 
 

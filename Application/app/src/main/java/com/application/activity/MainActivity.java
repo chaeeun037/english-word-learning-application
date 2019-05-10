@@ -5,11 +5,13 @@ import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.application.EWLApplication;
 import com.application.R;
+import com.application.database.EWLADbHelper;
 import com.application.databinding.ActivityMainBinding;
 import com.application.fragment.MainMenuFragment;
 import com.application.fragment.LearningThemeFragment;
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, new MainMenuFragment())
                     .commit();
         }
+
+        Log.d("***DB 생성", "" + EWLADbHelper.getsInstance(this));
     }
 
     @Override

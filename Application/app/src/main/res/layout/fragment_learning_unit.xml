@@ -16,9 +16,21 @@
             android:text="Unit fragment입니다." />
 
         <Button
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_width="75dp"
+            android:layout_height="100dp"
             android:onClick="onUnitButtonClick"
-            android:text="Unit선택" />
+            android:background="@drawable/hen_not_crown"/>
+
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="100dp"
+            android:onClick="onUnitButtonClick"
+            android:background="@drawable/hen_not_crown"/>
+
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="100dp"
+            android:onClick="onUnitButtonClick"
+            android:background="@drawable/hen_has_crown"/>
     </LinearLayout>
 </layout>

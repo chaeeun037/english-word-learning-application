@@ -32,6 +32,11 @@
             android:gravity="right">
 >>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/coin" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

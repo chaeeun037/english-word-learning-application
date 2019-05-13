@@ -58,8 +58,12 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:onClick="onHomeButtonClick"
+<<<<<<< HEAD
                 android:text="홈" />
 >>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
+=======
+                android:background="@drawable/home" />
+>>>>>>> 5e3c90e... add hen_has_crown.png
         </LinearLayout>
 
 

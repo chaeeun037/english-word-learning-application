@@ -16,9 +16,38 @@
             android:text="Theme fragment입니다." />
 
         <Button
-            android:layout_width="300dp"
+            android:id="@+id/fruit"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="onThemeButtonClick"
-            android:text="Theme선택" />
+            android:background="@drawable/fruit"/>
+
+        <Button
+            android:id="@+id/veget"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onThemeButtonClick"
+            android:background="@drawable/veget"/>
+
+        <Button
+            android:id="@+id/meat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onThemeButtonClick"
+            android:background="@drawable/meat"/>
+
+        <Button
+            android:id="@+id/dairy"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:onClick="onThemeButtonClick"
+            android:background="@drawable/dairy"/>
+
+        <Button
+            android:id="@+id/snack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="onThemeButtonClick"
+            android:background="@drawable/snack"/>
     </LinearLayout>
 </layout>

@@ -35,7 +35,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:onClick="onHomeButtonClick"
-                android:text="홈" />
+                android:background="@drawable/home" />
         </LinearLayout>
 
 

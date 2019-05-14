@@ -25,6 +25,8 @@ public class LearningActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        hideNavigationBar();
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_learning);
         binding.setActivity(this);
 
@@ -37,6 +39,15 @@ public class LearningActivity extends AppCompatActivity {
                     .add(R.id.container, new LearningSummaryFragment())
                     .commit();
         }
+    }
+
+    private void hideNavigationBar() {
+        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
+        int newUiOptions = uiOptions;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
 

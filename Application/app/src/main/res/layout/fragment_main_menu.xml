@@ -11,10 +11,10 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/main_background"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".fragment.MainHeaderFragment"
-        android:background="@drawable/main_background">
+        tools:context=".fragment.MainHeaderFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,9 +28,9 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:text="@{MainMenuFragment.learningButton}"
+                android:background="@drawable/learning"
                 android:onClick="onLearningButtonClick"
-                android:background="@drawable/learning"/>
+                android:text="@{MainMenuFragment.learningButton}" />
 
 
             <Button
@@ -40,6 +40,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/game"
+                android:onClick="onGameButtonClick"
                 android:text="@{MainMenuFragment.gameButton}" />
 
         </LinearLayout>

@@ -1,5 +1,6 @@
 package com.application.fragment;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.application.R;
+import com.application.activity.GameActivity;
+import com.application.activity.MainActivity;
 import com.application.databinding.FragmentMainMenuBinding;
 
 public class MainMenuFragment extends Fragment {
@@ -17,15 +20,6 @@ public class MainMenuFragment extends Fragment {
 
     public String learningButton = "";
     public String gameButton = "";
-
-
-    public void onLearningButtonClick(View view) {
-        Log.d("learning", "learning button click");
-    }
-
-    public void onGameButtonClick(View view) {
-        Log.d("game", "game button click");
-    }
 
     public static MainMenuFragment newInstance() {
         return new MainMenuFragment();

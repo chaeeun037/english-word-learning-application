@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.application.EWLApplication;
 import com.application.R;
@@ -27,6 +26,40 @@ public class MainActivity extends AppCompatActivity {
     MainMenuFragment mainMenuFragment;
     LearningThemeFragment learningThemeFragment;
     LearningUnitFragment learningUnitFragment;
+
+    private void hideNavigationBar() {
+        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
+        int newUiOptions = uiOptions;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
+    }
+
+    public void onHomeButtonClick(View v) {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, mainMenuFragment).commit();
+    }
+
+    public void onLearningButtonClick(View v) {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
+    }
+
+    public void onThemeButtonClick(View v) {
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
+    }
+
+    public void onUnitButtonClick(View v) {
+        Intent intent = new Intent(MainActivity.this, LearningActivity.class);
+        startActivity(intent);
+    }
+
+    public void onGameButtonClick(View v) {
+        Intent intent = new Intent(MainActivity.this, GameActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,34 +91,5 @@ public class MainActivity extends AppCompatActivity {
 
         application.setPoint(500);
         this.point = String.valueOf(application.getPoint());
-    }
-
-    private void hideNavigationBar() {
-        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
-        int newUiOptions = uiOptions;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
-    }
-
-    public void onHomeButtonClick(View v) {
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, mainMenuFragment).commit();
-    }
-
-    public void onLearningButtonClick(View v) {
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
-    }
-
-    public void onThemeButtonClick(View v) {
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
-    }
-
-    public void onUnitButtonClick(View v) {
-        Intent intent = new Intent(MainActivity.this, LearningActivity.class);
-        startActivity(intent);
     }
 }

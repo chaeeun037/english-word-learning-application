@@ -16,4 +16,8 @@ public final class WordContract {
         public static final String COLUMN_NAME_ENGLISH = "english";
         public static final String COLUMN_NAME_SHADOW_SRC= "shadowSrc";
     }
+
+
+
+
 }

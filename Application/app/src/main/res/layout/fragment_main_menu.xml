@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="MainMenuFragment"
             type="com.application.fragment.MainMenuFragment" />
@@ -10,6 +11,7 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/main_background"
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".fragment.MainHeaderFragment">
@@ -18,23 +20,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <Button
                 style="@style/Widget.AppCompat.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:text="@{MainMenuFragment.learningButton}"
-                android:onClick="onLearningButtonClick"/>
+                android:layout_margin="20dp"
+                android:background="@drawable/learning"
+                android:onClick="onLearningButtonClick"
+                android:text="@{MainMenuFragment.learningButton}" />
+
 
             <Button
                 style="@style/Widget.AppCompat.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/game"
+                android:onClick="onGameButtonClick"
                 android:text="@{MainMenuFragment.gameButton}" />
 
         </LinearLayout>

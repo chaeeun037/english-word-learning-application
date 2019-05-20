@@ -6,17 +6,64 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".fragment.LearningThemeFragment">
+        tools:context=".fragment.LearningThemeFragment"
+        android:background="@drawable/theme_unit_background">
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Theme fragment입니다." />
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:text="Theme선택"
-            android:onClick="onThemeButtonClick"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/fruit"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="onThemeButtonClick"
+                android:background="@drawable/fruit"
+                android:layout_margin="50dp"/>
+
+            <Button
+                android:id="@+id/veget"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="onThemeButtonClick"
+                android:background="@drawable/veget"
+                android:layout_margin="50dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/meat"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="onThemeButtonClick"
+                android:background="@drawable/meat"
+                android:layout_margin="20dp"/>
+
+            <Button
+                android:id="@+id/dairy"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:onClick="onThemeButtonClick"
+                android:background="@drawable/dairy"
+                android:layout_margin="20dp"/>
+
+            <Button
+                android:id="@+id/snack"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:onClick="onThemeButtonClick"
+                android:background="@drawable/snack"
+                android:layout_margin="20dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 </layout>

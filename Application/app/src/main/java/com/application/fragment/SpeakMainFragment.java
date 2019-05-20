@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 
 import com.application.R;
 
-public class LearningThemeFragment extends Fragment {
+public class SpeakMainFragment extends Fragment {
 
-    public static LearningThemeFragment newInstance() {
-        return new LearningThemeFragment();
+    public static SpeakMainFragment newInstance() {
+        return new SpeakMainFragment();
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_learning_theme, container, false);
+        return inflater.inflate(R.layout.fragment_speak_main, container, false);
     }
 }

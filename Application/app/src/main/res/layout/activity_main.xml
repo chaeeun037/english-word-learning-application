@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="activity"
             type="com.application.activity.MainActivity" />
@@ -14,21 +15,39 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:text="홈"
-            android:onClick="onHomeButtonClick" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{activity.point}"
-            android:textSize="24dp" />
+            android:padding="8dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/coin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{activity.point}"
+                android:textSize="24dp" />
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/home"
+                android:onClick="onHomeButtonClick" />
+        </LinearLayout>
+
+
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

@@ -31,21 +31,9 @@ public class ResultActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
-    public void onStartButtonClick(View v) {
-        // 홀수이면
-        if (true) {
-            Intent intent = new Intent(ResultActivity.this, GameSpeakActivity.class);
-            startActivity(intent);
-        }
-
-        // 짝수이면
-        else {
-            Intent intent = new Intent(ResultActivity.this, GameDrawActivity.class);
-            startActivity(intent);
-        }
-
-
-
+    public void onMainButtonClick(View v) {
+        Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

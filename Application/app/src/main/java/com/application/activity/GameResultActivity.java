@@ -33,7 +33,7 @@ public class GameResultActivity extends AppCompatActivity {
     }
 
     public void onResultButtonClick(View v) {
-        Intent intent = new Intent(GameResultActivity.this, MainActivity.class);
+        Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
         startActivity(intent);
     }
 

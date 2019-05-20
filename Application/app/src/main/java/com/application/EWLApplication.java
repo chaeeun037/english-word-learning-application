@@ -1,7 +1,10 @@
 package com.application;
 
 import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.application.database.EWLADbHelper;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -10,6 +13,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class EWLApplication extends Application {
+
+
+
+
+
 
     // 아래 내용은 DB data가 아닌 TEST용 fake data임
 

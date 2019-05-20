@@ -1,6 +1,7 @@
 package com.application.activity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.databinding.DataBindingUtil;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -81,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, new MainMenuFragment())
                     .commit();
         }
-
-        Log.d("***DB 생성", "" + EWLADbHelper.getsInstance(this));
     }
 
     @Override
@@ -91,5 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
         application.setPoint(500);
         this.point = String.valueOf(application.getPoint());
+
+        SQLiteDatabase db = EWLADbHelper.getsInstance(this).getReadableDatabase();
+        Log.d("***", "" + db);
     }
 }

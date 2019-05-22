@@ -36,7 +36,7 @@ public class DrawCanvasView extends View {
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true); //경계면을 부드럽게 처리
-        drawPaint.setStrokeWidth(25); // 펜 굵기
+        drawPaint.setStrokeWidth(15); // 펜 굵기
         drawPaint.setStyle(Paint.Style.STROKE); // 선을 긋게 하는 부분
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -91,6 +91,7 @@ public class DrawCanvasView extends View {
         paintColor = Color.TRANSPARENT; //캔버스 지우개 - 컬러가 투명으로
         //canvasPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
+        drawPaint.setStrokeWidth(0); // 펜 굵기
     }
     public void eraseAll(){
         drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
@@ -99,5 +100,6 @@ public class DrawCanvasView extends View {
     /* 펜버튼이 눌렸을 때 */
     public void pen(){
         paintColor = Color.BLACK;
+        drawPaint.setStrokeWidth(15); // 펜 굵기
     }
 }

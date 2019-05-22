@@ -89,8 +89,8 @@ public class DrawCanvasView extends View {
     /* 지우개버튼이 눌렸을 때 */
     public void eraser() {
         paintColor = Color.TRANSPARENT; //캔버스 지우개 - 컬러가 투명으로
-        canvasPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-       // drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
+        //canvasPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
     }
     public void eraseAll(){
         drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기

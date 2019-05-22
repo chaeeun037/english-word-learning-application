@@ -19,6 +19,7 @@ import com.application.R;
  * 3. 지우개 버튼 먹게*
  *
  * 20190521 - 화면은 뜨는데 뷰가 생기지는 X
+ * 20190522 - 캔버스 생성 성공
  */
 
 public class LearningHandwriteFragment extends Fragment {
@@ -35,61 +36,32 @@ public class LearningHandwriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
-        //shadowCanvasV= new DrawCanvasView(getContext()); //캔버스
+        final View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
         init(view);
-        shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
+        //shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
 
-        //Button 정의 ****추후 수정
+        //Button 정의
         Button pen = (Button)view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
 
-
-
-        //LayoutInflater li = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
-       /* LinearLayout shadowCanvas = (LinearLayout) view.findViewById(R.id.shadowCanvas); //캔버스가 추가될 linearLayout
-
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
-
-
-        shadowCanvas.addView(shadowCanvasV);
-*/
-
-/*
+        eraser.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                shadowCanvasV.eraser();
+            }
+        });
         pen.setOnClickListener(new Button.OnClickListener(){
             @Override
-            public void onClick(View v)
-            {
-                LayoutInflater inflater1 = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                LinearLayout a = (LinearLayout) inflater1.inflate(R.layout.fragment_learning_handwrite, null);
-                shadowCanvas.addView(a);
-                }
-
+            public void onClick(View v) {
+                shadowCanvasV.pen();
+                init(view);
+            }
         });
-
-        minianvas.addView(shadowCanvasV);
-        */
 
         return view;
     }
 
     public void init(View view) {
         shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
-    }
-
-    /* 버튼을 클릭하면 뷰가 생성되도록 하고 싶었으나... */
-    public void penButtonClicked(){
-        /*
-        LinearLayout miniCanvas = (LinearLayout)getView().findViewById(R.id.shadowCanvas);
-        LayoutInflater inflater1 = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
-        miniCanvas.addView(view);
-        */
-    }
-
-    public void eraserButtonClicked(){
-        shadowCanvasV.eraseAll();
     }
 }

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,7 +23,6 @@ public class DrawCanvasView extends View {
     public DrawCanvasView(Context context) {
         super(context);
         this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        //setupDrawing(); // draw의 시작
     }
 
     public DrawCanvasView(Context context, AttributeSet attributeSet){
@@ -46,11 +46,8 @@ public class DrawCanvasView extends View {
     /* 화면을 그려주는 메소드 */
     @Override
     protected void onDraw(Canvas canvas) {
-        //super.onDraw(canvas);
-        Paint paint = new Paint();
         setupDrawing();
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
-        //  canvas.drawPath(drawPath, drawPaint); // 저장된 path를 그리는 ~
     }
 
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -87,35 +84,20 @@ public class DrawCanvasView extends View {
             oldY = -1;
         }
         return true;
-
-        /*
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN://누를 때
-                drawPath.moveTo(touchX, touchY); // 위치 이동
-                break;
-
-            case MotionEvent.ACTION_MOVE://드래그
-                drawPath.lineTo(touchX, touchY);// 위치에 선을 남김
-                break;
-
-            case MotionEvent.ACTION_UP://드롭
-                drawPath.lineTo(touchX, touchY);
-                drawCanvas.drawPath(drawPath, drawPaint);
-                drawPath.reset();
-
-                break;
-
-            default:
-                return false;
-        }
-
-        invalidate(); //화면을 다시 생성
-        return true;
-        */
-
     }
 
-    public void eraseAll() {
-        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수(지우개)
+    /* 지우개버튼이 눌렸을 때 */
+    public void eraser() {
+        paintColor = Color.TRANSPARENT; //캔버스 지우개 - 컬러가 투명으로
+        canvasPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+       // drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
+    }
+    public void eraseAll(){
+        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
+    }
+
+    /* 펜버튼이 눌렸을 때 */
+    public void pen(){
+        paintColor = Color.BLACK;
     }
 }

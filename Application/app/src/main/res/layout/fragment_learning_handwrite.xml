@@ -38,13 +38,12 @@
             android:orientation="horizontal">
 
             <!-- TODO: **캔버스** (그림자 글씨 이미지 추가/가능하면 스케치북) -->
-
-
             <com.application.fragment.DrawCanvasView
                 android:id="@+id/shadowCanvas"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
-                android:layout_weight="8" />
+                android:layout_weight="8"
+                android:background="@drawable/apple_shadow" />
 
 
             <LinearLayout
@@ -54,9 +53,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TODO: **펜 버튼** (추후에 예쁜 펜 이미지) -->
-
-
+                <!-- TODO: **펜 버튼**  -->
                 <Button
                     android:id="@+id/penButton"
                     android:layout_width="75dp"
@@ -64,9 +61,7 @@
                     android:background="@drawable/pen"
                     android:onClick="penButtonClicked" />
 
-                <!-- TODO: **지우개 버튼** (추후에 예쁜 지우개 이미지) -->
-
-
+                <!-- TODO: **지우개 버튼** -->
                 <Button
                     android:id="@+id/eraserButton"
                     android:layout_width="75dp"

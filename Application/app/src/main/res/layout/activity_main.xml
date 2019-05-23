@@ -18,26 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-<<<<<<< HEAD
             android:padding="8dp"
             android:gravity="right"
             android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:background="@drawable/coin" />
-=======
-            android:orientation="horizontal"
-            android:gravity="right">
->>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
-=======
-            android:padding="8dp"
-            android:gravity="right"
-            android:orientation="horizontal">
->>>>>>> 1b698ac... ui 미세하게 수정
 
             <ImageView
                 android:layout_width="30dp"
@@ -48,40 +31,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-<<<<<<< HEAD
                 android:layout_gravity="center"
-=======
->>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
-=======
-                android:layout_gravity="center"
->>>>>>> 1b698ac... ui 미세하게 수정
                 android:text="@{activity.point}"
                 android:textSize="24dp" />
 
             <Button
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1b698ac... ui 미세하게 수정
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/home"
                 android:onClick="onHomeButtonClick" />
-<<<<<<< HEAD
-=======
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:onClick="onHomeButtonClick"
-<<<<<<< HEAD
-                android:text="홈" />
->>>>>>> fff1bc9... UI 위치 설정 / 배경사진 추가
-=======
-                android:background="@drawable/home" />
->>>>>>> 5e3c90e... add hen_has_crown.png
-=======
->>>>>>> 1b698ac... ui 미세하게 수정
+
         </LinearLayout>
 
 

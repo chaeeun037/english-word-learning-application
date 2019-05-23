@@ -11,10 +11,6 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1b698ac... ui 미세하게 수정
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center">
@@ -67,49 +63,5 @@
                 android:background="@drawable/snack"
                 android:layout_margin="20dp"/>
         </LinearLayout>
-
-
-<<<<<<< HEAD
-=======
-            android:layout_height="wrap_content"
-            android:text="Theme fragment입니다." />
-
-        <Button
-            android:id="@+id/fruit"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="onThemeButtonClick"
-            android:background="@drawable/fruit"/>
-
-        <Button
-            android:id="@+id/veget"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="onThemeButtonClick"
-            android:background="@drawable/veget"/>
-
-        <Button
-            android:id="@+id/meat"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="onThemeButtonClick"
-            android:background="@drawable/meat"/>
-
-        <Button
-            android:id="@+id/dairy"
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:onClick="onThemeButtonClick"
-            android:background="@drawable/dairy"/>
-
-        <Button
-            android:id="@+id/snack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="onThemeButtonClick"
-            android:background="@drawable/snack"/>
->>>>>>> 7feff4d... change coin, theme, unit button
-=======
->>>>>>> 1b698ac... ui 미세하게 수정
     </LinearLayout>
 </layout>

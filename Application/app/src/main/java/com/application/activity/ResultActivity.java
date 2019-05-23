@@ -44,8 +44,9 @@ public class ResultActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-
-
+    public void onMainButtonClick(View v) {
+        Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

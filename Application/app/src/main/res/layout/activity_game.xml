@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".activity.GameActivity">
+        tools:context=".activity.GameActivity"
+        android:background="@drawable/background_speak_draw">
 
         <TextView
             android:layout_width="match_parent"

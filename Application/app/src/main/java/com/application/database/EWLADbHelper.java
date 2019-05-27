@@ -37,7 +37,6 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                     WordContract.WordEntry.COLUMN_NAME_ENGLISH,
                     WordContract.WordEntry.COLUMN_NAME_SHADOW_SRC);
 
-
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + WordContract.WordEntry.TABLE_NAME;
 
@@ -64,7 +63,6 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_WORD_ENTRIES);
         db.execSQL(SQL_CREATE_THEME_ENTRIES);
         db.execSQL(SQL_CREATE_UNIT_ENTRIES);
-
     }
 
     @Override

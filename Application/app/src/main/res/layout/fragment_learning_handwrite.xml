@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -30,10 +32,42 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <!-- TODO: 이곳에 캔버스를 넣어주세요 ^^ -채은 -->
+            <!-- TODO: **캔버스** (그림자 글씨 이미지 추가/가능하면 스케치북) -->
+            <com.application.fragment.DrawCanvasView
+                android:id="@+id/shadowCanvas"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:background="@drawable/apple_shadow" />
+
+
+            <LinearLayout
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- TODO: **펜 버튼**  -->
+                <Button
+                    android:id="@+id/penButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/pen"
+                    android:onClick="penButtonClicked" />
+
+                <!-- TODO: **지우개 버튼** -->
+                <Button
+                    android:id="@+id/eraserButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/eraser"
+                    android:onClick="eraserButtonClicked" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -56,4 +90,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </layout>

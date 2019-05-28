@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".fragment.SpeakInputFragment">
+        tools:context=".fragment.SpeakInputFragment"
+        android:background="@drawable/background_speak_draw">
 
         <Button
             android:layout_width="150dp"

@@ -6,6 +6,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,11 +39,12 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, DB_VERSION);
         this.mycontext = context;
         boolean dbexist = checkdatabase();
+        Log.d("Helperdatabase", String.valueOf(dbexist));
         if (dbexist) {
-            System.out.println("Database exists");
+            Log.d("database", "exists");
             opendatabase();
         } else {
-            System.out.println("Database doesn't exist");
+            Log.d("database", "doesn't exists");
             createdatabase();
         }
         getAllThemes();
@@ -49,8 +52,14 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         getAllWords();
     }
 
+    public void opendatabase() throws SQLException {
+        String mypath = DB_PATH + DB_NAME;
+        myDataBase = SQLiteDatabase.openDatabase(mypath, null, SQLiteDatabase.OPEN_READWRITE);
+        Log.d("opendatabase", "finish");
+
+    }
+
     public void getAllWords() {
-        List<Word> contactList = new ArrayList<Word>();
         String selectQuery = "SELECT  * FROM " + "word";
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -68,10 +77,12 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 WordList.add(word);
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
+        db.close();
     }
 
     public void getAllUnits() {
-        List<Unit> contactList = new ArrayList<Unit>();
         String selectQuery = "SELECT  * FROM " + "unit";
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -87,12 +98,14 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 UnitList.add(unit);
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
+        db.close();
     }
 
     public void getAllThemes() {
-        List<Theme> contactList = new ArrayList<Theme>();
-        String selectQuery = "SELECT  * FROM " + "theme";
 
+        String selectQuery = "SELECT  * FROM " + "theme";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -106,19 +119,22 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 ThemeList.add(theme);
             } while (cursor.moveToNext());
         }
+        cursor.close();
+        db.close();
     }
 
 
     public void createdatabase() throws IOException {
         boolean dbexist = checkdatabase();
+        Log.d("createdatabase", String.valueOf(dbexist));
         if (dbexist) {
-            System.out.println(" Database exists.");
+            Log.d("createdatabase", "doesn't exists");
         } else {
             this.getReadableDatabase();
             try {
                 copydatabase();
             } catch (IOException e) {
-                throw new Error("Error copying database");
+                Log.d("createdatabase", "copying error");
             }
         }
     }
@@ -127,10 +143,12 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         boolean checkdb = false;
         try {
             String myPath = DB_PATH + DB_NAME;
+            Log.d("checkdatabase", myPath);
             File dbfile = new File(myPath);
             checkdb = dbfile.exists();
+            Log.d("checkdatabase", String.valueOf(checkdb));
         } catch (SQLiteException e) {
-            System.out.println("Database doesn't exist");
+            Log.d("checkdatabase", "doesn't exists");
         }
 
         return checkdb;
@@ -154,10 +172,6 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void opendatabase() throws SQLException {
-        String mypath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(mypath, null, SQLiteDatabase.OPEN_READWRITE);
-    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {

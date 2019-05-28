@@ -28,6 +28,27 @@ public class EWLADbHelper extends SQLiteOpenHelper {
     private List<Unit> UnitList = new ArrayList<Unit>();
     private List<Word> WordList = new ArrayList<Word>();
 
+    public static EWLADbHelper getsInstance(Context context) throws IOException {
+        sInstance = new EWLADbHelper(context);
+        return sInstance;
+    }
+
+    private EWLADbHelper(Context context) throws IOException {
+        super(context, DB_NAME, null, DB_VERSION);
+        this.mycontext = context;
+        boolean dbexist = checkdatabase();
+        if (dbexist) {
+            System.out.println("Database exists");
+            opendatabase();
+        } else {
+            System.out.println("Database doesn't exist");
+            createdatabase();
+        }
+        getAllThemes();
+        getAllUnits();
+        getAllWords();
+    }
+
     public void getAllWords() {
         List<Word> contactList = new ArrayList<Word>();
         String selectQuery = "SELECT  * FROM " + "word";
@@ -87,25 +108,6 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         }
     }
 
-    private EWLADbHelper(Context context) throws IOException {
-        super(context, DB_NAME, null, DB_VERSION);
-        this.mycontext = context;
-        boolean dbexist = checkdatabase();
-        if (dbexist) {
-            System.out.println("Database exists");
-            opendatabase();
-        } else {
-            System.out.println("Database doesn't exist");
-            createdatabase();
-        }
-    }
-
-    public static EWLADbHelper getsInstance(Context context) throws IOException {
-        if (sInstance == null) {
-            sInstance = new EWLADbHelper(context);
-        }
-        return sInstance;
-    }
 
     public void createdatabase() throws IOException {
         boolean dbexist = checkdatabase();

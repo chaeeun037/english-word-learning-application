@@ -25,7 +25,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
     public static String DB_NAME = "EWLA.db";
     public SQLiteDatabase myDataBase;
     private static final int DB_VERSION = 1;
-    private String DB_PATH = "/data/data/com.application/databases/";
+    private String DB_PATH = "data/data/com.application/databases/";
     private List<Theme> ThemeList = new ArrayList<Theme>();
     private List<Unit> UnitList = new ArrayList<Unit>();
     private List<Word> WordList = new ArrayList<Word>();
@@ -84,7 +84,6 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
     public void getAllUnits() {
         String selectQuery = "SELECT  * FROM " + "unit";
-
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -104,8 +103,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
     }
 
     public void getAllThemes() {
-
-        String selectQuery = "SELECT  * FROM " + "theme";
+        String selectQuery = "SELECT * FROM " + "theme";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -131,6 +129,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
             Log.d("createdatabase", "doesn't exists");
         } else {
             this.getReadableDatabase();
+            this.close();
             try {
                 copydatabase();
             } catch (IOException e) {
@@ -158,7 +157,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
         InputStream myinput = mycontext.getAssets().open(DB_NAME);
         String outfilename = DB_PATH + DB_NAME;
-        OutputStream myoutput = new FileOutputStream("/data/data/com.application/databases/EWLA.db");
+        OutputStream myoutput = new FileOutputStream(DB_PATH);
         byte[] buffer = new byte[1024];
         int length;
 
@@ -175,7 +174,11 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        try {
+            createdatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

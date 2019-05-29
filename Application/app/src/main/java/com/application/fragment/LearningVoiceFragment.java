@@ -19,6 +19,7 @@ public class LearningVoiceFragment extends Fragment {
     private TextToSpeech tts;
     private Button speakButton;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_voice, container, false);

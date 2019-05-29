@@ -17,6 +17,8 @@ import com.application.fragment.MainMenuFragment;
 import com.application.fragment.LearningThemeFragment;
 import com.application.fragment.LearningUnitFragment;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -91,7 +93,17 @@ public class MainActivity extends AppCompatActivity {
         application.setPoint(500);
         this.point = String.valueOf(application.getPoint());
 
-        SQLiteDatabase db = EWLADbHelper.getsInstance(this).getReadableDatabase();
+        SQLiteDatabase db = null;
+        try {
+            db = EWLADbHelper.getsInstance(this).getReadableDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Log.d("***", "" + db);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }

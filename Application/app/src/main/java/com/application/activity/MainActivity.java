@@ -101,4 +101,9 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d("***", "" + db);
     }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
 }

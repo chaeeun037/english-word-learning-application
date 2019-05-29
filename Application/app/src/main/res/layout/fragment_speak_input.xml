@@ -16,6 +16,17 @@
         tools:context=".fragment.SpeakInputFragment"
         android:background="@drawable/background_speak_draw">
 
+        <TextView
+            android:id="@+id/sttResult"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:text="음성인식 결과가 여기에 표시됩니다." />
+        <Button
+            android:id="@+id/sttStart"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:text="음성인식 시작" />
+
         <Button
             android:layout_width="150dp"
             android:layout_height="70dp"

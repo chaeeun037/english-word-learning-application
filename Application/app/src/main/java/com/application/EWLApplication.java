@@ -14,11 +14,6 @@ import java.util.ListIterator;
 
 public class EWLApplication extends Application {
 
-
-
-
-
-
     // 아래 내용은 DB data가 아닌 TEST용 fake data임
 
     // POINT

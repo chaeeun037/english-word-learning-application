@@ -29,7 +29,7 @@ public class SpeakInputFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_speak_main, container, false);
+        return inflater.inflate(R.layout.fragment_speak_input, container, false);
     }
 
 }

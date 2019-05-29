@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private EWLApplication application;
-
+    SQLiteDatabase db = null;
     public String point;
 
     MainMenuFragment mainMenuFragment;
@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         application.setPoint(500);
         this.point = String.valueOf(application.getPoint());
 
-        SQLiteDatabase db = null;
         try {
             db = EWLADbHelper.getsInstance(this).getReadableDatabase();
         } catch (IOException e) {

@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".activity.ResultActivity">
+        tools:context=".activity.ResultActivity"
+        android:background="@drawable/sketchbook">
 
         <TextView
             android:layout_width="match_parent"
@@ -21,6 +22,24 @@
             android:text="결과"
             android:textSize="24dp"
             android:gravity="center"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/o"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/o"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/x"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/coin"/>
 
         <Button
             android:layout_width="150dp"

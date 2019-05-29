@@ -14,7 +14,7 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".fragment.SpeakInputFragment"
-        android:background="@drawable/background_speak_draw">
+        android:background="@drawable/background_speak_draw2">
 
         <TextView
             android:id="@+id/sttResult"

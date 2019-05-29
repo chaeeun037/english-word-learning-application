@@ -3,8 +3,12 @@ package com.application.activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.application.R;
 import com.application.databinding.ActivityGameBinding;
@@ -20,6 +24,11 @@ public class GameActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game);
         binding.setActivity(this);
+
+        final ImageView iv = (ImageView)findViewById(R.id.imageView1);
+
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chick_anim);
+        iv.startAnimation(anim);
     }
 
     private void hideNavigationBar() {

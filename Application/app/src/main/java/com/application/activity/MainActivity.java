@@ -21,8 +21,7 @@ import com.application.fragment.LearningThemeFragment;
 import com.application.fragment.LearningUnitFragment;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {

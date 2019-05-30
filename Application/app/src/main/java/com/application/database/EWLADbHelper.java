@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +27,25 @@ public class EWLADbHelper extends SQLiteOpenHelper {
     public SQLiteDatabase myDataBase;
     private static final int DB_VERSION = 1;
     private String DB_PATH = "data/data/com.application/databases/";
-    private List<Theme> ThemeList = new ArrayList<Theme>();
-    private List<Unit> UnitList = new ArrayList<Unit>();
-    private List<Word> WordList = new ArrayList<Word>();
+    public static List<Theme> ThemeList = new ArrayList<Theme>();
+    public static List<Unit> UnitList = new ArrayList<Unit>();
+    public static List<Word> WordList = new ArrayList<Word>();
 
     public static EWLADbHelper getsInstance(Context context) throws IOException {
         sInstance = new EWLADbHelper(context);
         return sInstance;
+    }
+
+    public List<Theme> getThemeList(){
+        return ThemeList;
+    }
+
+    public List<Unit> getUnitList(){
+        return UnitList;
+    }
+
+    public List<Word> getWordList(){
+        return WordList;
     }
 
     private EWLADbHelper(Context context) throws IOException {
@@ -47,9 +60,9 @@ public class EWLADbHelper extends SQLiteOpenHelper {
             Log.d("database", "doesn't exists");
             createdatabase();
         }
-        getAllThemes();
-        getAllUnits();
-        getAllWords();
+        setAllThemes();
+        setAllUnits();
+        setAllWords();
     }
 
     public void opendatabase() throws SQLException {
@@ -59,7 +72,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
 
     }
 
-    public void getAllWords() {
+    public void setAllWords() {
         String selectQuery = "SELECT  * FROM " + "word";
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -75,14 +88,22 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 word.setEnglish(cursor.getString(4));
                 word.setShadowSrc(cursor.getString(5));
                 WordList.add(word);
+                Log.d("wordUnitID", Integer.toString(word.getUnit_id()));
+                Log.d("wordID", Integer.toString(word.getId()));
+                Log.d("wordEnglish", word.getEnglish());
+                Log.d("wordKorean", word.getKorean());
+                Log.d("wordImageSrc", word.getImageSrc());
+                Log.d("wordShadowSrc", word.getShadowSrc());
             } while (cursor.moveToNext());
+
+
         }
 
         cursor.close();
         db.close();
     }
 
-    public void getAllUnits() {
+    public void setAllUnits() {
         String selectQuery = "SELECT  * FROM " + "unit";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -95,6 +116,10 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 unit.setTitle(cursor.getString(2));
                 unit.setHasCrown(Boolean.parseBoolean(cursor.getString(3)));
                 UnitList.add(unit);
+                Log.d("UnitID", Integer.toString(unit.getId()));
+                Log.d("UnitThemeId", Integer.toString(unit.getTheme_id()));
+                Log.d("UnitTitle", unit.getTitle());
+                Log.d("UnitHasCrown", Boolean.toString(unit.getHasCrown()));
             } while (cursor.moveToNext());
         }
 
@@ -102,7 +127,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void getAllThemes() {
+    public void setAllThemes() {
         String selectQuery = "SELECT * FROM " + "theme";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -115,6 +140,10 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 theme.setIsLocked(Boolean.getBoolean(cursor.getString(2)));
                 theme.setUnlockPoint(Integer.parseInt(cursor.getString(3)));
                 ThemeList.add(theme);
+                Log.d("UnitID", Integer.toString(theme.getId()));
+                Log.d("UnitTitle", theme.getTltle());
+                Log.d("UnitIsLocked", Boolean.toString(theme.getIsLocked()));
+                Log.d("UnitUnlockPoint", Integer.toString(theme.getUnlockPoint()));
             } while (cursor.moveToNext());
         }
         cursor.close();

@@ -12,6 +12,9 @@ import android.view.View;
 import com.application.EWLApplication;
 import com.application.R;
 import com.application.database.EWLADbHelper;
+import com.application.database.Theme;
+import com.application.database.Unit;
+import com.application.database.Word;
 import com.application.databinding.ActivityMainBinding;
 import com.application.fragment.MainMenuFragment;
 import com.application.fragment.LearningThemeFragment;
@@ -27,11 +30,16 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private EWLApplication application;
     SQLiteDatabase db = null;
+    EWLADbHelper helper;
     public String point;
 
     MainMenuFragment mainMenuFragment;
     LearningThemeFragment learningThemeFragment;
     LearningUnitFragment learningUnitFragment;
+
+    public List<Theme> ThemeList = new ArrayList<Theme>();
+    public List<Unit> UnitList = new ArrayList<Unit>();
+    public List<Word> WordList = new ArrayList<Word>();
 
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
@@ -102,7 +110,16 @@ public class MainActivity extends AppCompatActivity {
         this.point = String.valueOf(application.getPoint());
 
         try {
+            Log.d("MainOnResume", "dbMake");
             db = EWLADbHelper.getsInstance(this).getReadableDatabase();
+            helper = EWLADbHelper.getsInstance(this);
+            ThemeList = helper.getThemeList();
+            UnitList = helper.getUnitList();
+            WordList = helper.getWordList();
+
+            application.setAllTheme(ThemeList);
+            application.setAllUnit(UnitList);
+            application.setAllWord(WordList);
         } catch (IOException e) {
             e.printStackTrace();
         }

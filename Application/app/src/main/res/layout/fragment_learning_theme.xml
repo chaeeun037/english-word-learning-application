@@ -17,21 +17,30 @@
 
             <Button
                 android:id="@+id/fruit"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="50dp"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_margin="20dp"
                 android:background="@drawable/fruit"
                 android:onClick="onThemeButtonClick"
                 android:tag="1" />
 
             <Button
                 android:id="@+id/veget"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="50dp"
+                android:layout_width="160dp"
+                android:layout_height="125dp"
+                android:layout_margin="20dp"
                 android:background="@drawable/veget"
                 android:onClick="onThemeButtonClick"
                 android:tag="2" />
+
+            <Button
+                android:id="@+id/fish"
+                android:layout_width="175dp"
+                android:layout_height="130dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/fish"
+                android:onClick="onThemeButtonClick"
+                android:tag="3" />
 
         </LinearLayout>
 
@@ -43,30 +52,30 @@
 
             <Button
                 android:id="@+id/meat"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/meat"
-                android:onClick="onThemeButtonClick"
-                android:tag="3" />
-
-            <Button
-                android:id="@+id/dairy"
-                android:layout_width="150dp"
-                android:layout_height="100dp"
-                android:layout_margin="20dp"
-                android:background="@drawable/dairy"
                 android:onClick="onThemeButtonClick"
                 android:tag="4" />
 
             <Button
+                android:id="@+id/dairy"
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/dairy"
+                android:onClick="onThemeButtonClick"
+                android:tag="5" />
+
+            <Button
                 android:id="@+id/snack"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="175dp"
+                android:layout_height="130dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/snack"
                 android:onClick="onThemeButtonClick"
-                android:tag="5" />
+                android:tag="6" />
         </LinearLayout>
     </LinearLayout>
 </layout>

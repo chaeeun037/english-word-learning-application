@@ -4,36 +4,57 @@
     <data>
 
         <variable
-            name="activity"
+            name="fragment"
             type="com.application.fragment.SpeakMainFragment" />
     </data>
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".fragment.SpeakMainFragment"
-        android:background="@drawable/background_speak_draw">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/sttResult"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:text="음성인식 결과가 여기에 표시됩니다." />
-        <Button
-            android:id="@+id/sttStart"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:text="음성인식 시작" />
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:context=".fragment.SpeakMainFragment"
+            android:background="@drawable/background_speak_draw_back">
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:text="말하러 가기"
-            android:onClick="onMainNextButtonClick"
-            android:textSize="24dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="200dp"
+                    android:background="@drawable/chicken" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:context=".fragment.SpeakMainFragment"
+            android:background="@drawable/background_speak_draw_front">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:text="말하러 가기"
+                android:onClick="onMainNextButtonClick"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom"
+                android:textSize="24dp"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
 </layout>

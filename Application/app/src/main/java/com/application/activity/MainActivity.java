@@ -21,7 +21,8 @@ import com.application.fragment.LearningThemeFragment;
 import com.application.fragment.LearningUnitFragment;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onThemeButtonClick(View v) {
+        int tag = Integer.parseInt(v.getTag().toString());
+        Log.d("***", "tag : " + tag);
+
+        //TODO: db에서 가져온 unitList에서 id가 tag와 일치하는 데이터를 가져와서 filteredUnitList에 저장
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
     }
@@ -118,5 +124,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Log.d("***", "" + db);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }

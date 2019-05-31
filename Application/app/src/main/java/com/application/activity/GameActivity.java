@@ -41,6 +41,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onStartButtonClick(View v) {
+        Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
+        startActivity(intent);
+
+        /* 문제 완성 될 때까지 봉인 - 지수
         // 홀수이면
         if (true) {
             Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
@@ -52,6 +56,8 @@ public class GameActivity extends AppCompatActivity {
             Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
             startActivity(intent);
         }
+
+*/
 
 
 

@@ -9,16 +9,15 @@ import android.view.View;
 
 import com.application.R;
 import com.application.databinding.ActivityGameDrawBinding;
+import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
-import com.application.fragment.SpeakInputFragment;
-import com.application.fragment.SpeakMainFragment;
 
 public class GameDrawActivity extends AppCompatActivity {
 
     private ActivityGameDrawBinding binding;
 
-    SpeakInputFragment speakInputFragment;
-    SpeakMainFragment speakMainFragment;
+    DrawInputFragment drawInputFragment;
+    DrawMainFragment drawMainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,11 @@ public class GameDrawActivity extends AppCompatActivity {
 
         hideNavigationBar();
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_game_speak);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_game_draw);
         binding.setActivity(this);
 
-        speakMainFragment = new SpeakMainFragment();
-        speakInputFragment = new SpeakInputFragment();
+        drawMainFragment = new DrawMainFragment();
+        drawInputFragment = new DrawInputFragment();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -51,7 +50,7 @@ public class GameDrawActivity extends AppCompatActivity {
 
     public void onMainNextButtonClick(View v) {
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, speakInputFragment).commit();
+        manager.beginTransaction().replace(R.id.container, drawInputFragment).commit();
     }
 
     public void onInputNextButtonClick(View v) {

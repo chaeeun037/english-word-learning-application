@@ -12,22 +12,87 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".fragment.DrawInputFragment">
+        android:orientation="horizontal"
+        tools:context=".fragment.DrawInputFragment"
+        android:background="@drawable/background_speak_draw2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:background="@drawable/sketchbook">
+
+                <!-- TODO: **캔버스** (그림자 글씨 이미지 추가/가능하면 스케치북) -->
+                <com.application.fragment.DrawCanvasView
+                    android:id="@+id/shadowCanvas"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/apple_shadow" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <!-- TODO: **펜 버튼**  -->
+                <Button
+                    android:id="@+id/penButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/pen"
+                    android:onClick="penButtonClicked" />
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"></LinearLayout>
+
+                <!-- TODO: **지우개 버튼** -->
+                <Button
+                    android:id="@+id/eraserButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/eraser"
+                    android:onClick="eraserButtonClicked" />
+           </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
 
         <TextView
+            android:id="@+id/sttResult"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="준비가 되었나요?"
-            android:textSize="24dp"
-            android:gravity="center"/>
+            android:layout_height="70dp"
+            android:text="필기인식 결과가 여기에 표시됩니다." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"></LinearLayout>
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
-            android:text="시작하기"
+            android:text="제출"
+            android:onClick="onInputNextButtonClick"
             android:textSize="24dp"/>
 
+        </LinearLayout>
     </LinearLayout>
 </layout>

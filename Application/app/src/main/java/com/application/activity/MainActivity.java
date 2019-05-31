@@ -3,6 +3,11 @@ package com.application.activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.databinding.DataBindingUtil;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.AudioTimestamp;
+import android.media.SoundPool;
+import android.os.Build;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     public List<Unit> UnitList = new ArrayList<Unit>();
     public List<Word> WordList = new ArrayList<Word>();
 
+    private SoundPool soundPool;
+
+    private int sound_pop;
+    private int sound_coins;
+
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
@@ -50,16 +60,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onHomeButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, mainMenuFragment).commit();
     }
 
+    public void onCoinButtonClick(View v) {
+        soundPool.play(sound_coins, 1, 1, 0, 0, 1);
+    }
+
     public void onLearningButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
     }
 
     public void onThemeButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         int tag = Integer.parseInt(v.getTag().toString());
         Log.d("***", "tag : " + tag);
 
@@ -70,13 +90,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onUnitButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         Intent intent = new Intent(MainActivity.this, LearningActivity.class);
         startActivity(intent);
     }
 
     public void onGameButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 
     @Override
@@ -99,6 +128,23 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, new MainMenuFragment())
                     .commit();
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_coins = soundPool.load(this, R.raw.coins, 1);
     }
 
     @Override
@@ -126,7 +172,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
+    protected void onDestroy() {
+        super.onDestroy();
+        soundPool.release();
+        soundPool = null;
     }
 }

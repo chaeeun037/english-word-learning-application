@@ -28,19 +28,21 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:background="@drawable/coin" />
+                android:background="@drawable/coin"
+                android:onClick="onCoinButtonClick" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:onClick="onCoinButtonClick"
                 android:text="@{activity.point}"
-                android:textSize="24dp" />
+                android:textSize="24sp" />
 
             <Button
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/home"
                 android:onClick="onHomeButtonClick" />
 

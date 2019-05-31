@@ -52,7 +52,6 @@ public class DrawInputFragment extends Fragment {
                   * 구글비전한테 보내기
                   * 결과값 가져오기
                   */
-
             }
         });
 

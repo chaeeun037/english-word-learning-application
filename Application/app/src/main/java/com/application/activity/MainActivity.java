@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.AudioTimestamp;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.application.EWLApplication;
 import com.application.R;
@@ -49,6 +51,30 @@ public class MainActivity extends AppCompatActivity {
 
     private int sound_pop;
     private int sound_coins;
+
+    MediaPlayer player;
+
+    public void backgroundMusicPlay() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.background_bunny_garden);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayer();
+                }
+            });
+        }
+
+        player.start();
+    }
+    
+    private void stopPlayer() {
+        if (player != null) {
+            player.release();
+            player = null;
+            Toast.makeText(this, "플레이어 꺼짐", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
@@ -129,6 +155,8 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
+        backgroundMusicPlay();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
                     .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
@@ -168,7 +196,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("***", "" + db);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopPlayer();
     }
 
     @Override

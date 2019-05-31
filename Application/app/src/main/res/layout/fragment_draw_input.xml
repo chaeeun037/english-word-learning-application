@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal"
-        tools:context=".fragment.SpeakInputFragment"
+        tools:context=".fragment.DrawInputFragment"
         android:background="@drawable/background_speak_draw2">
 
         <LinearLayout
@@ -62,10 +62,7 @@
                     android:layout_height="75dp"
                     android:background="@drawable/eraser"
                     android:onClick="eraserButtonClicked" />
-
-
-            </LinearLayout>
-
+           </LinearLayout>
 
 
         </LinearLayout>

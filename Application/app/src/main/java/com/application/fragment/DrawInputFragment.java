@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.application.R;
 
@@ -26,6 +27,9 @@ public class DrawInputFragment extends Fragment {
         Button pen = (Button)view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
         Button handwirteReco = (Button)view.findViewById(R.id.handwirteRecoButton);
+
+        //필기 인식 결과를 임시로 보여줄 textView
+        TextView textView = (TextView)view.findViewById(R.id.visionResult);
 
         /* 펜 버튼 눌렸을 때 */
         pen.setOnClickListener(new Button.OnClickListener(){

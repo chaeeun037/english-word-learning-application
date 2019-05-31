@@ -29,8 +29,6 @@
                 android:layout_width="160dp"
                 android:layout_height="125dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/veget"
-                android:onClick="onThemeButtonClick"
                 android:tag="2" />
 
             <Button
@@ -38,7 +36,7 @@
                 android:layout_width="175dp"
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/fish"
+                android:background="@drawable/locked_fish"
                 android:onClick="onThemeButtonClick"
                 android:tag="3" />
 
@@ -55,7 +53,7 @@
                 android:layout_width="150dp"
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/meat"
+                android:background="@drawable/locked_meat"
                 android:onClick="onThemeButtonClick"
                 android:tag="4" />
 
@@ -64,7 +62,7 @@
                 android:layout_width="150dp"
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/dairy"
+                android:background="@drawable/locked_dairy"
                 android:onClick="onThemeButtonClick"
                 android:tag="5" />
 
@@ -73,7 +71,7 @@
                 android:layout_width="175dp"
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/snack"
+                android:background="@drawable/locked_snack"
                 android:onClick="onThemeButtonClick"
                 android:tag="6" />
         </LinearLayout>

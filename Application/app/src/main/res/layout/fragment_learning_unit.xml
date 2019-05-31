@@ -10,6 +10,7 @@
         android:background="@drawable/theme_unit_background">
 
         <Button
+            android:id="@+id/num1"
             android:layout_width="165dp"
             android:layout_height="175dp"
             android:layout_margin="20dp"
@@ -17,6 +18,7 @@
             android:background="@drawable/basket"/>
 
         <Button
+            android:id="@+id/num2"
             android:layout_width="165dp"
             android:layout_height="175dp"
             android:layout_margin="20dp"
@@ -24,6 +26,7 @@
             android:background="@drawable/basket"/>
 
         <Button
+            android:id="@+id/num3"
             android:layout_width="165dp"
             android:layout_height="175dp"
             android:layout_margin="20dp"

@@ -30,6 +30,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
     public static List<Theme> ThemeList = new ArrayList<Theme>();
     public static List<Unit> UnitList = new ArrayList<Unit>();
     public static List<Word> WordList = new ArrayList<Word>();
+    public static Point point = new Point();
 
     public static EWLADbHelper getsInstance(Context context) throws IOException {
         sInstance = new EWLADbHelper(context);
@@ -44,9 +45,9 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         return UnitList;
     }
 
-    public List<Word> getWordList(){
-        return WordList;
-    }
+    public List<Word> getWordList(){ return WordList; }
+
+    public Point getPoint(){  return point;  }
 
     private EWLADbHelper(Context context) throws IOException {
         super(context, DB_NAME, null, DB_VERSION);
@@ -63,6 +64,7 @@ public class EWLADbHelper extends SQLiteOpenHelper {
         setAllThemes();
         setAllUnits();
         setAllWords();
+        setAllPoint();
     }
 
     public void opendatabase() throws SQLException {
@@ -120,6 +122,24 @@ public class EWLADbHelper extends SQLiteOpenHelper {
                 Log.d("UnitThemeId", Integer.toString(unit.getTheme_id()));
                 Log.d("UnitTitle", unit.getTitle());
                 Log.d("UnitHasCrown", Boolean.toString(unit.getHasCrown()));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+    }
+
+    public void setAllPoint() {
+        String selectQuery = "SELECT  * FROM " + "point";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                point.setId(Integer.parseInt(cursor.getString(0)));
+                point.setPoint(Integer.parseInt(cursor.getString(1)));
+                Log.d("PointId", Integer.toString(point.getId()));
+                Log.d("PointPoint", Integer.toString(point.getPoint()));
             } while (cursor.moveToNext());
         }
 

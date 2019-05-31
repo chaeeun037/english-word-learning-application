@@ -15,8 +15,7 @@ import com.application.fragment.DrawMainFragment;
 public class GameDrawActivity extends AppCompatActivity {
 
     private ActivityGameDrawBinding binding;
-
-
+  
     DrawMainFragment drawMainFragment;
     DrawInputFragment drawInputFragment;
 

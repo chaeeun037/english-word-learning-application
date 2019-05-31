@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal"
-            tools:context=".fragment.SpeakMainFragment"
+            tools:context=".fragment.DrawMainFragment"
             android:background="@drawable/background_speak_draw_back">
 
             <LinearLayout
@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal"
-            tools:context=".fragment.SpeakMainFragment"
+            tools:context=".fragment.DrawMainFragment"
             android:background="@drawable/background_speak_draw_front">
 
             <Button

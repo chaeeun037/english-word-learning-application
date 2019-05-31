@@ -35,13 +35,22 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!-- TODO: **캔버스** (그림자 글씨 이미지 추가/가능하면 스케치북) -->
-            <com.application.fragment.DrawCanvasView
-                android:id="@+id/shadowCanvas"
-                android:layout_width="0px"
+            <!-- TODO: **캔버스**  -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:background="@drawable/apple_shadow" />
+                android:background="@drawable/sketchbook">
+
+
+                <com.application.fragment.DrawCanvasView
+                    android:id="@+id/shadowCanvas"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/apple_shadow" />
+
+            </LinearLayout>
 
 
             <LinearLayout
@@ -58,6 +67,10 @@
                     android:layout_height="75dp"
                     android:background="@drawable/pen"
                     android:onClick="penButtonClicked" />
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"></LinearLayout>
 
                 <!-- TODO: **지우개 버튼** -->
                 <Button

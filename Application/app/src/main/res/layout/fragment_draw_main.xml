@@ -8,26 +8,54 @@
             type="com.application.fragment.DrawMainFragment" />
     </data>
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".fragment.DrawMainFragment">
+        android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="준비가 되었나요?"
-            android:textSize="24dp"
-            android:gravity="center"/>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:context=".fragment.DrawMainFragment"
+            android:background="@drawable/background_speak_draw_back">
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:text="시작하기"
-            android:textSize="24dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginRight="200dp"
+                    android:background="@drawable/chicken" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:context=".fragment.DrawMainFragment"
+            android:background="@drawable/background_speak_draw_front">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:text="쓰러 가기"
+                android:onClick="onMainNextButtonClick"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="bottom"
+                android:textSize="24dp"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
 </layout>

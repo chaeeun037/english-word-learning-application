@@ -12,22 +12,96 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".fragment.DrawInputFragment">
+        android:orientation="horizontal"
+        tools:context=".fragment.DrawInputFragment"
+        android:background="@drawable/background_speak_draw2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:background="@drawable/sketchbook">
+
+                <!-- **캔버스** -->
+                <com.application.fragment.DrawCanvasView
+                    android:id="@+id/shadowCanvas"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/colorWhite">
+
+                <!-- **펜 버튼**  -->
+                <Button
+                    android:id="@+id/penButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/pen" />
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"></LinearLayout>
+
+                <!-- **지우개 버튼** -->
+                <Button
+                    android:id="@+id/eraserButton"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background="@drawable/eraser" />
+           </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
 
         <TextView
+            android:id="@+id/visionResult"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="준비가 되었나요?"
-            android:textSize="24dp"
-            android:gravity="center"/>
+            android:layout_height="70dp"
+            android:text="필기인식 결과가 여기에 표시됩니다." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"></LinearLayout>
+
+            <Button
+                android:id="@+id/handwirteRecoButton"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="필기인식"
+                android:textSize="24dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"></LinearLayout>
 
         <Button
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="20dp"
-            android:text="시작하기"
+            android:text="제출"
+            android:onClick="onInputNextButtonClick"
             android:textSize="24dp"/>
 
+        </LinearLayout>
     </LinearLayout>
 </layout>

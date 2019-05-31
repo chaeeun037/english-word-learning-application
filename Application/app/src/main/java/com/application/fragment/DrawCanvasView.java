@@ -93,9 +93,6 @@ public class DrawCanvasView extends View {
         drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
         drawPaint.setStrokeWidth(0); // 펜 굵기
     }
-    public void eraseAll(){
-        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
-    }
 
     /* 펜버튼이 눌렸을 때 */
     public void pen(){

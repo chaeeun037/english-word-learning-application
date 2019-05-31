@@ -41,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onStartButtonClick(View v) {
+
         Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
         startActivity(intent);
 
@@ -58,8 +59,6 @@ public class GameActivity extends AppCompatActivity {
         }
 
 */
-
-
 
     }
 

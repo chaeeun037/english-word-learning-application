@@ -15,19 +15,12 @@
         android:orientation="vertical"
         tools:context=".activity.GameDrawActivity">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="준비가 되었나요?"
-            android:textSize="24dp"
-            android:gravity="center"/>
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:text="시작하기"
-            android:textSize="24dp"/>
+        </FrameLayout>
 
     </LinearLayout>
 </layout>

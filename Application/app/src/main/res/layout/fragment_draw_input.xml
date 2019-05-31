@@ -27,13 +27,12 @@
                 android:layout_weight="8"
                 android:background="@drawable/sketchbook">
 
-                <!-- TODO: **캔버스** (그림자 글씨 이미지 추가/가능하면 스케치북) -->
+                <!-- **캔버스** -->
                 <com.application.fragment.DrawCanvasView
                     android:id="@+id/shadowCanvas"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
-                    android:background="@drawable/apple_shadow" />
+                    android:layout_weight="8" />
             </LinearLayout>
 
             <LinearLayout
@@ -41,27 +40,26 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:background="@color/colorWhite">
 
-                <!-- TODO: **펜 버튼**  -->
+                <!-- **펜 버튼**  -->
                 <Button
                     android:id="@+id/penButton"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/pen"
-                    android:onClick="penButtonClicked" />
+                    android:background="@drawable/pen" />
 
                 <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"></LinearLayout>
 
-                <!-- TODO: **지우개 버튼** -->
+                <!-- **지우개 버튼** -->
                 <Button
                     android:id="@+id/eraserButton"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/eraser"
-                    android:onClick="eraserButtonClicked" />
+                    android:background="@drawable/eraser" />
            </LinearLayout>
 
 
@@ -76,14 +74,25 @@
             >
 
         <TextView
-            android:id="@+id/sttResult"
+            android:id="@+id/visionResult"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="필기인식 결과가 여기에 표시됩니다." />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"></LinearLayout>
+                android:layout_height="30dp"></LinearLayout>
+
+            <Button
+                android:id="@+id/handwirteRecoButton"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="필기인식"
+                android:textSize="24dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"></LinearLayout>
 
         <Button
             android:layout_width="match_parent"

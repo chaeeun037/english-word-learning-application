@@ -48,8 +48,7 @@
                     android:id="@+id/penButton"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/pen"
-                    android:onClick="penButtonClicked" />
+                    android:background="@drawable/pen" />
 
                 <LinearLayout
                 android:layout_width="match_parent"
@@ -60,8 +59,7 @@
                     android:id="@+id/eraserButton"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:background="@drawable/eraser"
-                    android:onClick="eraserButtonClicked" />
+                    android:background="@drawable/eraser" />
            </LinearLayout>
 
 

@@ -11,15 +11,14 @@ import com.application.R;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
-import com.application.fragment.SpeakInputFragment;
-import com.application.fragment.SpeakMainFragment;
 
 public class GameDrawActivity extends AppCompatActivity {
 
     private ActivityGameDrawBinding binding;
 
-    DrawInputFragment drawInputFragment;
+
     DrawMainFragment drawMainFragment;
+    DrawInputFragment drawInputFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -38,7 +38,6 @@ public class LearningHandwriteFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
         init(view);
-        //shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
 
         //Button 정의
         Button pen = (Button)view.findViewById(R.id.penButton);
@@ -50,11 +49,11 @@ public class LearningHandwriteFragment extends Fragment {
                 shadowCanvasV.eraser();
             }
         });
+
         pen.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
                 shadowCanvasV.pen();
-                init(view);
             }
         });
 

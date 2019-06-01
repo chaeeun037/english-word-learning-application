@@ -11,15 +11,28 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_speak_draw2"
         android:gravity="center"
         android:orientation="horizontal"
-        tools:context=".fragment.DrawInputFragment"
-        android:background="@drawable/background_speak_draw2">
+        tools:context=".fragment.DrawInputFragment">
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="match_parent"></LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="300dp"
             android:layout_weight="8">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:orientation="vertical">
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -33,75 +46,89 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="8" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:orientation="vertical"
+                android:background="@color/colorWhite"
                 android:gravity="center"
-                android:background="@color/colorWhite">
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"></LinearLayout>
 
                 <!-- **펜 버튼**  -->
                 <Button
                     android:id="@+id/penButton"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
                     android:background="@drawable/pen" />
 
                 <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"></LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"></LinearLayout>
 
                 <!-- **지우개 버튼** -->
                 <Button
                     android:id="@+id/eraserButton"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
                     android:background="@drawable/eraser" />
-           </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"></LinearLayout>
+
+                <!-- 필기 인식 -->
+                <Button
+                    android:id="@+id/handwirteRecoButton"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:text="결과"
+                    android:textSize="14dp" />
+
+                <!-- TODO: textView 만지기, 정적을 위해 일단 봉인 -->
+                <!--
+                <TextView
+                    android:id="@+id/visionResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:text="결과 표시"
+                    android:gravity="center"/>
+-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"></LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rightarrow"
+                    android:onClick="onInputNextButtonClick" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:gravity="center"
-            >
+            android:layout_width="30dp"
+            android:layout_height="match_parent"></LinearLayout>
 
-        <TextView
-            android:id="@+id/visionResult"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="필기인식 결과가 여기에 표시됩니다." />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"></LinearLayout>
-
-            <Button
-                android:id="@+id/handwirteRecoButton"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="필기인식"
-                android:textSize="24dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"></LinearLayout>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:text="제출"
-            android:onClick="onInputNextButtonClick"
-            android:textSize="24dp"/>
-
-        </LinearLayout>
     </LinearLayout>
 </layout>

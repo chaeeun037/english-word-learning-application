@@ -43,6 +43,15 @@ public class SpeakInputFragment extends Fragment {
                     Manifest.permission.RECORD_AUDIO},PERMISSION);
         }
 
+        /* 임시 버튼, 기능X - 지수 */
+        Button result = (Button)view.findViewById(R.id.result);
+        result.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "맞았어요! 정말 훌륭해요~", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         textView = (TextView)view.findViewById(R.id.sttResult);
         sttBtn = (Button) view.findViewById(R.id.sttStart);
 

@@ -76,8 +76,7 @@
                 android:layout_height="60dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/rightarrow"
-                android:gravity="right"
-                android:onClick="onVoiceNextButtonClick" />
+                android:gravity="right"/>
 
         </LinearLayout>
 

@@ -53,11 +53,17 @@ public class LearningThemeFragment extends Fragment {
         else
             veget.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.veget));
 
+        fruit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((MainActivity) getActivity()).onThemeButtonClick(v, themeList.get(0).getId()); }
+        });
+
         fish.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n10000000 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n200 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -65,7 +71,7 @@ public class LearningThemeFragment extends Fragment {
             @Override
             public void onClick(View v){
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n10000000 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n300 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -73,7 +79,7 @@ public class LearningThemeFragment extends Fragment {
             @Override
             public void onClick(View v){
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n10000000 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n400 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -81,7 +87,7 @@ public class LearningThemeFragment extends Fragment {
             @Override
             public void onClick(View v){
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n10000000 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n500 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -98,12 +104,12 @@ public class LearningThemeFragment extends Fragment {
                         point.setPoint(isPoint - needPoint);
                         themeList.get(1).setIsLocked(true);
 
-                        ((MainActivity) getActivity()).onThemeButtonClick(v);
-                        Toast.makeText(getContext(), "Complete unlock!", Toast.LENGTH_SHORT).show();
+                        ((MainActivity) getActivity()).onThemeButtonClick(v, themeList.get(1).getId());
+                        Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                     } else {
 
                         ((MainActivity) getActivity()).onLearningButtonClick(v);
-                        Toast.makeText(getContext(), "포인트가 부족해ㅠㅠ " + needPoint + "가 필요해요!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + needPoint + "가 필요해요!", Toast.LENGTH_SHORT).show();
 
                     }
                 }
@@ -115,7 +121,7 @@ public class LearningThemeFragment extends Fragment {
             veget.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((MainActivity) getActivity()).onThemeButtonClick(v);
+                    ((MainActivity) getActivity()).onThemeButtonClick(v, themeList.get(1).getId());
                 }
             });
         }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.R;
 
@@ -29,7 +30,7 @@ public class DrawInputFragment extends Fragment {
         Button handwirteReco = (Button)view.findViewById(R.id.handwirteRecoButton);
 
         //필기 인식 결과를 임시로 보여줄 textView
-        TextView textView = (TextView)view.findViewById(R.id.visionResult);
+        //TextView textView = (TextView)view.findViewById(R.id.visionResult);
 
         /* 펜 버튼 눌렸을 때 */
         pen.setOnClickListener(new Button.OnClickListener(){
@@ -51,6 +52,7 @@ public class DrawInputFragment extends Fragment {
         handwirteReco.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Toast.makeText(getContext(), "맞았어요! 정말 멋져요~", Toast.LENGTH_SHORT).show();
                 /* 구현 필요
                  * 캔버스 이미지 가져와서
                   * 구글비전한테 보내기

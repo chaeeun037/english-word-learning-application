@@ -85,11 +85,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"></LinearLayout>
 
+                <!-- 필기 인식 -->
                 <Button
                     android:id="@+id/handwirteRecoButton"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
-                    android:text="필기 인식"
+                    android:text="결과"
                     android:textSize="14dp" />
 
                 <!-- TODO: textView 만지기, 정적을 위해 일단 봉인 -->

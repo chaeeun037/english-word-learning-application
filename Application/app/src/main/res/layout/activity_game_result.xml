@@ -51,10 +51,11 @@
                 tools:context=".fragment.SpeakMainFragment"
                 android:background="@drawable/background_speak_draw_front">
 
+                <!--TODO: 정적으로 하기 위해 '모든 결과보기' -> 'NEXT'로 수정 - 지수190602 -->
                 <Button
                     android:layout_width="180dp"
                     android:layout_height="70dp"
-                    android:text="전체 결과 보기"
+                    android:text="NEXT"
                     android:onClick="onResultButtonClick"
                     android:layout_marginBottom="10dp"
                     android:layout_gravity="bottom"

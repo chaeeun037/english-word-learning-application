@@ -41,8 +41,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onStartButtonClick(View v) {
-
-        Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
+        Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
+        //Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
         startActivity(intent);
 
         /* 문제 완성 될 때까지 봉인 - 지수

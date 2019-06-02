@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.application.EWLApplication;
 import com.application.R;
 import com.application.activity.MainActivity;
 import com.application.database.EWLADbHelper;
@@ -27,6 +28,7 @@ public class LearningThemeFragment extends Fragment {
     Button snack;
 
     Point point;
+    EWLApplication application = EWLApplication.getInstance();
     List<Theme> themeList;
 
     public static LearningThemeFragment newInstance() {
@@ -97,7 +99,7 @@ public class LearningThemeFragment extends Fragment {
             veget.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int isPoint = point.getPoint();
+                    int isPoint = application.getPointValue();
                     int needPoint = themeList.get(1).getUnlockPoint();
 
                     if (isPoint >= needPoint) {

@@ -14,7 +14,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.application.EWLApplication;
 import com.application.R;
+import com.application.database.EWLADbHelper;
 import com.application.databinding.ActivityGameSpeakBinding;
 import com.application.fragment.SpeakInputFragment;
 import com.application.fragment.SpeakMainFragment;

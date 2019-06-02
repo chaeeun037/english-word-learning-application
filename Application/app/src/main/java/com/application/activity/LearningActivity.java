@@ -150,6 +150,7 @@ public class LearningActivity extends AppCompatActivity {
             //FragmentManager manager = getSupportFragmentManager();
             //manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
         }
+
     }
 
 }

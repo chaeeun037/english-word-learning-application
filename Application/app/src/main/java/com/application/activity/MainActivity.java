@@ -38,20 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private EWLApplication application;
-    SQLiteDatabase db = null;
-    EWLADbHelper helper;
 
     MainMenuFragment mainMenuFragment;
     LearningThemeFragment learningThemeFragment;
     LearningUnitFragment learningUnitFragment;
     LearningUnitFragmentVeget learningUnitFragmentVeget;
 
-    TextView textView;
+    boolean DataBaseOpen = true;
 
-    public List<Theme> ThemeList = new ArrayList<Theme>();
-    public List<Unit> UnitList = new ArrayList<Unit>();
-    public List<Word> WordList = new ArrayList<Word>();
-    public Point point = new Point();
+    TextView textView;
 
     private SoundPool soundPool;
 
@@ -152,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         hideNavigationBar();
 
-        this.application = (EWLApplication) getApplicationContext();
+
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
@@ -193,25 +188,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-         try {
-            Log.d("MainOnResume", "dbMake");
-            db = EWLADbHelper.getsInstance(this).getReadableDatabase();
-            helper = EWLADbHelper.getsInstance(this);
-            ThemeList = helper.getThemeList();
-            UnitList = helper.getUnitList();
-            WordList = helper.getWordList();
-            point = helper.getPoint();
 
-            application.setAllTheme(ThemeList);
-            application.setAllUnit(UnitList);
-            application.setAllWord(WordList);
-            application.setPoint(point.getPoint());
-        } catch (IOException e) {
-            e.printStackTrace();
+            //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
+
+        application = EWLApplication.getInstance();
+
+        if(application.getMainOpen()) {
+            try {
+                application.DBopen(this);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            application.setMainOpen(false);
         }
 
         textView = (TextView)findViewById(R.id.textPoint);
-        textView.setText(""+point.getPoint());
+        textView.setText(""+application.getPoint().getPointValue());
     }
 
     @Override

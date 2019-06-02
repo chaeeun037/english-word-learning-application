@@ -45,7 +45,7 @@ public class StartActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start);
         binding.setActivity(this);
 
-        final ImageView iv = (ImageView)findViewById(R.id.imageView1);
+        final ImageView iv = (ImageView)findViewById(R.id.start_chick);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.start_chick_anim);
         iv.startAnimation(anim);

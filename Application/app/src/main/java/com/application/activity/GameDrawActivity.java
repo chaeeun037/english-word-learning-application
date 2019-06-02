@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.application.R;
 import com.application.databinding.ActivityGameDrawBinding;
@@ -61,6 +64,17 @@ public class GameDrawActivity extends AppCompatActivity {
         }
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        final ImageView iv = (ImageView)findViewById(R.id.imageView2);
+
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
+        if (iv != null) {
+            iv.startAnimation(anim);
+        }
     }
 
     private void hideNavigationBar() {

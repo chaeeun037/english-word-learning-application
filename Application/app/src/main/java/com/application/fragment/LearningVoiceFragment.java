@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.application.EWLApplication;
 import com.application.R;
 import com.application.activity.LearningActivity;
 import com.application.database.EWLADbHelper;
@@ -24,12 +26,15 @@ public class LearningVoiceFragment extends Fragment {
     private Button speakButton;
     Button btn2;
     List<Word> wordList = EWLADbHelper.WordList;
-
+    ImageView imageView;
+    EWLApplication application = EWLApplication.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_voice, container, false);
-
+        imageView = (ImageView)view.findViewById(R.id.imageView2);
+        int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getImageSrc(), "drawable", getContext().getPackageName());
+        imageView.setImageResource(id);
         speakButton = (Button) view.findViewById(R.id.speakButton);
 
         tts = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
@@ -44,7 +49,7 @@ public class LearningVoiceFragment extends Fragment {
         speakButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tts.speak("APPLE", TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak(application.WordList.get(application.getNowWordId()).getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 

@@ -28,6 +28,9 @@ public class EWLApplication extends Application{
     public List<Word> WordList = new ArrayList<Word>();
 
     public boolean MainOpen = true;
+    public int nowThemeId;
+    public int nowUnitId;
+    public int nowWordId = 0;
 
     // activity 전체에서 사용 가능하도록 만드는 선언 메소드
     public static EWLApplication getInstance(){
@@ -67,6 +70,18 @@ public class EWLApplication extends Application{
         this.MainOpen = open;
     }
 
+    public void setNowThemeId(int nowThemeId) {
+        this.nowThemeId = nowThemeId;
+    }
+
+    public void setNowUnitId(int nowUnitId){
+        this.nowUnitId = nowUnitId;
+    }
+
+    public void setNowWordId(int nowWordId){
+        this.nowWordId = nowWordId;
+    }
+
     // 해당 클래스에 저장되어 있는 데이터 값을 제공하는 메소드들
     public Point getPoint() {
         return point;
@@ -90,5 +105,17 @@ public class EWLApplication extends Application{
 
     public boolean getMainOpen(){
         return MainOpen;
+    }
+
+    public int getNowThemeId(){
+        return nowThemeId;
+    }
+
+    public int getNowUnitId(){
+        return nowUnitId;
+    }
+
+    public int getNowWordId(){
+        return nowWordId;
     }
 }

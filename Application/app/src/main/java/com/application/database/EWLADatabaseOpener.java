@@ -147,13 +147,17 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
                 Theme theme = new Theme();
                 theme.setId(Integer.parseInt(cursor.getString(0)));
                 theme.setTitle(cursor.getString(1));
-                theme.setIsLocked(Boolean.getBoolean(cursor.getString(2)));
+                if(cursor.getString(2).equals("0")) {
+                    theme.setIsLocked(true);
+                }
+                else
+                    theme.setIsLocked(false);
                 theme.setUnlockPoint(Integer.parseInt(cursor.getString(3)));
                 ThemeList.add(theme);
-                Log.d("UnitID", Integer.toString(theme.getId()));
-                Log.d("UnitTitle", theme.getTltle());
-                Log.d("UnitIsLocked", Boolean.toString(theme.getIsLocked()));
-                Log.d("UnitUnlockPoint", Integer.toString(theme.getUnlockPoint()));
+                Log.d("ThemeID", Integer.toString(theme.getId()));
+                Log.d("ThemeTitle", theme.getTltle());
+                Log.d("ThemeIsLocked", Boolean.toString(theme.getIsLocked()));
+                Log.d("ThemeUnlockPoint", Integer.toString(theme.getUnlockPoint()));
             } while (cursor.moveToNext());
         }
         cursor.close();

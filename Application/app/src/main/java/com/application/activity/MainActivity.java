@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         if (player != null) {
             player.release();
             player = null;
-            Toast.makeText(this, "플레이어 꺼짐", Toast.LENGTH_SHORT).show();
         }
     }
 

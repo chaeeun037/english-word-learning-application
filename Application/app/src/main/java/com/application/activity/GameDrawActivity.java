@@ -2,6 +2,10 @@ package com.application.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +22,11 @@ public class GameDrawActivity extends AppCompatActivity {
   
     DrawMainFragment drawMainFragment;
     DrawInputFragment drawInputFragment;
+
+    private SoundPool soundPool;
+
+    private int sound_pop;
+    private int sound_coins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,22 @@ public class GameDrawActivity extends AppCompatActivity {
                     .add(R.id.container, new DrawMainFragment())
                     .commit();
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
     }
 
     private void hideNavigationBar() {
@@ -49,11 +74,15 @@ public class GameDrawActivity extends AppCompatActivity {
 
 
     public void onMainNextButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, drawInputFragment).commit();
     }
 
     public void onInputNextButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
         startActivity(intent);
     }

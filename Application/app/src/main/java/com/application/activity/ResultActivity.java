@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.application.R;
+import com.application.database.EWLADbHelper;
+import com.application.database.Point;
 import com.application.databinding.ActivityResultBinding;
 
 public class ResultActivity extends AppCompatActivity {
+
+    public Point point;
 
     private ActivityResultBinding binding;
     @Override

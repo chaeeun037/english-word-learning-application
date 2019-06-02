@@ -14,15 +14,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.application.EWLApplication;
 import com.application.R;
 import com.application.database.EWLADbHelper;
+import com.application.database.Point;
 import com.application.database.Theme;
 import com.application.database.Unit;
 import com.application.database.Word;
 import com.application.databinding.ActivityMainBinding;
+import com.application.fragment.LearningUnitFragmentVeget;
 import com.application.fragment.MainMenuFragment;
 import com.application.fragment.LearningThemeFragment;
 import com.application.fragment.LearningUnitFragment;
@@ -37,15 +40,18 @@ public class MainActivity extends AppCompatActivity {
     private EWLApplication application;
     SQLiteDatabase db = null;
     EWLADbHelper helper;
-    public String point;
 
     MainMenuFragment mainMenuFragment;
     LearningThemeFragment learningThemeFragment;
     LearningUnitFragment learningUnitFragment;
+    LearningUnitFragmentVeget learningUnitFragmentVeget;
+
+    TextView textView;
 
     public List<Theme> ThemeList = new ArrayList<Theme>();
     public List<Unit> UnitList = new ArrayList<Unit>();
     public List<Word> WordList = new ArrayList<Word>();
+    public Point point = new Point();
 
     private SoundPool soundPool;
 
@@ -103,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
     }
 
-    public void onThemeButtonClick(View v) {
+    public void onThemeButtonClick(View v, int id) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         int tag = Integer.parseInt(v.getTag().toString());
@@ -111,14 +117,21 @@ public class MainActivity extends AppCompatActivity {
 
         //TODO: db에서 가져온 unitList에서 id가 tag와 일치하는 데이터를 가져와서 filteredUnitList에 저장
 
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
+        if(id==1) {
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
+        }
+        else if(id==2){
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.container, learningUnitFragmentVeget).commit();
+        }
     }
 
-    public void onUnitButtonClick(View v) {
+    public void onUnitButtonClick(View v, int id) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         Intent intent = new Intent(MainActivity.this, LearningActivity.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 
@@ -148,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         mainMenuFragment = new MainMenuFragment();
         learningThemeFragment = new LearningThemeFragment();
         learningUnitFragment = new LearningUnitFragment();
+        //정적 바인딩 추가
+        learningUnitFragmentVeget = new LearningUnitFragmentVeget();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -179,23 +194,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        application.setPoint(500);
-        this.point = String.valueOf(application.getPoint());
-
-        try {
+         try {
             Log.d("MainOnResume", "dbMake");
             db = EWLADbHelper.getsInstance(this).getReadableDatabase();
             helper = EWLADbHelper.getsInstance(this);
             ThemeList = helper.getThemeList();
             UnitList = helper.getUnitList();
             WordList = helper.getWordList();
+            point = helper.getPoint();
 
             application.setAllTheme(ThemeList);
             application.setAllUnit(UnitList);
             application.setAllWord(WordList);
+            application.setPoint(point.getPoint());
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        textView = (TextView)findViewById(R.id.textPoint);
+        textView.setText(""+point.getPoint());
     }
 
     @Override

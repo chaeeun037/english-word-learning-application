@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.application.R;
+import com.application.activity.LearningActivity;
+import com.application.database.EWLADbHelper;
+import com.application.database.Word;
+
+import java.util.List;
 
 /*
  * 지수 작성
@@ -24,6 +29,8 @@ import com.application.R;
 
 public class LearningHandwriteFragment extends Fragment {
     DrawCanvasView shadowCanvasV;
+    Button btn2;
+    List<Word> wordList = EWLADbHelper.WordList;
 
     public LearningHandwriteFragment() {
     }
@@ -37,6 +44,14 @@ public class LearningHandwriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
+        btn2 = (Button)view.findViewById(R.id.button2);
+
+        btn2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v, wordList.get(0).getId()); }
+        });
+
         init(view);
 
         //Button 정의

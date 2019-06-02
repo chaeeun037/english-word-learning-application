@@ -101,7 +101,6 @@
                     android:layout_height="70dp"
                     android:text="결과 표시"
                     android:gravity="center"/>
-
 -->
                 <LinearLayout
                     android:layout_width="match_parent"

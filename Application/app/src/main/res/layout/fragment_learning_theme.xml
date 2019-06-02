@@ -21,7 +21,6 @@
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/fruit"
-                android:onClick="onThemeButtonClick"
                 android:tag="1" />
 
             <Button

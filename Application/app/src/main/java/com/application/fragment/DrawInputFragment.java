@@ -30,7 +30,7 @@ public class DrawInputFragment extends Fragment {
         Button handwirteReco = (Button)view.findViewById(R.id.handwirteRecoButton);
 
         //필기 인식 결과를 임시로 보여줄 textView
-       // TextView textView = (TextView)view.findViewById(R.id.visionResult);
+        //TextView textView = (TextView)view.findViewById(R.id.visionResult);
 
         /* 펜 버튼 눌렸을 때 */
         pen.setOnClickListener(new Button.OnClickListener(){

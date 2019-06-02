@@ -9,7 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.application.R;
+import com.application.activity.LearningActivity;
+import com.application.database.EWLADbHelper;
+import com.application.database.Word;
 
+import java.util.List;
 import java.util.Locale;
 
 import static android.speech.tts.TextToSpeech.ERROR;
@@ -18,6 +22,8 @@ public class LearningVoiceFragment extends Fragment {
 
     private TextToSpeech tts;
     private Button speakButton;
+    Button btn2;
+    List<Word> wordList = EWLADbHelper.WordList;
 
 
     @Override
@@ -40,6 +46,14 @@ public class LearningVoiceFragment extends Fragment {
             public void onClick(View view) {
                 tts.speak("APPLE", TextToSpeech.QUEUE_FLUSH, null);
             }
+        });
+
+        btn2 = (Button)view.findViewById(R.id.button2);
+
+        btn2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((LearningActivity) getActivity()).onVoiceNextButtonClick(v, wordList.get(7).getId()); }
         });
 
         return view;

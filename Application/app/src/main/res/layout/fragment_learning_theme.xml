@@ -29,6 +29,8 @@
                 android:layout_width="160dp"
                 android:layout_height="125dp"
                 android:layout_margin="20dp"
+                android:background="@drawable/locked_veget"
+                android:onClick="onThemeButtonClick"
                 android:tag="2" />
 
             <Button

@@ -62,7 +62,7 @@
                 <TextView
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:text="Peach 복숭아"
+                    android:text="Orange 오렌지"
                     android:textSize="24dp"
                     android:gravity="center"
                     />

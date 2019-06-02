@@ -99,7 +99,6 @@
                     android:background="@drawable/rightarrow"
                     android:textSize="24dp"/>
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout

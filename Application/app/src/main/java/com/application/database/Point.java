@@ -13,7 +13,7 @@ public class Point {
         this.id = id;
     }
 
-    public int getPoint(){
+    public int getPointValue(){
         return point;
     }
 

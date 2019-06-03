@@ -5,8 +5,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import com.application.EWLApplication;
 import com.application.R;
 import com.application.database.EWLADbHelper;
 import com.application.database.Unit;
@@ -30,18 +32,11 @@ public class LearningActivity extends AppCompatActivity {
     private ActivityLearningBinding binding;
 
     LearningUnitFragment learningUnitFragment;
-
     LearningSummaryFragment learningSummaryFragment;
-    LearningSummaryFragmentTomato learningSummaryFragmentTomato;
-    LearningSummaryFragmentOrange learningSummaryFragmentOrange;
-
     LearningVoiceFragment learningVoiceFragment;
-    LearningVoiceFragmentTomato learningVoiceFragmentTomato;
-    LearningVoiceFragmentOrange learningVoiceFragmentOrange;
-
     LearningHandwriteFragment learningHandwriteFragment;
-    LearningHandwriteFragmentTomato learningHandwriteFragmentTomato;
-    LearningHandwriteFragmentOrange learningHandwriteFragmentOrange;
+
+    EWLApplication application = EWLApplication.getInstance();
 
     int unitId;
     List<Word> wordList;
@@ -63,20 +58,13 @@ public class LearningActivity extends AppCompatActivity {
         unitId = intent.getExtras().getInt("id");
         */
         learningUnitFragment = new LearningUnitFragment();
-
         learningSummaryFragment = new LearningSummaryFragment();
-        learningSummaryFragmentTomato = new LearningSummaryFragmentTomato();
-        learningSummaryFragmentOrange = new LearningSummaryFragmentOrange();
-
         learningVoiceFragment = new LearningVoiceFragment();
-        learningVoiceFragmentTomato = new LearningVoiceFragmentTomato();
-        learningVoiceFragmentOrange = new LearningVoiceFragmentOrange();
-
         learningHandwriteFragment = new LearningHandwriteFragment();
-        learningHandwriteFragmentTomato = new LearningHandwriteFragmentTomato();
-        learningHandwriteFragmentOrange = new LearningHandwriteFragmentOrange();
 
         if (savedInstanceState == null) {
+            // 유닛 리스트에서 한 유닛을 선택하면 가장 처음 생기는 것
+            Log.d("now", "0");
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new LearningSummaryFragment())
                     .commit();
@@ -93,63 +81,22 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void onSummaryNextButtonClick(View v, int id) {
-        if(id == 1) {
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningVoiceFragmentTomato).commit();
-        }
-        else if(id == 2){
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningVoiceFragmentOrange).commit();
-        }
-        else{
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
-        }
-    }
-
-    public void onVoicePrevButtonClick(View v) {
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
-    }
-
-    public void onVoiceNextButtonClick(View v, int id) {
-        if(id == 1) {
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningHandwriteFragmentTomato).commit();
-        }
-        else if(id == 2) {
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningHandwriteFragmentOrange).commit();
-        }
-        else{
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
-        }
-    }
-
-    public void onHandwritePrevButtonClick(View v) {
+        // 학습 버튼을 누르면 생기는 거
+        Log.d("now", "1");
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }
 
-    public void onHandwriteNextButtonClick(View v, int id) {
-        if(id == 1){
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningSummaryFragmentTomato).commit();
-        }
-        else if(id ==2){
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningSummaryFragmentOrange).commit();
-        }
-        else {
-            // MainActivity의 Unit fragment로 가는것으로 수정 필요
-            unitList.get(0).setHasCrown(true);
-            Intent intent = new Intent(LearningActivity.this, MainActivity.class);
-            startActivity(intent);
-            //unitList.get(0).setHasCrown(true);
-            //FragmentManager manager = getSupportFragmentManager();
-            //manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
-        }
+    public void onVoiceNextButtonClick(View v, int id) {
+        Log.d("now", "3");
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
     }
 
+    public void onHandwriteNextButtonClick(View v, int id) {
+        Log.d("now", "5");
+        application.setNowWordId(application.getNowWordId() + 1);
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
+    }
 }

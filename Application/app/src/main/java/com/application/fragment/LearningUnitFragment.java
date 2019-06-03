@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.application.EWLApplication;
 import com.application.R;
 import com.application.activity.MainActivity;
 import com.application.database.EWLADbHelper;
@@ -20,6 +21,8 @@ public class LearningUnitFragment extends Fragment {
     Button num1;
     Button num2;
     Button num3;
+
+    EWLApplication application = EWLApplication.getInstance();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_unit, container, false);
@@ -49,16 +52,28 @@ public class LearningUnitFragment extends Fragment {
         num1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                if(application.getNowThemeId() == 0)
+                    application.setNowUnitId(0);
+                else
+                    application.setNowUnitId(3);
                 ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(0).getId()); }
         });
         num2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                if(application.getNowThemeId() == 0)
+                    application.setNowUnitId(1);
+                else
+                    application.setNowUnitId(4);
                 ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(1).getId()); }
         });
         num3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                if(application.getNowThemeId() == 0)
+                    application.setNowUnitId(2);
+                else
+                    application.setNowUnitId(5);
                 ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(2).getId()); }
         });
 

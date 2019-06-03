@@ -39,7 +39,7 @@ public class LearningActivity extends AppCompatActivity {
 
     EWLApplication application = EWLApplication.getInstance();
 
-    int unitId;
+    int nowPage;
     List<Word> wordList;
     List<Unit> unitList;
 
@@ -65,7 +65,7 @@ public class LearningActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             // 유닛 리스트에서 한 유닛을 선택하면 가장 처음 생기는 것
-            Log.d("now", "0");
+            nowPage = 0;
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new LearningSummaryFragment())
                     .commit();
@@ -83,29 +83,25 @@ public class LearningActivity extends AppCompatActivity {
 
     public void onSummaryNextButtonClick(View v, int index) {
         // 학습 버튼을 누르면 생기는 거
-        Log.d("now", "1");
-
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }
 
     public void onVoiceNextButtonClick(View v, int id) {
-        Log.d("now", "3");
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
     }
 
     public void onHandwriteNextButtonClick(View v, int id) {
-        Log.d("now", "5");
-
-        Log.d("getWordSize", ""+ application.getWordList().size());
-
-        if(application.getNowWordId() == (application.getWordList().size() - 1)){
+        nowPage = nowPage + 1;
+        if(nowPage == 3){
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             startActivity(intent);
         }
-        application.setNowWordId(application.getNowWordId() + 1);
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
+        else {
+            application.setNowWordId(application.getNowWordId() + 1);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
+        }
     }
 }

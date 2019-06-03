@@ -25,7 +25,6 @@ import com.application.database.Theme;
 import com.application.database.Unit;
 import com.application.database.Word;
 import com.application.databinding.ActivityMainBinding;
-import com.application.fragment.LearningUnitFragmentVeget;
 import com.application.fragment.MainMenuFragment;
 import com.application.fragment.LearningThemeFragment;
 import com.application.fragment.LearningUnitFragment;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     MainMenuFragment mainMenuFragment;
     LearningThemeFragment learningThemeFragment;
     LearningUnitFragment learningUnitFragment;
-    LearningUnitFragmentVeget learningUnitFragmentVeget;
 
     boolean DataBaseOpen = true;
 
@@ -148,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
         mainMenuFragment = new MainMenuFragment();
         learningThemeFragment = new LearningThemeFragment();
         learningUnitFragment = new LearningUnitFragment();
-        //정적 바인딩 추가
-        learningUnitFragmentVeget = new LearningUnitFragmentVeget();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

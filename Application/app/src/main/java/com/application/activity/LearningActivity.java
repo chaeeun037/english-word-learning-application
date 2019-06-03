@@ -16,16 +16,9 @@ import com.application.database.Unit;
 import com.application.database.Word;
 import com.application.databinding.ActivityLearningBinding;
 import com.application.fragment.LearningHandwriteFragment;
-import com.application.fragment.LearningHandwriteFragmentOrange;
-import com.application.fragment.LearningHandwriteFragmentTomato;
 import com.application.fragment.LearningSummaryFragment;
-import com.application.fragment.LearningSummaryFragmentOrange;
-import com.application.fragment.LearningSummaryFragmentTomato;
 import com.application.fragment.LearningUnitFragment;
 import com.application.fragment.LearningVoiceFragment;
-import com.application.fragment.LearningVoiceFragmentOrange;
-import com.application.fragment.LearningVoiceFragmentTomato;
-
 import java.util.List;
 
 public class LearningActivity extends AppCompatActivity {
@@ -82,7 +75,6 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void onSummaryNextButtonClick(View v, int index) {
-        // 학습 버튼을 누르면 생기는 거
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }

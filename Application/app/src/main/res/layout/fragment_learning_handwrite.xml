@@ -47,8 +47,7 @@
                     android:id="@+id/shadowCanvas"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="8"
-                    android:background="@drawable/apple_shadow" />
+                    android:layout_weight="8"/>
 
             </LinearLayout>
 

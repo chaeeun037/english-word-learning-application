@@ -83,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
+    public void onHelpButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+    }
+
     public void onHomeButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 

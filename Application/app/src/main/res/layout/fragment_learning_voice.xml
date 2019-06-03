@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff">
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -35,8 +36,8 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="264dp"
-                android:layout_height="wrap_content" />
+                android:layout_width="300dp"
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,17 +47,18 @@
 
                 <Button
                     android:id="@+id/speakButton"
-                    android:layout_width="256px"
-                    android:layout_height="256px"
-                    android:layout_alignParentStart="true"
-                    android:background="@drawable/speakchick" />
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:background="@drawable/megaphone" />
 
                 <TextView
                     android:id="@+id/english"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="40sp"
-                    android:gravity="center"/>
+                    android:fontFamily="@font/maplestory_light"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textSize="70sp" />
             </LinearLayout>
 
         </LinearLayout>

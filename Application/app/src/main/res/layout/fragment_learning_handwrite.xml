@@ -37,10 +37,10 @@
 
             <!-- TODO: **캔버스**  -->
             <LinearLayout
+                android:id="@+id/linearlayout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="8"
-                android:background="@drawable/sketchbook">
+                android:layout_weight="8">
 
 
                 <com.application.fragment.DrawCanvasView

@@ -112,9 +112,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("***", "tag : " + tag);
 
         //TODO: db에서 가져온 unitList에서 id가 tag와 일치하는 데이터를 가져와서 filteredUnitList에 저장
-
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
     }
 
     public void onUnitButtonClick(View v, int id) {
@@ -196,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
             application.setMainOpen(false);
         }
 
+        Log.d("now point", ""+application.getPointValue());
         textView = (TextView)findViewById(R.id.textPoint);
         textView.setText(""+application.getPoint().getPointValue());
     }

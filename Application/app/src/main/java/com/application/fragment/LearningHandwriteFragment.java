@@ -32,7 +32,6 @@ import java.util.List;
 public class LearningHandwriteFragment extends Fragment {
     DrawCanvasView shadowCanvasV;
     Button btn2;
-    List<Word> wordList = EWLADbHelper.WordList;
     EWLApplication application = EWLApplication.getInstance();
 
     public LearningHandwriteFragment() {
@@ -53,7 +52,7 @@ public class LearningHandwriteFragment extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v, wordList.get(0).getId()); }
+                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v, application.getWordList().get(0).getId()); }
         });
 
         init(view);

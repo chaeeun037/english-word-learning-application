@@ -32,7 +32,7 @@ public class LearningActivity extends AppCompatActivity {
 
     EWLApplication application = EWLApplication.getInstance();
 
-    int unitId;
+    int nowPage;
     List<Word> wordList;
     List<Unit> unitList;
 
@@ -58,6 +58,7 @@ public class LearningActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             // 유닛 리스트에서 한 유닛을 선택하면 가장 처음 생기는 것
+            nowPage = 0;
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new LearningSummaryFragment())
                     .commit();
@@ -74,7 +75,6 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void onSummaryNextButtonClick(View v, int index) {
-
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }
@@ -85,8 +85,8 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void onHandwriteNextButtonClick(View v, int id) {
-
-        if(application.getNowWordId() == (application.getWordList().size() - 1)){
+        nowPage = nowPage + 1;
+        if(nowPage == 3){
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             startActivity(intent);
         }

@@ -32,9 +32,8 @@ import java.util.List;
 public class LearningHandwriteFragment extends Fragment {
     DrawCanvasView shadowCanvasV;
     Button btn2;
-    List<Word> wordList = EWLADbHelper.WordList;
     EWLApplication application = EWLApplication.getInstance();
-
+    LinearLayout linearLayout;
     public LearningHandwriteFragment() {
     }
 
@@ -47,13 +46,16 @@ public class LearningHandwriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
+        linearLayout = (LinearLayout)view.findViewById(R.id.linearlayout);
+        int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getShadowSrc(), "drawable", getContext().getPackageName());
+        linearLayout.setBackgroundResource(id);
 
         btn2 = (Button)view.findViewById(R.id.button2);
 
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v, wordList.get(0).getId()); }
+                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v, application.getWordList().get(0).getId()); }
         });
 
         init(view);

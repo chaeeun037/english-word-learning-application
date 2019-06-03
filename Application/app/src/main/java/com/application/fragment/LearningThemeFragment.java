@@ -51,7 +51,6 @@ public class LearningThemeFragment extends Fragment {
         //잠겼는지 아닌지 확인 후 이미지 바꾸기
 
         for(int i = 0; i < 6; i++) {
-            Log.d("화면구성", String.valueOf(application.getThemeList().get(i).getIsLocked()));
 
             if (application.getThemeList().get(i).getIsLocked() == false) {
                 if (i == 0)
@@ -86,6 +85,7 @@ public class LearningThemeFragment extends Fragment {
             @Override
             public void onClick(View v){
                 application.setNowThemeId(0);
+                Log.d("learningThemeFragment Now ThemeID", ""+application.getNowThemeId());
                 ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(0).getId()); }
         });
 
@@ -131,9 +131,11 @@ public class LearningThemeFragment extends Fragment {
                     int needPoint = application.getThemeList().get(1).getUnlockPoint();
 
                     if (isPoint >= needPoint) {
-                        point.setPoint(isPoint - needPoint);
+                        if(! application.getThemeList().get(1).getIsLocked())
+                            application.setPointValue(application.getPointValue() - needPoint);
                         application.getThemeList().get(1).setIsLocked(true);
                         application.setNowThemeId(1);
+                        Log.d("learningThemeFragment Now ThemeID Locked", ""+application.getNowThemeId());
                         ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(1).getId());
                         Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                     } else {
@@ -151,6 +153,8 @@ public class LearningThemeFragment extends Fragment {
             veget.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    application.setNowThemeId(1);
+                    Log.d("learningThemeFragment Now ThemeID", ""+application.getNowThemeId());
                     ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(1).getId());
                 }
             });

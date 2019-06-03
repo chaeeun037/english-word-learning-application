@@ -2,6 +2,10 @@ package com.application.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -16,16 +20,9 @@ import com.application.database.Unit;
 import com.application.database.Word;
 import com.application.databinding.ActivityLearningBinding;
 import com.application.fragment.LearningHandwriteFragment;
-import com.application.fragment.LearningHandwriteFragmentOrange;
-import com.application.fragment.LearningHandwriteFragmentTomato;
 import com.application.fragment.LearningSummaryFragment;
-import com.application.fragment.LearningSummaryFragmentOrange;
-import com.application.fragment.LearningSummaryFragmentTomato;
 import com.application.fragment.LearningUnitFragment;
 import com.application.fragment.LearningVoiceFragment;
-import com.application.fragment.LearningVoiceFragmentOrange;
-import com.application.fragment.LearningVoiceFragmentTomato;
-
 import java.util.List;
 
 public class LearningActivity extends AppCompatActivity {
@@ -39,9 +36,13 @@ public class LearningActivity extends AppCompatActivity {
 
     EWLApplication application = EWLApplication.getInstance();
 
-    int unitId;
+    int nowPage;
     List<Word> wordList;
     List<Unit> unitList;
+
+    private SoundPool soundPool;
+
+    private int sound_pop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +66,27 @@ public class LearningActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             // 유닛 리스트에서 한 유닛을 선택하면 가장 처음 생기는 것
-            Log.d("now", "0");
+            nowPage = 0;
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new LearningSummaryFragment())
                     .commit();
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
     }
 
     private void hideNavigationBar() {
@@ -82,25 +99,24 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     public void onSummaryNextButtonClick(View v, int index) {
-        // 학습 버튼을 누르면 생기는 거
-        Log.d("now", "1");
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }
 
     public void onVoiceNextButtonClick(View v, int id) {
-        Log.d("now", "3");
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
     }
 
     public void onHandwriteNextButtonClick(View v, int id) {
-        Log.d("now", "5");
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
-        Log.d("getWordSize", ""+ application.getWordList().size());
-
-        if(application.getNowWordId() == (application.getWordList().size() - 1)){
+        nowPage = nowPage + 1;
+        if(nowPage == 3){
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             startActivity(intent);
         }

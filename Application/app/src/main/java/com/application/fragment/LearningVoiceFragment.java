@@ -58,6 +58,8 @@ public class LearningVoiceFragment extends Fragment {
         speakButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tts.setPitch((float) 1.5);
+                tts.setSpeechRate((float) 0.5);
                 tts.speak(application.WordList.get(application.getNowWordId()).getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });

@@ -47,8 +47,6 @@ public class LearningSummaryFragment extends Fragment {
         String english = application.getWordList().get(application.getNowWordId()).getEnglish();
         String korean = application.getWordList().get(application.getNowWordId()).getKorean();
 
-        System.out.println("현재 단어 아이디: "+application.getWordList().get(application.getNowWordId()).getId()+"\t영단어: "+english+"\t한글 단어: "+korean);
-
         imageView.setImageResource(id);
         engView.setText(english);
         korView.setText(korean);

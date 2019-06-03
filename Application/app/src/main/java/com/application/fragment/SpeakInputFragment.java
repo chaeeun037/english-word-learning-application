@@ -27,6 +27,7 @@ public class SpeakInputFragment extends Fragment {
     Button sttBtn;
     TextView textView;
     final int PERMISSION = 1;
+    String speakTerm;
 
     public static SpeakInputFragment newInstance() {
 
@@ -131,7 +132,9 @@ public class SpeakInputFragment extends Fragment {
             ArrayList<String> matches =
                     results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
-            textView.setText(matches.get(0));
+            speakTerm = matches.get(0).toLowerCase();
+
+            textView.setText(speakTerm);
 
         }
 

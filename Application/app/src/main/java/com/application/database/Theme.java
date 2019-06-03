@@ -1,11 +1,14 @@
 package com.application.database;
 
+import com.application.EWLApplication;
+
 public class Theme {
 
     private int id;
     private String title;
     private boolean isLocked;
     private int unlockPoint;
+    EWLApplication application = EWLApplication.getInstance();
 
 
     public void setId(int id){

@@ -36,8 +36,7 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="264dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/apple" />
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,9 +55,8 @@
                     android:id="@+id/english"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="40dp"
-                    android:text="apple" />
+                    android:textSize="40sp"
+                    android:gravity="center"/>
             </LinearLayout>
 
         </LinearLayout>

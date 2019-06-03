@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.application.EWLApplication;
 import com.application.R;
@@ -17,12 +18,17 @@ import com.application.activity.MainActivity;
 import com.application.database.EWLADbHelper;
 import com.application.database.Word;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class LearningSummaryFragment extends Fragment {
 
     Button btn;
     ImageView imageView;
+    TextView engView;
+    TextView korView;
+
     EWLApplication application = EWLApplication.getInstance();
 
     public static LearningSummaryFragment newInstance() {
@@ -34,14 +40,24 @@ public class LearningSummaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_summary, container, false);
         imageView = (ImageView)view.findViewById(R.id.imageView2);
+        engView = (TextView)view.findViewById(R.id.english);
+        korView = (TextView)view.findViewById(R.id.korean);
+
         int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getImageSrc(), "drawable", getContext().getPackageName());
+        String english = application.getWordList().get(application.getNowWordId()).getEnglish();
+        String korean = application.getWordList().get(application.getNowWordId()).getKorean();
+
+        System.out.println("현재 단어 아이디: "+application.getWordList().get(application.getNowWordId()).getId()+"\t영단어: "+english+"\t한글 단어: "+korean);
+
         imageView.setImageResource(id);
+        engView.setText(english);
+        korView.setText(korean);
 
         btn=(Button)view.findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                ((LearningActivity) getActivity()).onSummaryNextButtonClick(v, application.getWordList().get(7).getId()); }
+                ((LearningActivity) getActivity()).onSummaryNextButtonClick(v, application.getWordList().get(application.getNowWordId()).getId()); }
         });
 
         return view;

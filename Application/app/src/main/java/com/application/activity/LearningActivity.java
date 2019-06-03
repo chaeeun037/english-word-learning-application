@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.FrameMetrics;
 import android.view.View;
 
 import com.application.EWLApplication;
@@ -80,9 +81,10 @@ public class LearningActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
-    public void onSummaryNextButtonClick(View v, int id) {
+    public void onSummaryNextButtonClick(View v, int index) {
         // 학습 버튼을 누르면 생기는 거
         Log.d("now", "1");
+
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }
@@ -95,6 +97,13 @@ public class LearningActivity extends AppCompatActivity {
 
     public void onHandwriteNextButtonClick(View v, int id) {
         Log.d("now", "5");
+
+        Log.d("getWordSize", ""+ application.getWordList().size());
+
+        if(application.getNowWordId() == (application.getWordList().size() - 1)){
+            Intent intent = new Intent(LearningActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
         application.setNowWordId(application.getNowWordId() + 1);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();

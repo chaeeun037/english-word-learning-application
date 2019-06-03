@@ -104,8 +104,10 @@ public class LearningActivity extends AppCompatActivity {
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             startActivity(intent);
         }
-        application.setNowWordId(application.getNowWordId() + 1);
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
+        else {
+            application.setNowWordId(application.getNowWordId() + 1);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
+        }
     }
 }

@@ -89,7 +89,6 @@ public class DrawCanvasView extends View {
     /* 지우개버튼이 눌렸을 때 */
     public void eraser() {
         paintColor = Color.TRANSPARENT; //캔버스 지우개 - 컬러가 투명으로
-        //canvasPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
         drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
         drawPaint.setStrokeWidth(0); // 펜 굵기
     }
@@ -98,5 +97,13 @@ public class DrawCanvasView extends View {
     public void pen(){
         paintColor = Color.BLACK;
         drawPaint.setStrokeWidth(15); // 펜 굵기
+    }
+
+    public Bitmap getCanvasBitmap() {
+        return canvasBitmap;
+    }
+
+    public void setCanvasBitmap(Bitmap canvasBitmap) {
+        this.canvasBitmap = canvasBitmap;
     }
 }

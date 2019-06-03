@@ -1,7 +1,9 @@
 package com.application.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -16,8 +18,11 @@ import android.widget.ImageView;
 
 import com.application.R;
 import com.application.databinding.ActivityGameDrawBinding;
+import com.application.fragment.DrawCanvasView;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
+
+import java.io.ByteArrayOutputStream;
 
 public class GameDrawActivity extends AppCompatActivity {
 
@@ -100,5 +105,19 @@ public class GameDrawActivity extends AppCompatActivity {
         Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
         startActivity(intent);
     }
+
+    public void callCouldVision(View v, Context context){
+        DrawCanvasView shadowCanvasV = new DrawCanvasView(context);
+        Bitmap handwriteBitmap = shadowCanvasV.getCanvasBitmap();
+
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        handwriteBitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
+
+        Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
+
+        intent.putExtra("handwriteImage", bs.toByteArray());
+        startActivity(intent);
+    }
+
 
 }

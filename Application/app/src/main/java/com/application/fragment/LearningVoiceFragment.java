@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.application.EWLApplication;
 import com.application.R;
@@ -27,14 +28,22 @@ public class LearningVoiceFragment extends Fragment {
     Button btn2;
     List<Word> wordList = EWLADbHelper.WordList;
     ImageView imageView;
+    TextView textView;
+
     EWLApplication application = EWLApplication.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_voice, container, false);
         imageView = (ImageView)view.findViewById(R.id.imageView2);
+        textView = (TextView) view.findViewById(R.id.english);
+
         int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getImageSrc(), "drawable", getContext().getPackageName());
         imageView.setImageResource(id);
+
+        String english = application.getWordList().get(application.getNowWordId()).getEnglish();
+        textView.setText(english);
+
         speakButton = (Button) view.findViewById(R.id.speakButton);
 
         tts = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {

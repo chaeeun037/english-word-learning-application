@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.application.EWLApplication;
 import com.application.R;
 import com.application.activity.LearningActivity;
 import com.application.database.EWLADbHelper;
@@ -31,6 +33,7 @@ public class LearningHandwriteFragment extends Fragment {
     DrawCanvasView shadowCanvasV;
     Button btn2;
     List<Word> wordList = EWLADbHelper.WordList;
+    EWLApplication application = EWLApplication.getInstance();
 
     public LearningHandwriteFragment() {
     }
@@ -44,6 +47,7 @@ public class LearningHandwriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
+
         btn2 = (Button)view.findViewById(R.id.button2);
 
         btn2.setOnClickListener(new View.OnClickListener(){

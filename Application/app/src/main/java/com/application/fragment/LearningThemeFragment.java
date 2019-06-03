@@ -51,7 +51,6 @@ public class LearningThemeFragment extends Fragment {
         //잠겼는지 아닌지 확인 후 이미지 바꾸기
 
         for(int i = 0; i < 6; i++) {
-            Log.d("화면구성", String.valueOf(application.getThemeList().get(i).getIsLocked()));
 
             if (application.getThemeList().get(i).getIsLocked() == false) {
                 if (i == 0)

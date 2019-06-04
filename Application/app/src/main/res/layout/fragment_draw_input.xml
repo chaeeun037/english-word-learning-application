@@ -18,18 +18,18 @@
 
         <LinearLayout
             android:layout_width="30dp"
-            android:layout_height="match_parent"></LinearLayout>
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="300dp"
+            android:background="#80ffffff"
             android:layout_weight="8">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorWhite"
                 android:gravity="center"
                 android:orientation="vertical">
             </LinearLayout>
@@ -38,12 +38,23 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
+                android:orientation="vertical"
                 android:background="@drawable/sketchbook">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="손님이 주문한 것을 영어로 쓰세요."
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="top"
+                    android:gravity="center"
+                    android:fontFamily="@font/maplestory_light"
+                    android:textSize="30sp"/>
 
                 <!-- **캔버스** -->
                 <com.application.fragment.DrawCanvasView
                     android:id="@+id/shadowCanvas"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="8" />
 
@@ -53,14 +64,13 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:background="@color/colorWhite"
                 android:gravity="center"
                 android:orientation="vertical">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"></LinearLayout>
+                    android:layout_height="100dp" />
 
                 <!-- **펜 버튼**  -->
                 <Button
@@ -71,7 +81,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"></LinearLayout>
+                    android:layout_height="30dp" />
 
                 <!-- **지우개 버튼** -->
                 <Button
@@ -83,7 +93,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"></LinearLayout>
+                    android:layout_height="30dp" />
 
                 <!-- 필기 인식 -->
                 <Button
@@ -104,14 +114,13 @@
 -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"></LinearLayout>
+                    android:layout_height="100dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/colorWhite"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -128,7 +137,7 @@
 
         <LinearLayout
             android:layout_width="30dp"
-            android:layout_height="match_parent"></LinearLayout>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </layout>

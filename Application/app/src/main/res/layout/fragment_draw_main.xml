@@ -34,31 +34,53 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/chicken" />
 
-                <ImageView
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
-                    android:layout_marginBottom="150dp"
-                    android:background="@drawable/orange_question"/>
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="140dp"
+                    android:background="@drawable/speech_buble"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/apple"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="사과"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/maplestory_light"
+                        android:textColor="#333"
+                        android:textSize="50sp"/>
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:background="@drawable/background_speak_draw_front"
+            android:gravity="right|bottom"
+            android:layout_gravity="center"
             android:orientation="horizontal"
-            tools:context=".fragment.DrawMainFragment"
-            android:background="@drawable/background_speak_draw_front">
+            tools:context=".fragment.SpeakMainFragment">
 
-            <Button
+            <TextView
                 android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:text="쓰러 가기"
-                android:onClick="onMainNextButtonClick"
+                android:layout_height="140dp"
                 android:layout_marginBottom="10dp"
-                android:layout_gravity="bottom"
-                android:textSize="24dp"/>
+                android:layout_marginEnd="35dp"
+                android:gravity="center"
+                android:onClick="onMainNextButtonClick"
+                android:fontFamily="@font/maplestory_light"
+                android:textColor="#fff"
+                android:text="정답"
+                android:textSize="60sp" />
         </LinearLayout>
 
 

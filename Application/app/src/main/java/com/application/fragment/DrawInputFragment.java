@@ -1,5 +1,6 @@
 package com.application.fragment;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,10 +28,6 @@ public class DrawInputFragment extends Fragment {
         //Button 정의
         Button pen = (Button) view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
-        Button handwirteReco = (Button) view.findViewById(R.id.handwirteRecoButton);
-
-        //필기 인식 결과를 임시로 보여줄 textView
-        //TextView textView = (TextView)view.findViewById(R.id.visionResult);
 
         /* 펜 버튼 눌렸을 때 */
         pen.setOnClickListener(new Button.OnClickListener() {
@@ -48,23 +45,20 @@ public class DrawInputFragment extends Fragment {
             }
         });
 
-        /* 필기 인식 버튼 눌렀을 때 - CouldVision 호출 */
-        handwirteReco.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "맞았어요! 정말 멋져요~", Toast.LENGTH_SHORT).show();
-                /* 구현 필요
-                 * 캔버스 이미지 가져와서
-                 * 구글비전한테 보내기
-                 * 결과값 가져오기
-                 */
-            }
-        });
-
         return view;
     }
 
     private void init(View view) {
         shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
     }
+
+    /* 화면 캡쳐후 비트맵으로 리턴 */
+    public Bitmap getCanvasBitmap() {
+        shadowCanvasV.setDrawingCacheEnabled(true); //캐시 열고
+        shadowCanvasV.buildDrawingCache(); // 캐시
+        Bitmap screenshot = shadowCanvasV.getDrawingCache();//캐시를 비트맵에 저장
+
+        return screenshot;
+        }
+
 }

@@ -55,7 +55,7 @@ public class LearningHandwriteFragment extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v, application.getWordList().get(0).getId()); }
+                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v); }
         });
 
         init(view);

@@ -25,7 +25,8 @@ public class LearningVoiceFragment extends Fragment {
 
     private TextToSpeech tts;
     private Button speakButton;
-    Button btn2;
+    Button preBtn1;
+    Button nextBtn2;
     List<Word> wordList = EWLADbHelper.WordList;
     ImageView imageView;
     TextView textView;
@@ -59,17 +60,25 @@ public class LearningVoiceFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 tts.setPitch((float) 1.5);
-                tts.setSpeechRate((float) 0.5);
+                tts.setSpeechRate((float) 0.8);
                 tts.speak(application.WordList.get(application.getNowWordId()).getEnglish(), TextToSpeech.QUEUE_FLUSH, null);
             }
         });
 
-        btn2 = (Button)view.findViewById(R.id.button2);
+        nextBtn2 = (Button)view.findViewById(R.id.button2);
 
-        btn2.setOnClickListener(new View.OnClickListener(){
+        nextBtn2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                ((LearningActivity) getActivity()).onVoiceNextButtonClick(v, wordList.get(7).getId()); }
+                ((LearningActivity) getActivity()).onVoiceNextButtonClick(v); }
+        });
+
+        preBtn1 = (Button)view.findViewById(R.id.button1);
+
+        preBtn1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((LearningActivity) getActivity()).onVoicePrevButtonClick(v); }
         });
 
         return view;

@@ -15,7 +15,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="left|center"
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/leftarrow"
+                android:onClick="onHandwritePrevButtonClick" />
 
         </LinearLayout>
 
@@ -28,8 +37,7 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/apple" />
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"

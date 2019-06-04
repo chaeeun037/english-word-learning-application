@@ -73,12 +73,10 @@ public class LearningUnitFragment extends Fragment {
             @Override
             public void onClick(View v){
                 if(application.getNowThemeId() == 0){
-                    application.getUnitList().get(0).setHasCrown(true);
                     application.setNowWordId(0);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(0).getId());
                 }
                 if(application.getNowThemeId() == 1){
-                    application.getUnitList().get(3).setHasCrown(true);
                     application.setNowWordId(9);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(3).getId());
                 }
@@ -88,13 +86,11 @@ public class LearningUnitFragment extends Fragment {
             @Override
             public void onClick(View v){
                 if(application.getNowThemeId() == 0){
-                    application.getUnitList().get(1).setHasCrown(true);
                     application.setNowWordId(3);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(1).getId());
 
                 }
                 if(application.getNowThemeId() == 1){
-                    application.getUnitList().get(4).setHasCrown(true);
                     application.setNowWordId(12);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(4).getId());
                 }
@@ -104,12 +100,10 @@ public class LearningUnitFragment extends Fragment {
             @Override
             public void onClick(View v){
                 if(application.getNowThemeId() == 0){
-                    application.getUnitList().get(2).setHasCrown(true);
                     application.setNowWordId(6);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(2).getId());
                 }
                 if(application.getNowThemeId() == 1){
-                    application.getUnitList().get(5).setHasCrown(true);
                     application.setNowWordId(15);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(5).getId());
                 }

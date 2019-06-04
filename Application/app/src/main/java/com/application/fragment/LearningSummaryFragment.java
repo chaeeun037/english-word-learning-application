@@ -28,6 +28,7 @@ public class LearningSummaryFragment extends Fragment {
     ImageView imageView;
     TextView engView;
     TextView korView;
+    Button preBtn;
 
     EWLApplication application = EWLApplication.getInstance();
 
@@ -55,7 +56,16 @@ public class LearningSummaryFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                ((LearningActivity) getActivity()).onSummaryNextButtonClick(v, application.getWordList().get(application.getNowWordId()).getId()); }
+                ((LearningActivity) getActivity()).onSummaryNextButtonClick(v);
+            }
+        });
+
+        preBtn = (Button)view.findViewById(R.id.button1);
+        preBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((LearningActivity)getActivity()).onSummaryPreButtonClick(v);
+            }
         });
 
         return view;

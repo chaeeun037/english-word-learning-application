@@ -106,27 +106,64 @@ public class LearningActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 
-    public void onSummaryNextButtonClick(View v, int index) {
+    //이전 Handwrite 화면으로 되돌아가기
+    public void onSummaryPreButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        nowPage = nowPage - 1;
+
+        if(nowPage == -1){
+            Intent intent = new Intent(LearningActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        else {
+            application.setNowWordId(application.getNowWordId() - 1);
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
+        }
+    }
+
+    //voice 화면으로 넘어가기
+    public void onSummaryNextButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
     }
 
-    public void onVoiceNextButtonClick(View v, int id) {
+    //summary 화면으로 되돌아가기
+    public void onVoicePrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();
+    }
+
+    //handwrite 화면으로 넘어가기
+    public void onVoiceNextButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
     }
 
-    public void onHandwriteNextButtonClick(View v, int id) {
+    //voice 화면으로 되돌아가기
+    public void onHandwritePrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningVoiceFragment).commit();
+    }
+
+    //다음 summary 화면으로 넘어가기
+    public void onHandwriteNextButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         nowPage = nowPage + 1;
         if(nowPage == 3){
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             intent.putExtra("type", 1);
+            application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
             startActivity(intent);
         }
         else {

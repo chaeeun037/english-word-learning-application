@@ -10,7 +10,6 @@
 
     // cloud vision 카메라/앨범 권한 (임시) - 지수
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
     <application
@@ -53,6 +52,9 @@
         <activity
             android:name=".activity.ResultActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".CloudVision.CloudVision"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

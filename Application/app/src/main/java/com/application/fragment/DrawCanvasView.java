@@ -98,8 +98,4 @@ public class DrawCanvasView extends View {
         paintColor = Color.BLACK;
         drawPaint.setStrokeWidth(15); // 펜 굵기
     }
-
-    public Bitmap getCanvasBitmap() {
-        return canvasBitmap;
-    }
 }

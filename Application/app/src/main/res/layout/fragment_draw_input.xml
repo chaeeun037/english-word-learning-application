@@ -97,7 +97,7 @@
 
                 <!-- Cloud Vision -->
                 <Button
-                    android:id="@+id/handwirteRecoButton"
+                    android:id="@+id/couldVisionButton"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:text="결과"

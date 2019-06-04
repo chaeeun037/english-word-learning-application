@@ -51,4 +51,17 @@ public class DrawInputFragment extends Fragment {
     private void init(View view) {
         shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
     }
+
+
+    public Bitmap getCanvasBitmap() {
+        shadowCanvasV.setDrawingCacheEnabled(true);
+        shadowCanvasV.buildDrawingCache();
+        Bitmap b = shadowCanvasV.getDrawingCache();
+        // 캐쉬에서 가져온 비트맵을 복사해서 새로운 비트맵(스크린샷) 생성
+        // Bitmap screenshot = Bitmap.createBitmap(this.getDrawingCache());
+        //shadowCanvasV.setDrawingCacheEnabled(false);   // 캐쉬닫기
+        return b;
+        //return screenshot;
+    }
+
 }

@@ -167,13 +167,7 @@ public class LearningActivity extends AppCompatActivity {
             application.getUnitList().get(unitIdOfNowWord - 1).setHasCrown(true);
 
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
-          
-// =======
-//         if (nowPage == 3) {
-//             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
-//             intent.putExtra("type", 1);
-//             application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
-// >>>>>>> master
+            intent.putExtra("type", 1);
           
             startActivity(intent);
         } else {

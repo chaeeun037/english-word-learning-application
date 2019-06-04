@@ -52,6 +52,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="apple"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/maplestory_light"
+                        android:textColor="#333"
                         android:textSize="50sp"/>
 
                 </LinearLayout>
@@ -64,18 +67,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/background_speak_draw_front"
-            android:gravity="center"
+            android:gravity="right|bottom"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             tools:context=".fragment.SpeakMainFragment">
 
-            <Button
+            <TextView
                 android:layout_width="150dp"
-                android:layout_height="70dp"
-                android:layout_gravity="bottom"
+                android:layout_height="140dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="35dp"
+                android:gravity="center"
                 android:onClick="onMainNextButtonClick"
-                android:text="말하러 가기"
-                android:textSize="24dp" />
+                android:fontFamily="@font/maplestory_light"
+                android:textColor="#fff"
+                android:text="정답"
+                android:textSize="60sp" />
         </LinearLayout>
 
 

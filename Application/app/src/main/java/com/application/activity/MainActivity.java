@@ -193,9 +193,9 @@ public class MainActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    soundPool.play(sound_stamp, (float) 0.5, (float) 0.5, 0, 0, 1);
+                    soundPool.play(sound_stamp, 1, 1, 0, 0, 1);
                 }
-            }, 500 );
+            }, 1000 );
         }
 
     }

@@ -26,7 +26,7 @@ public class DrawMainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_speak_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_draw_main, container, false);
         imageView = (ImageView)view.findViewById(R.id.imageView);
         koreanText = (TextView)view.findViewById(R.id.textView);
 

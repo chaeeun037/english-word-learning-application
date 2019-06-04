@@ -85,9 +85,12 @@ public class GameResultActivity extends AppCompatActivity {
 
     public void onResultButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
-
-        Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
-        startActivity(intent);
+        if(true){
+            Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(GameResultActivity.this, GameSpeakActivity.class);
+            startActivity(intent);
+        }
     }
-
 }

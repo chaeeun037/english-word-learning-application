@@ -153,8 +153,11 @@ public class LearningActivity extends AppCompatActivity {
 
         nowPage = nowPage + 1;
         if(nowPage == 3){
+
+            int unitIdOfNowWord = application.getWordList().get(application.getNowWordId()).getUnit_id();
+            application.getUnitList().get(unitIdOfNowWord - 1).setHasCrown(true);
+
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
-            application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
             startActivity(intent);
         }
         else {

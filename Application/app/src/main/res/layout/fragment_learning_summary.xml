@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#fff">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fff"
         android:gravity="center"
         android:orientation="horizontal"
         tools:context=".fragment.LearningSummaryFragment">
@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="6"
+            android:layout_weight="8"
             android:orientation="horizontal">
 
             <ImageView
@@ -51,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/maplestory_light"
                     android:gravity="center"
+                    android:textColor="#333"
                     android:textSize="70sp" />
 
                 <TextView
@@ -59,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/maplestory_light"
                     android:gravity="center"
+                    android:textColor="#333"
                     android:textSize="70sp" />
 
             </LinearLayout>

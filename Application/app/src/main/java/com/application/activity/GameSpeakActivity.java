@@ -79,6 +79,14 @@ public class GameSpeakActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
+    }
+
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;

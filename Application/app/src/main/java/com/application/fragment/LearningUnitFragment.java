@@ -35,7 +35,7 @@ public class LearningUnitFragment extends Fragment {
 
 
         //정적 바인딩 - BASKET
-        if(application.getNowThemeId() == 0) {
+        if (application.getNowThemeId() == 0) {
             if (unitList.get(0).getHasCrown() == true)
                 num1.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.crown_basket));
             else
@@ -50,8 +50,7 @@ public class LearningUnitFragment extends Fragment {
                 num3.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.crown_basket));
             else
                 num3.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.basket));
-        }
-        else {
+        } else {
             if (unitList.get(3).getHasCrown() == true)
                 num1.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.crown_basket));
             else
@@ -69,41 +68,41 @@ public class LearningUnitFragment extends Fragment {
         }
 
 
-        num1.setOnClickListener(new View.OnClickListener(){
+        num1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(application.getNowThemeId() == 0){
+            public void onClick(View v) {
+                if (application.getNowThemeId() == 0) {
                     application.setNowWordId(0);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(0).getId());
                 }
-                if(application.getNowThemeId() == 1){
+                if (application.getNowThemeId() == 1) {
                     application.setNowWordId(9);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(3).getId());
                 }
             }
         });
-        num2.setOnClickListener(new View.OnClickListener(){
+        num2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(application.getNowThemeId() == 0){
+            public void onClick(View v) {
+                if (application.getNowThemeId() == 0) {
                     application.setNowWordId(3);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(1).getId());
 
                 }
-                if(application.getNowThemeId() == 1){
+                if (application.getNowThemeId() == 1) {
                     application.setNowWordId(12);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(4).getId());
                 }
             }
         });
-        num3.setOnClickListener(new View.OnClickListener(){
+        num3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(application.getNowThemeId() == 0){
+            public void onClick(View v) {
+                if (application.getNowThemeId() == 0) {
                     application.setNowWordId(6);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(2).getId());
                 }
-                if(application.getNowThemeId() == 1){
+                if (application.getNowThemeId() == 1) {
                     application.setNowWordId(15);
                     ((MainActivity) getActivity()).onUnitButtonClick(v, unitList.get(5).getId());
                 }

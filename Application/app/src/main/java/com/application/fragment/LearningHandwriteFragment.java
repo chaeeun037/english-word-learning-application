@@ -34,6 +34,7 @@ public class LearningHandwriteFragment extends Fragment {
     Button btn2;
     EWLApplication application = EWLApplication.getInstance();
     LinearLayout linearLayout;
+
     public LearningHandwriteFragment() {
     }
 
@@ -46,32 +47,33 @@ public class LearningHandwriteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View view = inflater.inflate(R.layout.fragment_learning_handwrite, container, false);
-        linearLayout = (LinearLayout)view.findViewById(R.id.linearlayout);
+        linearLayout = (LinearLayout) view.findViewById(R.id.linearlayout);
         int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getShadowSrc(), "drawable", getContext().getPackageName());
         linearLayout.setBackgroundResource(id);
 
-        btn2 = (Button)view.findViewById(R.id.button2);
+        btn2 = (Button) view.findViewById(R.id.button2);
 
-        btn2.setOnClickListener(new View.OnClickListener(){
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v); }
+            public void onClick(View v) {
+                ((LearningActivity) getActivity()).onHandwriteNextButtonClick(v);
+            }
         });
 
         init(view);
 
         //Button 정의
-        Button pen = (Button)view.findViewById(R.id.penButton);
+        Button pen = (Button) view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
 
-        eraser.setOnClickListener(new Button.OnClickListener(){
+        eraser.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.eraser();
             }
         });
 
-        pen.setOnClickListener(new Button.OnClickListener(){
+        pen.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.pen();

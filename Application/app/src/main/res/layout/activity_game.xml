@@ -18,11 +18,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_marginTop="40dp"
             android:layout_height="130dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/maplestory_light"
             android:gravity="center"
             android:text="준비 되었나요?"
-            android:fontFamily="@font/maplestory_light"
             android:textColor="#333"
             android:textSize="50sp" />
 

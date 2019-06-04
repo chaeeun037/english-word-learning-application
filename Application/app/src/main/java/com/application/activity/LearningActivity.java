@@ -23,6 +23,7 @@ import com.application.fragment.LearningHandwriteFragment;
 import com.application.fragment.LearningSummaryFragment;
 import com.application.fragment.LearningUnitFragment;
 import com.application.fragment.LearningVoiceFragment;
+
 import java.util.List;
 
 public class LearningActivity extends AppCompatActivity {
@@ -112,11 +113,10 @@ public class LearningActivity extends AppCompatActivity {
 
         nowPage = nowPage - 1;
 
-        if(nowPage == -1){
+        if (nowPage == -1) {
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             startActivity(intent);
-        }
-        else {
+        } else {
             application.setNowWordId(application.getNowWordId() - 1);
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.container, learningHandwriteFragment).commit();
@@ -160,13 +160,12 @@ public class LearningActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         nowPage = nowPage + 1;
-        if(nowPage == 3){
+        if (nowPage == 3) {
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
             intent.putExtra("type", 1);
             application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
             startActivity(intent);
-        }
-        else {
+        } else {
             application.setNowWordId(application.getNowWordId() + 1);
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.container, learningSummaryFragment).commit();

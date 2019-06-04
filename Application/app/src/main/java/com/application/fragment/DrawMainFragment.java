@@ -19,6 +19,7 @@ public class DrawMainFragment extends Fragment {
     EWLApplication application = EWLApplication.getInstance();
     ImageView imageView;
     TextView koreanText;
+
     public static DrawMainFragment newInstance() {
         return new DrawMainFragment();
     }
@@ -27,8 +28,8 @@ public class DrawMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speak_main, container, false);
-        imageView = (ImageView)view.findViewById(R.id.imageView);
-        koreanText = (TextView)view.findViewById(R.id.textView);
+        imageView = (ImageView) view.findViewById(R.id.imageView);
+        koreanText = (TextView) view.findViewById(R.id.textView);
 
         int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getImageSrc(), "drawable", getContext().getPackageName());
         String korean = application.getWordList().get(application.getNowWordId()).getKorean();

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         player.start();
     }
-    
+
     private void stopPlayer() {
         if (player != null) {
             player.release();
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     soundPool.play(sound_stamp, 1, 1, 0, 0, 1);
                 }
-            }, 1000 );
+            }, 1000);
         }
 
     }
@@ -205,11 +205,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
 
-            //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
+        //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
 
         application = EWLApplication.getInstance();
 
-        if(application.getMainOpen()) {
+        if (application.getMainOpen()) {
             try {
                 application.DBopen(this);
             } catch (IOException e) {
@@ -218,9 +218,9 @@ public class MainActivity extends AppCompatActivity {
             application.setMainOpen(false);
         }
 
-        Log.d("now point", ""+application.getPointValue());
-        textView = (TextView)findViewById(R.id.textPoint);
-        textView.setText(""+application.getPoint().getPointValue());
+        Log.d("now point", "" + application.getPointValue());
+        textView = (TextView) findViewById(R.id.textPoint);
+        textView.setText("" + application.getPoint().getPointValue());
     }
 
     @Override

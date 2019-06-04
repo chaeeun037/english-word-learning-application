@@ -25,15 +25,15 @@ public class DrawInputFragment extends Fragment {
         init(view);
 
         //Button 정의
-        Button pen = (Button)view.findViewById(R.id.penButton);
+        Button pen = (Button) view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
-        Button handwirteReco = (Button)view.findViewById(R.id.handwirteRecoButton);
+        Button handwirteReco = (Button) view.findViewById(R.id.handwirteRecoButton);
 
         //필기 인식 결과를 임시로 보여줄 textView
         //TextView textView = (TextView)view.findViewById(R.id.visionResult);
 
         /* 펜 버튼 눌렸을 때 */
-        pen.setOnClickListener(new Button.OnClickListener(){
+        pen.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.pen();
@@ -41,7 +41,7 @@ public class DrawInputFragment extends Fragment {
         });
 
         /* 지우개 버튼 눌렸을 때 */
-        eraser.setOnClickListener(new Button.OnClickListener(){
+        eraser.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.eraser();
@@ -49,15 +49,15 @@ public class DrawInputFragment extends Fragment {
         });
 
         /* 필기 인식 버튼 눌렀을 때 - CouldVision 호출 */
-        handwirteReco.setOnClickListener(new Button.OnClickListener(){
+        handwirteReco.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "맞았어요! 정말 멋져요~", Toast.LENGTH_SHORT).show();
                 /* 구현 필요
                  * 캔버스 이미지 가져와서
-                  * 구글비전한테 보내기
-                  * 결과값 가져오기
-                  */
+                 * 구글비전한테 보내기
+                 * 결과값 가져오기
+                 */
             }
         });
 

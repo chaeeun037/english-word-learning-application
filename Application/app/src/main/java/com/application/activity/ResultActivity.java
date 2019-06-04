@@ -76,7 +76,7 @@ public class ResultActivity extends AppCompatActivity {
             public void run() {
                 soundPool.play(sound_coins, 1, 1, 0, 0, 1);
             }
-        }, 500 );
+        }, 500);
 
         Intent intent = new Intent(ResultActivity.this, MainActivity.class);
         startActivity(intent);

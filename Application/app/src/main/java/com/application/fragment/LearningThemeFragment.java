@@ -50,7 +50,7 @@ public class LearningThemeFragment extends Fragment {
 
         //잠겼는지 아닌지 확인 후 이미지 바꾸기
 
-        for(int i = 0; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
 
             if (application.getThemeList().get(i).getIsLocked() == false) {
                 if (i == 0)
@@ -81,43 +81,44 @@ public class LearningThemeFragment extends Fragment {
             }
         }
 
-        fruit.setOnClickListener(new View.OnClickListener(){
+        fruit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 application.setNowThemeId(0);
-                Log.d("learningThemeFragment Now ThemeID", ""+application.getNowThemeId());
-                ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(0).getId()); }
-        });
-
-        fish.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n"+ application.getThemeList().get(2).getUnlockPoint() +"포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Log.d("learningThemeFragment Now ThemeID", "" + application.getNowThemeId());
+                ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(0).getId());
             }
         });
 
-        meat.setOnClickListener(new View.OnClickListener(){
+        fish.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n"+ application.getThemeList().get(3).getUnlockPoint() +"포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(2).getUnlockPoint() + "포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
-        dairy.setOnClickListener(new View.OnClickListener(){
+        meat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n"+ application.getThemeList().get(4).getUnlockPoint() +"포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(3).getUnlockPoint() + "포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
-        snack.setOnClickListener(new View.OnClickListener(){
+        dairy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n"+ application.getThemeList().get(5).getUnlockPoint() +" 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(4).getUnlockPoint() + "포인트가 필요해요!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        snack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity) getActivity()).onLearningButtonClick(v);
+                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(5).getUnlockPoint() + " 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -131,11 +132,11 @@ public class LearningThemeFragment extends Fragment {
                     int needPoint = application.getThemeList().get(1).getUnlockPoint();
 
                     if (isPoint >= needPoint) {
-                        if(! application.getThemeList().get(1).getIsLocked())
+                        if (!application.getThemeList().get(1).getIsLocked())
                             application.setPointValue(application.getPointValue() - needPoint);
                         application.getThemeList().get(1).setIsLocked(true);
                         application.setNowThemeId(1);
-                        Log.d("learningThemeFragment Now ThemeID Locked", ""+application.getNowThemeId());
+                        Log.d("learningThemeFragment Now ThemeID Locked", "" + application.getNowThemeId());
                         ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(1).getId());
                         Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                     } else {
@@ -154,7 +155,7 @@ public class LearningThemeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     application.setNowThemeId(1);
-                    Log.d("learningThemeFragment Now ThemeID", ""+application.getNowThemeId());
+                    Log.d("learningThemeFragment Now ThemeID", "" + application.getNowThemeId());
                     ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(1).getId());
                 }
             });

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.application.BuildConfig;
 import com.application.R;
-import com.application.activity.MainActivity;
+import com.application.activity.GameResultActivity;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
@@ -39,6 +39,7 @@ import java.util.List;
  * 지수 작성
  *
  * 20190603 first try: key error & diverse error.....
+ * 20190604 3rd try: it works but recognize fail
  */
 public class CloudVision extends AppCompatActivity {
     private static final String CLOUD_VISION_API_KEY = BuildConfig.API_KEY;
@@ -46,7 +47,7 @@ public class CloudVision extends AppCompatActivity {
     private static final String ANDROID_PACKAGE_HEADER = "X-Android-Package";
     private static final int MAX_LABEL_RESULTS = 10;
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = CloudVision.class.getSimpleName();
     private Bitmap handwriteBitmap; // 아가들 글씨
     private String recogRes = new String("");
 
@@ -228,5 +229,7 @@ public class CloudVision extends AppCompatActivity {
     /* 다음 화살표*/
     public void goToResultButtonClick(View v){
 
+        Intent intent = new Intent(CloudVision.this, GameResultActivity.class);
+        startActivity(intent);
     }
 }

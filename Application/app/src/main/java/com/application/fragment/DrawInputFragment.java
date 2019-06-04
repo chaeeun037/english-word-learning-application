@@ -28,7 +28,6 @@ public class DrawInputFragment extends Fragment {
         //Button 정의
         Button pen = (Button)view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
-        Button handwirteReco = (Button)view.findViewById(R.id.handwirteRecoButton);
 
         /* 펜 버튼 눌렸을 때 */
         pen.setOnClickListener(new Button.OnClickListener(){

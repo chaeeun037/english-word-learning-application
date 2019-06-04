@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.application.BuildConfig;
 import com.application.R;
-import com.application.activity.GameResultActivity;
 import com.application.activity.MainActivity;
+
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
@@ -35,6 +35,11 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+/* Google Cloud Vision call  & use
+ * 지수 작성
+ *
+ * 20190603 first try: key error & diverse error.....
+ */
 public class CloudVision extends AppCompatActivity {
     private static final String CLOUD_VISION_API_KEY = BuildConfig.API_KEY;
     private static final String ANDROID_CERT_HEADER = "X-Android-Cert";
@@ -47,7 +52,7 @@ public class CloudVision extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceSate) {
         super.onCreate(savedInstanceSate);
-        setContentView(R.layout.activit_cloudvision);
+        setContentView(R.layout.activity_cloudvision);
 
         Intent intent = getIntent();
         byte[] arr = getIntent().getByteArrayExtra("handwriteImage");
@@ -146,8 +151,9 @@ public class CloudVision extends AppCompatActivity {
     }
 
 
+    /* lable detection method */
     private static class LableDetectionTask extends AsyncTask<Object, Void, String> {
-        private final WeakReference<MainActivity> mActivityWeakReference;
+        private final WeakReference<CloudVision> mActivityWeakReference;
         private Vision.Images.Annotate mRequest;
 
         LableDetectionTask(CloudVision activity, Vision.Images.Annotate annotate) {
@@ -175,13 +181,10 @@ public class CloudVision extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-
-            MainActivity activity = mActivityWeakReference.get();
+            CloudVision activity = mActivityWeakReference.get();
 
             if (activity != null && !activity.isFinishing()) {
-
                 TextView handwriteRecogRes = activity.findViewById(R.id.handwirteResult);
-
                 handwriteRecogRes.setText(result);
             }
         }
@@ -222,10 +225,8 @@ public class CloudVision extends AppCompatActivity {
         return res;
     }
 
-
+    /* 다음 화살표*/
     public void goToResultButtonClick(View v){
-        Intent i = new Intent(CloudVision.this, GameResultActivity.this);
-        startActivity(i);
 
     }
 }

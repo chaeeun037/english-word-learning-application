@@ -102,8 +102,4 @@ public class DrawCanvasView extends View {
     public Bitmap getCanvasBitmap() {
         return canvasBitmap;
     }
-
-    public void setCanvasBitmap(Bitmap canvasBitmap) {
-        this.canvasBitmap = canvasBitmap;
-    }
 }

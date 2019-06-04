@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.application.CloudVision.CloudVision;
 import com.application.R;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawCanvasView;
@@ -113,7 +114,7 @@ public class GameDrawActivity extends AppCompatActivity {
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         handwriteBitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
 
-        Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
+        Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
 
         intent.putExtra("handwriteImage", bs.toByteArray());
         startActivity(intent);

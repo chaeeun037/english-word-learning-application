@@ -94,8 +94,6 @@
                     android:textSize="14dp"
                     android:onClick="callCouldVision"/>
 
-                <!-- TODO: textView 만지기, 정적을 위해 일단 봉인 -->
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"></LinearLayout>

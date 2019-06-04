@@ -10,14 +10,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.SurfaceHolder;
 import android.view.View;
 
 import com.application.R;
 import com.application.databinding.ActivityGameResultBinding;
+import com.application.fragment.FailFragment;
+import com.application.fragment.LearningUnitFragment;
+import com.application.fragment.MainMenuFragment;
+import com.application.fragment.SuccessFragment;
 
 public class GameResultActivity extends AppCompatActivity {
 
     private ActivityGameResultBinding binding;
+
+    SuccessFragment successFragment;
+    FailFragment failFragment;
 
     MediaPlayer player;
 
@@ -25,9 +33,9 @@ public class GameResultActivity extends AppCompatActivity {
 
     private int sound_pop;
 
-    public void backgroundMusicPlay() {
+    public void backgroundMusicPlay(int i) {
         if (player == null) {
-            player = MediaPlayer.create(this, R.raw.cheering_clapping);
+            player = MediaPlayer.create(this, i);
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
@@ -55,7 +63,29 @@ public class GameResultActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game_result);
         binding.setActivity(this);
 
-        backgroundMusicPlay();
+
+        //TODO: type 0 - 맞음, type 1 - 틀림
+        int type = 1;
+
+        //맞았으면 SuccessFragment, 틀렸으면 FailFragment 세팅
+        if (type == 0) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new SuccessFragment())
+                    .commit();
+
+        } else {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new FailFragment())
+                    .commit();
+        }
+
+        //음향 효과 따로 세팅해줘야 재생됨,,,
+        if (type == 0) {
+            backgroundMusicPlay(R.raw.cheering_clapping);
+        } else {
+            backgroundMusicPlay(R.raw.boo);
+        }
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -94,8 +124,13 @@ public class GameResultActivity extends AppCompatActivity {
     public void onResultButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
+        //TODO: 만약 첫번째 단어면 다음 단어 draw 액티비티로 이동
         Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
         startActivity(intent);
+
+        //TODO: 만약 두번쨰 단어면 결과 액티비티로 이동
+
+
     }
 
 }

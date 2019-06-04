@@ -108,8 +108,8 @@ public class GameSpeakActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
         
         /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
-        //Intent intent = new Intent(GameSpeakActivity.this, GameResultActivity.class);
-        Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
+        Intent intent = new Intent(GameSpeakActivity.this, GameResultActivity.class);
+        //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
         startActivity(intent);
     }
 

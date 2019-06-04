@@ -95,8 +95,8 @@ public class GameActivity extends AppCompatActivity {
         Log.d("NowQuiz", application.getWordList().get(quiz).getEnglish());
         application.setNowWordId(quizWord.get(quiz).getId());
 
-        Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
-        //Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
+        //Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
+        Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
         startActivity(intent);
     }
 }

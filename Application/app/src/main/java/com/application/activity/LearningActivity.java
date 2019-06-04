@@ -160,10 +160,21 @@ public class LearningActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         nowPage = nowPage + 1;
-        if (nowPage == 3) {
+
+        if(nowPage == 3){
+
+            int unitIdOfNowWord = application.getWordList().get(application.getNowWordId()).getUnit_id();
+            application.getUnitList().get(unitIdOfNowWord - 1).setHasCrown(true);
+
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
-            intent.putExtra("type", 1);
-            application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
+          
+// =======
+//         if (nowPage == 3) {
+//             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
+//             intent.putExtra("type", 1);
+//             application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
+// >>>>>>> master
+          
             startActivity(intent);
         } else {
             application.setNowWordId(application.getNowWordId() + 1);

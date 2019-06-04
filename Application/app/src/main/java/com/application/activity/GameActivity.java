@@ -80,20 +80,21 @@ public class GameActivity extends AppCompatActivity {
     public void onStartButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
-        ArrayList<Word> quizWord = new ArrayList<>();
+// <<<<<<< newlsh
+//         ArrayList<Word> quizWord = new ArrayList<>();
 
-        for (int i = 0; i < 18; i++) {
-            Log.d("UNITID", "" + application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
-            if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
-                Word word = application.getWordList().get(i);
-                Log.d("nowWord", "" + word.getEnglish());
-                quizWord.add(word);
-            }
-        }
-        Random random = new Random();
-        int quiz = random.nextInt(quizWord.size());
-        Log.d("NowQuiz", application.getWordList().get(quiz).getEnglish());
-        application.setNowWordId(quizWord.get(quiz).getId());
+//         for (int i = 0; i < 18; i++) {
+//             Log.d("UNITID", "" + application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
+//             if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
+//                 Word word = application.getWordList().get(i);
+//                 Log.d("nowWord", "" + word.getEnglish());
+//                 quizWord.add(word);
+//             }
+//         }
+//         Random random = new Random();
+//         int quiz = random.nextInt(quizWord.size());
+//         Log.d("NowQuiz", application.getWordList().get(quiz).getEnglish());
+//         application.setNowWordId(quizWord.get(quiz).getId());
 
         //Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
         Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);

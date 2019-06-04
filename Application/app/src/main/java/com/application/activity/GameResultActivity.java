@@ -123,6 +123,15 @@ public class GameResultActivity extends AppCompatActivity {
 
     public void onResultButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+      
+// <<<<<<< newlsh 소현아 너의 코드란다 어짜피 여기는 수정될거니까 내껄로 대충 놔둘게 -
+//         if(true){
+//             Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
+//             startActivity(intent);
+//         }else {
+//             Intent intent = new Intent(GameResultActivity.this, GameSpeakActivity.class);
+//             startActivity(intent);
+//         }
 
         //TODO: 만약 첫번째 단어면 다음 단어 draw 액티비티로 이동
         Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
@@ -130,7 +139,5 @@ public class GameResultActivity extends AppCompatActivity {
 
         //TODO: 만약 두번쨰 단어면 결과 액티비티로 이동
 
-
     }
-
 }

@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,9 +18,13 @@ import android.widget.ImageView;
 import com.application.EWLApplication;
 import com.application.R;
 import com.application.database.EWLADbHelper;
+import com.application.database.Word;
 import com.application.databinding.ActivityGameSpeakBinding;
 import com.application.fragment.SpeakInputFragment;
 import com.application.fragment.SpeakMainFragment;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class GameSpeakActivity extends AppCompatActivity {
 
@@ -31,6 +36,28 @@ public class GameSpeakActivity extends AppCompatActivity {
     private SoundPool soundPool;
 
     private int sound_pop;
+    EWLApplication application = EWLApplication.getInstance();
+
+    ArrayList<Word> quizWord;
+    int quiz;
+
+    //퀴즈 리스트 만드는 메소드
+    public void makeQuiz(){
+        quizWord = new ArrayList<>();
+
+        for(int i=0; i<18; i++) {
+            Log.d("UNITID", ""+application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
+            if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
+                Word word = application.getWordList().get(i);
+                Log.d("nowWord", "" + word.getEnglish());
+                quizWord.add(word);
+            }
+        }
+        Random random = new Random();
+        quiz = random.nextInt(quizWord.size()-1);
+        Log.d("NowQuiz", quizWord.get(quiz).getEnglish());
+        application.setNowWordId(quizWord.get(quiz).getId());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +70,20 @@ public class GameSpeakActivity extends AppCompatActivity {
 
         speakMainFragment = new SpeakMainFragment();
         speakInputFragment = new SpeakInputFragment();
+
+        if(quizWord == null){
+            makeQuiz();
+        }
+        else{
+            Random random = new Random();
+            int quiz2;
+            if(quiz!=0)
+                quiz2 = random.nextInt(quiz);
+            else
+                quiz2 = random.nextInt((quizWord.size()-1) - quiz);
+            Log.d("NowQuiz", "KKKKKKKKKKK\t"+quizWord.get(quiz+quiz2).getEnglish());
+            application.setNowWordId(quizWord.get(quiz + quiz2).getId());
+        }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

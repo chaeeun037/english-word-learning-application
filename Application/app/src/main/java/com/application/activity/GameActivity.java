@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +27,6 @@ public class GameActivity extends AppCompatActivity {
     private ActivityGameBinding binding;
     EWLApplication application = EWLApplication.getInstance();
     private SoundPool soundPool;
-
     private int sound_pop;
 
     @Override
@@ -101,5 +99,4 @@ public class GameActivity extends AppCompatActivity {
         //Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
         startActivity(intent);
     }
-
 }

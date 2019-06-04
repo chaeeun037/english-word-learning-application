@@ -95,23 +95,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp" />
 
-                <!-- 필기 인식 -->
+                <!-- Cloud Vision -->
                 <Button
-                    android:id="@+id/handwirteRecoButton"
+                    android:id="@+id/couldVisionButton"
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:text="결과"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"
+                    android:onClick="callCouldVision"/>
 
-                <!-- TODO: textView 만지기, 정적을 위해 일단 봉인 -->
-                <!--
-                <TextView
-                    android:id="@+id/visionResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:text="결과 표시"
-                    android:gravity="center"/>
--->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp" />

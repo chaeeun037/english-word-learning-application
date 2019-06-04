@@ -10,7 +10,9 @@ import com.application.R;
 
 public class SuccessFragment extends Fragment {
 
-    public static SuccessFragment newInstance() { return new SuccessFragment(); }
+    public static SuccessFragment newInstance() {
+        return new SuccessFragment();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

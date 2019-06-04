@@ -10,7 +10,9 @@ import com.application.R;
 
 public class FailFragment extends Fragment {
 
-    public static FailFragment newInstance() { return new FailFragment(); }
+    public static FailFragment newInstance() {
+        return new FailFragment();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

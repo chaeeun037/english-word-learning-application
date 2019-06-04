@@ -26,7 +26,7 @@ import java.io.ByteArrayOutputStream;
 public class GameDrawActivity extends AppCompatActivity {
 
     private ActivityGameDrawBinding binding;
-  
+
     DrawMainFragment drawMainFragment;
     DrawInputFragment drawInputFragment;
 
@@ -74,7 +74,7 @@ public class GameDrawActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        final ImageView iv = (ImageView)findViewById(R.id.imageView2);
+        final ImageView iv = (ImageView) findViewById(R.id.imageView2);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
         if (iv != null) {

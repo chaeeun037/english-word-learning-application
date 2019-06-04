@@ -25,7 +25,7 @@ public class DrawCanvasView extends View {
         this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
     }
 
-    public DrawCanvasView(Context context, AttributeSet attributeSet){
+    public DrawCanvasView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         this.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
     }
@@ -58,25 +58,24 @@ public class DrawCanvasView extends View {
 
     /* Touch 입력 받기 */
     int oldX = -1, oldY = -1;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int touchX = (int)event.getX();
-        int touchY = (int)event.getY();
+        int touchX = (int) event.getX();
+        int touchY = (int) event.getY();
 
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             oldX = touchX;
             oldY = touchY;
-        }
-        else if(event.getAction() == MotionEvent.ACTION_MOVE){
-            if(oldX != -1){
+        } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            if (oldX != -1) {
                 drawCanvas.drawLine(oldX, oldY, touchX, touchY, drawPaint);
                 invalidate();
                 oldX = touchX;
                 oldY = touchY;
             }
-        }
-        else if(event.getAction() == MotionEvent.ACTION_UP){
-            if(oldX != -1){
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (oldX != -1) {
                 drawCanvas.drawLine(oldX, oldY, touchX, touchY, drawPaint);
                 invalidate();
             }
@@ -94,7 +93,7 @@ public class DrawCanvasView extends View {
     }
 
     /* 펜버튼이 눌렸을 때 */
-    public void pen(){
+    public void pen() {
         paintColor = Color.BLACK;
         drawPaint.setStrokeWidth(15); // 펜 굵기
     }

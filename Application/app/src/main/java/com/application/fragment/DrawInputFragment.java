@@ -26,11 +26,11 @@ public class DrawInputFragment extends Fragment {
         init(view);
 
         //Button 정의
-        Button pen = (Button)view.findViewById(R.id.penButton);
+        Button pen = (Button) view.findViewById(R.id.penButton);
         Button eraser = (Button) view.findViewById(R.id.eraserButton);
 
         /* 펜 버튼 눌렸을 때 */
-        pen.setOnClickListener(new Button.OnClickListener(){
+        pen.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.pen();
@@ -38,7 +38,7 @@ public class DrawInputFragment extends Fragment {
         });
 
         /* 지우개 버튼 눌렸을 때 */
-        eraser.setOnClickListener(new Button.OnClickListener(){
+        eraser.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.eraser();

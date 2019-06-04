@@ -38,29 +38,29 @@ public class SpeakInputFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_speak_input, container, false);
 
-        if ( Build.VERSION.SDK_INT >= 23 ){
+        if (Build.VERSION.SDK_INT >= 23) {
             // 퍼미션 체크
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.INTERNET,
-                    Manifest.permission.RECORD_AUDIO},PERMISSION);
+                    Manifest.permission.RECORD_AUDIO}, PERMISSION);
         }
 
         /* 임시 버튼, 기능X - 지수 */
-        Button result = (Button)view.findViewById(R.id.result);
-        result.setOnClickListener(new Button.OnClickListener(){
+        Button result = (Button) view.findViewById(R.id.result);
+        result.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "맞았어요! 정말 훌륭해요~", Toast.LENGTH_SHORT).show();
             }
         });
 
-        textView = (TextView)view.findViewById(R.id.sttResult);
+        textView = (TextView) view.findViewById(R.id.sttResult);
         sttBtn = (Button) view.findViewById(R.id.sttStart);
 
-        intent=new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,getContext().getPackageName());
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"en-US");
-        sttBtn.setOnClickListener(v ->{
-            mRecognizer=SpeechRecognizer.createSpeechRecognizer(getContext());
+        intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getContext().getPackageName());
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+        sttBtn.setOnClickListener(v -> {
+            mRecognizer = SpeechRecognizer.createSpeechRecognizer(getContext());
             mRecognizer.setRecognitionListener(listener);
             mRecognizer.startListening(intent);
         });
@@ -71,20 +71,24 @@ public class SpeakInputFragment extends Fragment {
     private RecognitionListener listener = new RecognitionListener() {
         @Override
         public void onReadyForSpeech(Bundle params) {
-            Toast.makeText(getContext().getApplicationContext(),"음성인식을 시작합니다.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext().getApplicationContext(), "음성인식을 시작합니다.", Toast.LENGTH_SHORT).show();
         }
 
         @Override
-        public void onBeginningOfSpeech() {}
+        public void onBeginningOfSpeech() {
+        }
 
         @Override
-        public void onRmsChanged(float rmsdB) {}
+        public void onRmsChanged(float rmsdB) {
+        }
 
         @Override
-        public void onBufferReceived(byte[] buffer) {}
+        public void onBufferReceived(byte[] buffer) {
+        }
 
         @Override
-        public void onEndOfSpeech() {}
+        public void onEndOfSpeech() {
+        }
 
         @Override
         public void onError(int error) {
@@ -123,7 +127,7 @@ public class SpeakInputFragment extends Fragment {
                     break;
             }
 
-            Toast.makeText(getContext().getApplicationContext(), "에러가 발생하였습니다. : " + message,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext().getApplicationContext(), "에러가 발생하였습니다. : " + message, Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -139,10 +143,12 @@ public class SpeakInputFragment extends Fragment {
         }
 
         @Override
-        public void onPartialResults(Bundle partialResults) {}
+        public void onPartialResults(Bundle partialResults) {
+        }
 
         @Override
-        public void onEvent(int eventType, Bundle params) {}
+        public void onEvent(int eventType, Bundle params) {
+        }
     };
 
 }

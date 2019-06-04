@@ -38,7 +38,7 @@ public class GameActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game);
         binding.setActivity(this);
 
-        final ImageView iv = (ImageView)findViewById(R.id.imageView1);
+        final ImageView iv = (ImageView) findViewById(R.id.imageView1);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chick_anim);
         iv.startAnimation(anim);
@@ -82,11 +82,11 @@ public class GameActivity extends AppCompatActivity {
 
         ArrayList<Word> quizWord = new ArrayList<>();
 
-        for(int i=0; i<18; i++) {
-            Log.d("UNITID", ""+application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
-            if(application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
+        for (int i = 0; i < 18; i++) {
+            Log.d("UNITID", "" + application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
+            if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
                 Word word = application.getWordList().get(i);
-                Log.d("nowWord", ""+word.getEnglish());
+                Log.d("nowWord", "" + word.getEnglish());
                 quizWord.add(word);
             }
         }

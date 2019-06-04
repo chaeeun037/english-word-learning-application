@@ -89,6 +89,14 @@ public class LearningActivity extends AppCompatActivity {
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
+    }
+
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
@@ -154,6 +162,7 @@ public class LearningActivity extends AppCompatActivity {
         nowPage = nowPage + 1;
         if(nowPage == 3){
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
+            intent.putExtra("type", 1);
             application.getUnitList().get(application.getNowUnitId()).setHasCrown(true);
             startActivity(intent);
         }

@@ -80,7 +80,7 @@ public class StartActivity extends AppCompatActivity {
             public void run() {
                 soundPool.play(sound_walk, 1, 1, 0, 0, 1);
             }
-        }, 0 );
+        }, 10 );
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -98,6 +98,14 @@ public class StartActivity extends AppCompatActivity {
             }
         }, 6000 );
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
     }
 
     @Override

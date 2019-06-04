@@ -62,6 +62,14 @@ public class GameActivity extends AppCompatActivity {
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
+    }
+
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;

@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +27,6 @@ public class GameActivity extends AppCompatActivity {
     private ActivityGameBinding binding;
     EWLApplication application = EWLApplication.getInstance();
     private SoundPool soundPool;
-
     private int sound_pop;
 
     @Override
@@ -40,7 +38,7 @@ public class GameActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game);
         binding.setActivity(this);
 
-        final ImageView iv = (ImageView)findViewById(R.id.imageView1);
+        final ImageView iv = (ImageView) findViewById(R.id.imageView1);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chick_anim);
         iv.startAnimation(anim);
@@ -62,6 +60,14 @@ public class GameActivity extends AppCompatActivity {
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
+    }
+
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
@@ -74,9 +80,24 @@ public class GameActivity extends AppCompatActivity {
     public void onStartButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
-        Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
-        //Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
+// <<<<<<< newlsh
+//         ArrayList<Word> quizWord = new ArrayList<>();
+
+//         for (int i = 0; i < 18; i++) {
+//             Log.d("UNITID", "" + application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
+//             if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
+//                 Word word = application.getWordList().get(i);
+//                 Log.d("nowWord", "" + word.getEnglish());
+//                 quizWord.add(word);
+//             }
+//         }
+//         Random random = new Random();
+//         int quiz = random.nextInt(quizWord.size());
+//         Log.d("NowQuiz", application.getWordList().get(quiz).getEnglish());
+//         application.setNowWordId(quizWord.get(quiz).getId());
+
+        //Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
+        Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
         startActivity(intent);
     }
-
 }

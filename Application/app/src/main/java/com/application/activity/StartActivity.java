@@ -45,7 +45,7 @@ public class StartActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start);
         binding.setActivity(this);
 
-        final ImageView iv = (ImageView)findViewById(R.id.start_chick);
+        final ImageView iv = (ImageView) findViewById(R.id.start_chick);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.start_chick_anim);
         iv.startAnimation(anim);
@@ -80,24 +80,32 @@ public class StartActivity extends AppCompatActivity {
             public void run() {
                 soundPool.play(sound_walk, 1, 1, 0, 0, 1);
             }
-        }, 0 );
+        }, 10);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 soundPool.play(sound_door, 2, 2, 0, 0, 1);
             }
-        }, 4000 );
+        }, 4000);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.fade_anim,R.anim.hold_anim);
+                overridePendingTransition(R.anim.fade_anim, R.anim.hold_anim);
             }
-        }, 6000 );
+        }, 6000);
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
     }
 
     @Override

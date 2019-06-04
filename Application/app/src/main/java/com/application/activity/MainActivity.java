@@ -9,6 +9,7 @@ import android.media.AudioTimestamp;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
 
     private int sound_pop;
     private int sound_coins;
+    private int sound_stamp;
 
     MediaPlayer player;
 
     public void backgroundMusicPlay() {
         if (player == null) {
             player = MediaPlayer.create(this, R.raw.background_bunny_garden);
+            player.setVolume((float) 0.1, (float) 0.1);
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         player.start();
     }
-    
+
     private void stopPlayer() {
         if (player != null) {
             player.release();
@@ -142,22 +145,12 @@ public class MainActivity extends AppCompatActivity {
 
         hideNavigationBar();
 
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
 
         mainMenuFragment = new MainMenuFragment();
         learningThemeFragment = new LearningThemeFragment();
         learningUnitFragment = new LearningUnitFragment();
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainMenuFragment())
-                    .commit();
-        }
-
-        backgroundMusicPlay();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()
@@ -175,6 +168,36 @@ public class MainActivity extends AppCompatActivity {
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
         sound_coins = soundPool.load(this, R.raw.coins, 1);
+        sound_stamp = soundPool.load(this, R.raw.stamping, 1);
+
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("type", 0);
+
+        if (savedInstanceState == null) {
+            // 학습을 완료한 후 unit 화면에 스탬프 찍히기
+            if (type == 1) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new LearningUnitFragment())
+                        .commit();
+            } else {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new MainMenuFragment())
+                        .commit();
+            }
+        }
+
+        backgroundMusicPlay();
+        if (type == 1) {
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    soundPool.play(sound_stamp, 1, 1, 0, 0, 1);
+                }
+            }, 1000);
+        }
+
     }
 
     @Override
@@ -182,11 +205,11 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
 
-            //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
+        //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
 
         application = EWLApplication.getInstance();
 
-        if(application.getMainOpen()) {
+        if (application.getMainOpen()) {
             try {
                 application.DBopen(this);
             } catch (IOException e) {
@@ -195,15 +218,19 @@ public class MainActivity extends AppCompatActivity {
             application.setMainOpen(false);
         }
 
-        Log.d("now point", ""+application.getPointValue());
-        textView = (TextView)findViewById(R.id.textPoint);
-        textView.setText(""+application.getPoint().getPointValue());
+        Log.d("now point", "" + application.getPointValue());
+        textView = (TextView) findViewById(R.id.textPoint);
+        textView.setText("" + application.getPoint().getPointValue());
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+
         stopPlayer();
+
+        soundPool.release();
+        soundPool = null;
     }
 
     @Override

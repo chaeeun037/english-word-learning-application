@@ -2,6 +2,7 @@ package com.application.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -14,20 +15,24 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.application.CloudVision.CloudVision;
 import com.application.R;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
 
+import java.io.ByteArrayOutputStream;
+
 public class GameDrawActivity extends AppCompatActivity {
 
     private ActivityGameDrawBinding binding;
-  
+
     DrawMainFragment drawMainFragment;
     DrawInputFragment drawInputFragment;
 
-    private SoundPool soundPool;
+    Bitmap handwriteBitmap;
 
+    private SoundPool soundPool;
     private int sound_pop;
     private int sound_coins;
 
@@ -69,12 +74,20 @@ public class GameDrawActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        final ImageView iv = (ImageView)findViewById(R.id.imageView2);
+        final ImageView iv = (ImageView) findViewById(R.id.imageView2);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
         if (iv != null) {
             iv.startAnimation(anim);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
     }
 
     private void hideNavigationBar() {
@@ -101,4 +114,16 @@ public class GameDrawActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void callCouldVision(View v){
+        handwriteBitmap = drawInputFragment.getCanvasBitmap();
+
+        ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        handwriteBitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
+
+        Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
+
+        intent.putExtra("handwriteImage", bs.toByteArray());
+        startActivity(intent);
+    }
 }

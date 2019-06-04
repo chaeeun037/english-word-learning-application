@@ -111,13 +111,21 @@ public class GameSpeakActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        final ImageView iv = (ImageView)findViewById(R.id.imageView2);
+        final ImageView iv = (ImageView) findViewById(R.id.imageView2);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
         if (iv != null) {
             iv.startAnimation(anim);
         }
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        soundPool.release();
+        soundPool = null;
     }
 
     private void hideNavigationBar() {
@@ -139,10 +147,10 @@ public class GameSpeakActivity extends AppCompatActivity {
 
     public void onInputNextButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
-        
+
         /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
-        //Intent intent = new Intent(GameSpeakActivity.this, GameResultActivity.class);
-        Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
+        Intent intent = new Intent(GameSpeakActivity.this, GameResultActivity.class);
+        //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
         startActivity(intent);
     }
 

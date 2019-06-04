@@ -36,7 +36,7 @@ public class LearningVoiceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_voice, container, false);
-        imageView = (ImageView)view.findViewById(R.id.imageView2);
+        imageView = (ImageView) view.findViewById(R.id.imageView2);
         textView = (TextView) view.findViewById(R.id.english);
 
         int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getImageSrc(), "drawable", getContext().getPackageName());
@@ -65,20 +65,22 @@ public class LearningVoiceFragment extends Fragment {
             }
         });
 
-        nextBtn2 = (Button)view.findViewById(R.id.button2);
+        nextBtn2 = (Button) view.findViewById(R.id.button2);
 
-        nextBtn2.setOnClickListener(new View.OnClickListener(){
+        nextBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                ((LearningActivity) getActivity()).onVoiceNextButtonClick(v); }
+            public void onClick(View v) {
+                ((LearningActivity) getActivity()).onVoiceNextButtonClick(v);
+            }
         });
 
-        preBtn1 = (Button)view.findViewById(R.id.button1);
+        preBtn1 = (Button) view.findViewById(R.id.button1);
 
-        preBtn1.setOnClickListener(new View.OnClickListener(){
+        preBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                ((LearningActivity) getActivity()).onVoicePrevButtonClick(v); }
+            public void onClick(View v) {
+                ((LearningActivity) getActivity()).onVoicePrevButtonClick(v);
+            }
         });
 
         return view;

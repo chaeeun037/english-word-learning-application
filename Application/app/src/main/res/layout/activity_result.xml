@@ -14,14 +14,18 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".activity.ResultActivity"
-        android:background="@drawable/sketchbook">
+        android:background="@drawable/blackboard">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="결과"
-            android:textSize="24dp"
-            android:gravity="center"/>
+            android:text="점 수 판"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="46sp"
+            android:fontFamily="@font/maplestory_light"
+            android:gravity="center"
+            android:textColor="#fff"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,19 +37,20 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tomato 토마토"
+                    android:fontFamily="@font/maplestory_light"
+                    android:textSize="36sp"
+                    android:textColor="#fff"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="right"/>
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="80dp"
                     android:background="@drawable/o"/>
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:text="Tomato 토마토"
-                    android:textSize="24dp"
-                    android:gravity="center"
-                    />
             </LinearLayout>
 
             <LinearLayout
@@ -53,19 +58,20 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Orange 오렌지"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/maplestory_light"
+                    android:textColor="#fff"
+                    android:textSize="36sp"
+                    android:gravity="right"/>
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="80dp"
                     android:background="@drawable/o"/>
-
-                <TextView
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:text="Orange 오렌지"
-                    android:textSize="24dp"
-                    android:gravity="center"
-                    />
             </LinearLayout>
 
         </LinearLayout>
@@ -82,7 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:layout_width="50dp"
@@ -94,21 +101,21 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="100"
-                android:textSize="30dp"
+                android:textSize="36sp"
+                android:textColor="#fff"
+                android:fontFamily="@font/maplestory_light"
                 android:gravity="center"
                 />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="10dp"></LinearLayout>
-
-
         <Button
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="메인으로 가기"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/maplestory_light"
+            android:text="확인"
+            android:textSize="26dp"
             android:onClick="onMainButtonClick"/>
 
 

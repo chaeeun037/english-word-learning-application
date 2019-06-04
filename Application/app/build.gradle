@@ -18,7 +18,7 @@ android {
         }
         buildTypes.each {
 
-            it.buildConfigField 'String', 'API_KEY', 'AIzaSyAnPXhel5vxKJT1-SJjt7FvyAycf9Ypcz4'
+            it.buildConfigField 'String', 'API_KEY',  '"AIzaSyCEbwmcgecZ8JDSU3zWXyGi4qWQ2j9jRrs"'
 
         }
     }

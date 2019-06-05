@@ -1,5 +1,6 @@
 package com.application.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.media.AudioAttributes;
@@ -7,6 +8,9 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +23,7 @@ import com.application.R;
 import com.application.database.EWLADbHelper;
 import com.application.database.Word;
 import com.application.databinding.ActivityGameBinding;
+import com.application.fragment.LearningThemeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +47,8 @@ public class GameActivity extends AppCompatActivity {
     String quizString1;
     String quizString2;
 
+    private int sound_coins;
+
     public void makeQuizList() {
 
         for (int i = 0; i < 18; i++) {
@@ -50,21 +57,44 @@ public class GameActivity extends AppCompatActivity {
                 canQuizWord.add(word);
             }
         }
+
+        //만들어진 canQuizWord가 비어있는 경우 == hasCrown이 없는 경우
+        if (canQuizWord.isEmpty()) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setMessage("손님을 맞이 하기 위해선 교육을 충분히 받아야 해요.\n학습을 선택해서 교육을 받아봐요!").setCancelable(
+                    false).setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Action for 'Yes' Button
+                            Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+            AlertDialog alert = dialog.create();
+            // Title for AlertDialog
+            alert.setTitle("교육을 제대로 듣지 않았군요!");
+            // Icon for AlertDialog
+            alert.setIcon(R.drawable.crown_basket);
+            alert.show();
+
+            return;
+        }
+
         Random random = new Random();
         quiz1 = random.nextInt(canQuizWord.size());
         quiz2 = random.nextInt(canQuizWord.size());
 
-        while(true) {
+        while (true) {
             if (quiz2 == quiz1)
                 quiz2 = random.nextInt(canQuizWord.size());
             else
                 break;
         }
 
-        for(int i=0; i< wordList.size(); i++) {
-            if(wordList.get(i).getEnglish().equals(canQuizWord.get(quiz1).getEnglish()))
+        for (int i = 0; i < wordList.size(); i++) {
+            if (wordList.get(i).getEnglish().equals(canQuizWord.get(quiz1).getEnglish()))
                 quizString1 = wordList.get(i).getEnglish();
-            if(wordList.get(i).getEnglish().equals(canQuizWord.get(quiz2).getEnglish()))
+            if (wordList.get(i).getEnglish().equals(canQuizWord.get(quiz2).getEnglish()))
                 quizString2 = wordList.get(i).getEnglish();
         }
 
@@ -72,11 +102,11 @@ public class GameActivity extends AppCompatActivity {
         rightQuizWord.add(quizString2);
     }
 
-    public static ArrayList<String> getRightQuizWord(){
+    public static ArrayList<String> getRightQuizWord() {
         return rightQuizWord;
     }
 
-    public static void setQuizList(){
+    public static void setQuizList() {
         canQuizWord.clear();
     }
 

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GameSpeakActivity extends AppCompatActivity {
+public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFragment.returnSpeakTermListener {
 
     private ActivityGameSpeakBinding binding;
 
@@ -39,12 +39,18 @@ public class GameSpeakActivity extends AppCompatActivity {
 
     private int sound_pop;
     private  int sound_mumbling;
+    String mSpeakTerm;
 
     EWLApplication application = EWLApplication.getInstance();
 
     int index;
     ArrayList<String> quizWord = GameActivity.getRightQuizWord();
     List<Word> wordList;
+
+    @Override
+    public void returnSpeakTerm(String speakTerm) {
+        mSpeakTerm = speakTerm;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +157,7 @@ public class GameSpeakActivity extends AppCompatActivity {
         //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
         intent.putExtra("quizString1", quizWord.get(0));
         intent.putExtra("quizString2", quizWord.get(1));
+        intent.putExtra("speakTerm", mSpeakTerm);
 
         //게임이 두번돌면 quizWord 비우기
         if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(1)))
@@ -158,5 +165,4 @@ public class GameSpeakActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
 }

@@ -41,6 +41,7 @@ public class GameDrawActivity extends AppCompatActivity {
 
     String quizString1;
     String quizString2;
+    String mSpeakTerm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class GameDrawActivity extends AppCompatActivity {
         Intent intent = getIntent();
         quizString1 = intent.getStringExtra("quizString1");
         quizString2 = intent.getStringExtra("quizString2");
+        mSpeakTerm = intent.getStringExtra("speakTerm");
 
 
         if (savedInstanceState == null) {
@@ -135,6 +137,8 @@ public class GameDrawActivity extends AppCompatActivity {
 
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);
+        intent.putExtra("speakTerm", mSpeakTerm);
+
         startActivity(intent);
     }
 
@@ -151,6 +155,8 @@ public class GameDrawActivity extends AppCompatActivity {
 
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);
+        intent.putExtra("speakTerm", mSpeakTerm);
+
         startActivity(intent);
     }
 }

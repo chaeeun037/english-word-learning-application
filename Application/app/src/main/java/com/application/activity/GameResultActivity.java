@@ -19,7 +19,10 @@ import com.application.databinding.ActivityGameResultBinding;
 import com.application.fragment.FailFragment;
 import com.application.fragment.LearningUnitFragment;
 import com.application.fragment.MainMenuFragment;
+import com.application.fragment.SpeakInputFragment;
 import com.application.fragment.SuccessFragment;
+
+import java.util.ArrayList;
 
 public class GameResultActivity extends AppCompatActivity {
 
@@ -37,6 +40,10 @@ public class GameResultActivity extends AppCompatActivity {
     int index;
     String quizString1;
     String quizString2;
+    String mSpeakTerm;
+
+    static int result1;
+    int result2;
 
     EWLApplication application = EWLApplication.getInstance();
 
@@ -74,20 +81,43 @@ public class GameResultActivity extends AppCompatActivity {
         index = intent.getIntExtra("index", 0);
         quizString1 = intent.getStringExtra("quizString1");
         quizString2 = intent.getStringExtra("quizString2");
+        mSpeakTerm = intent.getStringExtra("speakTerm");
 
         //TODO: type 0 - 맞음, type 1 - 틀림
-        int type = 1;
+        int type;
 
         //맞았으면 SuccessFragment, 틀렸으면 FailFragment 세팅
-        if (type == 0) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new SuccessFragment())
-                    .commit();
+        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizString1)) {
+            if (mSpeakTerm.equals(quizString1)) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new SuccessFragment())
+                        .commit();
+                type = 0;
+                result1 = 1;
 
-        } else {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new FailFragment())
-                    .commit();
+            } else {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new FailFragment())
+                        .commit();
+                type = 1;
+                result1= 0;
+            }
+        }
+        else{
+            if (mSpeakTerm.equals(quizString2)) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new SuccessFragment())
+                        .commit();
+                type = 0;
+                result2 = 1;
+
+            } else {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new FailFragment())
+                        .commit();
+                type = 1;
+                result2 = 0;
+            }
         }
 
         //음향 효과 따로 세팅해줘야 재생됨,,,
@@ -150,6 +180,9 @@ public class GameResultActivity extends AppCompatActivity {
 
             intent.putExtra("quizString1", quizString1);
             intent.putExtra("quizString2", quizString2);
+            intent.putExtra("firstQuizSol", result1);
+            intent.putExtra("secondQuizSol", result2);
+
             startActivity(intent);
         }
     }

@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
     }
 
-    public void onThemeButtonClick(View v, int id) {
+    public void onThemeButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         int tag = Integer.parseInt(v.getTag().toString());

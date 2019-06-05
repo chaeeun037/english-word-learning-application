@@ -1,6 +1,7 @@
 package com.application.fragment;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -139,6 +141,9 @@ public class SpeakInputFragment extends Fragment {
             speakTerm = matches.get(0).toLowerCase();
 
             textView.setText(speakTerm);
+            if(mReturnSpeakTermListener != null){
+                mReturnSpeakTermListener.returnSpeakTerm(speakTerm);
+            }
 
         }
 
@@ -150,5 +155,19 @@ public class SpeakInputFragment extends Fragment {
         public void onEvent(int eventType, Bundle params) {
         }
     };
+
+    public interface returnSpeakTermListener{
+        void returnSpeakTerm(String speakTerm);
+    }
+
+    private returnSpeakTermListener mReturnSpeakTermListener;
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        if(getActivity() != null && getActivity() instanceof returnSpeakTermListener){
+            mReturnSpeakTermListener = (returnSpeakTermListener)getActivity();
+        }
+    }
 
 }

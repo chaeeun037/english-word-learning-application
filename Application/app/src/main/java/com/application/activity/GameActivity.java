@@ -28,7 +28,6 @@ public class GameActivity extends AppCompatActivity {
     EWLApplication application = EWLApplication.getInstance();
     private SoundPool soundPool;
     private int sound_pop;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +80,8 @@ public class GameActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         //Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
-        Intent intent = new Intent(GameActivity.this, GameDrawActivity.class);
+        Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
+        intent.putExtra("index", 0);
         startActivity(intent);
     }
 }

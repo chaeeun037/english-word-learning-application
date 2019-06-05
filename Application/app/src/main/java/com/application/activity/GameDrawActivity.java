@@ -17,11 +17,13 @@ import android.widget.ImageView;
 
 import com.application.CloudVision.CloudVision;
 import com.application.R;
+import com.application.database.Word;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class GameDrawActivity extends AppCompatActivity {
 
@@ -36,6 +38,9 @@ public class GameDrawActivity extends AppCompatActivity {
     private int sound_pop;
     private int sound_coins;
 
+    String quizString1;
+    String quizString2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,11 @@ public class GameDrawActivity extends AppCompatActivity {
 
         drawMainFragment = new DrawMainFragment();
         drawInputFragment = new DrawInputFragment();
+
+        Intent intent = getIntent();
+        quizString1 = intent.getStringExtra("quizString1");
+        quizString2 = intent.getStringExtra("quizString2");
+
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -111,6 +121,11 @@ public class GameDrawActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
+        System.out.println("GameDrawActivity2\t"+quizString1);
+        System.out.println("GameDrawActivity2\t"+quizString2);
+
+        intent.putExtra("quizString1", quizString1);
+        intent.putExtra("quizString2", quizString2);
         startActivity(intent);
     }
 
@@ -124,6 +139,12 @@ public class GameDrawActivity extends AppCompatActivity {
         Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
 
         intent.putExtra("handwriteImage", bs.toByteArray());
+
+        System.out.println("GameDrawActivity\t"+quizString1);
+        System.out.println("GameDrawActivity\t"+quizString2);
+
+        intent.putExtra("quizString1", quizString1);
+        intent.putExtra("quizString2", quizString2);
         startActivity(intent);
     }
 }

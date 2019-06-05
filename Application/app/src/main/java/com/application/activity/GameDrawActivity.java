@@ -118,12 +118,15 @@ public class GameDrawActivity extends AppCompatActivity {
     public void callCouldVision(View v){
         handwriteBitmap = drawInputFragment.getCanvasBitmap();
 
+        //handwriteBitmap = Bitmap.createBitmap(handwriteBitmap, (int))
+
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
         handwriteBitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
+        byte[] handwriteImage = bs.toByteArray();
 
         Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
+        intent.putExtra("handwriteImage", handwriteImage );
 
-        intent.putExtra("handwriteImage", bs.toByteArray());
         startActivity(intent);
     }
 }

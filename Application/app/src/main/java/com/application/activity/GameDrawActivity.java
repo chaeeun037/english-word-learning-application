@@ -8,6 +8,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,7 +35,7 @@ public class GameDrawActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
     private int sound_pop;
-    private int sound_coins;
+    private  int sound_mumbling;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class GameDrawActivity extends AppCompatActivity {
         }
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_mumbling = soundPool.load(this, R.raw.mumbling, 1);
     }
 
     @Override
@@ -79,6 +81,15 @@ public class GameDrawActivity extends AppCompatActivity {
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
         if (iv != null) {
             iv.startAnimation(anim);
+
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    soundPool.play(sound_mumbling, 1, 1, 0, 0, 1);
+                }
+            }, 1000);
         }
     }
 

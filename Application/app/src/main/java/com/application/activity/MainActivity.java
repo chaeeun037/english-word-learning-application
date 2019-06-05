@@ -88,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onHelpButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+        startActivity(intent);
     }
 
     public void onHomeButtonClick(View v) {
@@ -187,13 +190,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         backgroundMusicPlay();
+
         if (type == 1) {
             final Handler handler = new Handler();
 
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    soundPool.play(sound_stamp, 1, 1, 0, 0, 1);
+                    soundPool.play(sound_stamp, 0.6f, 0.6f, 0, 0, 1);
                 }
             }, 1000);
         }
@@ -203,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
 
         //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
 

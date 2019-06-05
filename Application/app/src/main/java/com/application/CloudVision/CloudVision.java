@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.BuildConfig;
 import com.application.R;
@@ -31,6 +32,7 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.EntityAnnotation;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
+import com.google.api.services.vision.v1.model.TextAnnotation;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,6 +43,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import static java.security.AccessController.getContext;
 
 /* Google Cloud Vision call  & use
  * 지수 작성
@@ -132,10 +136,10 @@ public class CloudVision extends AppCompatActivity {
 
             // add the features we want - 글자 인식
             annotateImageRequest.setFeatures(new ArrayList<Feature>() {{
-                Feature labelDetection = new Feature();
-                labelDetection.setType("LABEL_DETECTION");
-                labelDetection.setMaxResults(MAX_LABEL_RESULTS);
-                add(labelDetection);
+                Feature textDetection = new Feature();
+                textDetection.setType("TEXT_DETECTION");
+                textDetection.setMaxResults(MAX_LABEL_RESULTS);
+                add(textDetection);
             }});
 
             // Add the list of one thing to the request
@@ -147,7 +151,6 @@ public class CloudVision extends AppCompatActivity {
 
         // Due to a bug: requests to Vision API containing large images fail when GZipped.
         annotateRequest.setDisableGZipContent(true);
-
         Log.d(TAG, "created Cloud Vision request object, sending request");
 
         return annotateRequest;
@@ -194,28 +197,24 @@ public class CloudVision extends AppCompatActivity {
     }
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
-        StringBuilder message = new StringBuilder("I found these things:\n\n");
-        List<EntityAnnotation> labels = response.getResponses().get(0).getLabelAnnotations();
+        String message = "I found these things:\n\n";
+        List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
 
         if (labels != null) {
-            for (EntityAnnotation label : labels) {
-                message.append(String.format(Locale.US, "%.3f: %s", label.getScore(), label.getDescription()));
-                message.append("\n");
-            }
+            message  += labels.get(0).getDescription();
         } else {
-            message.append("nothing");
+            message  += "nothing";
         }
-
-        return message.toString();
+        return message;
     }
 
     /* CloudVision 호출 부*/
     private String callCloudVision(final Bitmap bitmap) {
 
         // Switch text to loading
-        //mImageDetails.setText(R.string.loading_message);
         // Do the real work in an async task, because we need to use the network anyway
         String res = "";
+
         try {
             AsyncTask<Object, Void, String> labelDetectionTask = new LableDetectionTask(this, prepareAnnotationRequest(bitmap));
             try {

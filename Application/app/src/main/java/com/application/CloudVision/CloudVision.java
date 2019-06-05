@@ -53,6 +53,7 @@ public class CloudVision extends AppCompatActivity {
 
     String quizString1;
     String quizString2;
+    String mSpeakTerm;
 
     protected void onCreate(Bundle savedInstanceSate) {
         super.onCreate(savedInstanceSate);
@@ -61,6 +62,8 @@ public class CloudVision extends AppCompatActivity {
         Intent intent = getIntent();
         quizString1 = intent.getStringExtra("quizString1");
         quizString2 = intent.getStringExtra("quizString2");
+        mSpeakTerm = intent.getStringExtra("speakTerm");
+
 
         byte[] arr = getIntent().getByteArrayExtra("handwriteImage");
         handwriteBitmap = BitmapFactory.decodeByteArray(arr, 0, arr.length);
@@ -238,6 +241,8 @@ public class CloudVision extends AppCompatActivity {
         Intent intent = new Intent(CloudVision.this, GameResultActivity.class);
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);
+        intent.putExtra("speakTerm", mSpeakTerm);
+
         startActivity(intent);
     }
 }

@@ -25,6 +25,7 @@ import com.application.fragment.SpeakInputFragment;
 import com.application.fragment.SpeakMainFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameSpeakActivity extends AppCompatActivity {
@@ -42,24 +43,8 @@ public class GameSpeakActivity extends AppCompatActivity {
     EWLApplication application = EWLApplication.getInstance();
 
     int index;
-
-    ArrayList<Word> quizWord  = new ArrayList<>();
-    int quiz1;
-    int quiz2;
-
-    public void makeQuizList() {
-        for (int i = 0; i < 18; i++) {
-            Log.d("UNITID", "" + application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
-            if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
-                Word word = application.getWordList().get(i);
-                Log.d("nowWordKKKKKKKKKKKKKKK", "" + word.getEnglish());
-                quizWord.add(word);
-            }
-        }
-        Random random = new Random();
-        quiz1 = random.nextInt(quizWord.size());
-        quiz2 = quizWord.size() - quiz1 - 1;
-    }
+    ArrayList<String> quizWord = GameActivity.getRightQuizWord();
+    List<Word> wordList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +58,21 @@ public class GameSpeakActivity extends AppCompatActivity {
         speakMainFragment = new SpeakMainFragment();
         speakInputFragment = new SpeakInputFragment();
 
+        wordList = EWLADbHelper.WordList;
+
         Intent intent = getIntent();
         index = intent.getIntExtra("index", 0);
 
-        if (quizWord.size() == 0) {
-            makeQuizList();
+        if (index == 0) {
+            for (int i = 0; i < wordList.size(); i++)
+                if (wordList.get(i).getEnglish().equals(quizWord.get(0)))
+                    application.setNowWordId(wordList.get(i).getId() - 1);
         }
-        if (index == 0)
-            application.setNowWordId(quizWord.get(quiz1).getId() - 1);
-        else
-            application.setNowWordId(quizWord.get(quiz2).getId() - 1);
+        else {
+            for (int i = 0; i < wordList.size(); i++)
+                if (wordList.get(i).getEnglish().equals(quizWord.get(1)))
+                    application.setNowWordId(wordList.get(i).getId() - 1);
+        }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -159,10 +149,13 @@ public class GameSpeakActivity extends AppCompatActivity {
         /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
         Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
         //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
-        intent.putExtra("quizString1", quizWord.get(quiz1).getEnglish());
-        intent.putExtra("quizString2", quizWord.get(quiz2).getEnglish());
-        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(quiz2).getEnglish()))
-            quizWord.clear();
+        intent.putExtra("quizString1", quizWord.get(0));
+        intent.putExtra("quizString2", quizWord.get(1));
+
+        //게임이 두번돌면 quizWord 비우기
+        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(1)))
+            GameActivity.setQuizList();
+
         startActivity(intent);
     }
 

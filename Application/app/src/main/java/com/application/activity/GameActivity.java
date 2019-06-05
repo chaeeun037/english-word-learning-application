@@ -16,10 +16,12 @@ import android.widget.ImageView;
 
 import com.application.EWLApplication;
 import com.application.R;
+import com.application.database.EWLADbHelper;
 import com.application.database.Word;
 import com.application.databinding.ActivityGameBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
@@ -28,6 +30,56 @@ public class GameActivity extends AppCompatActivity {
     EWLApplication application = EWLApplication.getInstance();
     private SoundPool soundPool;
     private int sound_pop;
+
+    //hasCrownWordList
+    static ArrayList<Word> canQuizWord = new ArrayList<>();
+    //확정된 quiz word list
+    static ArrayList<String> rightQuizWord = new ArrayList<>();
+    List<Word> wordList;
+
+    int quiz1;
+    int quiz2;
+    String quizString1;
+    String quizString2;
+
+    public void makeQuizList() {
+
+        for (int i = 0; i < 18; i++) {
+            if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
+                Word word = application.getWordList().get(i);
+                canQuizWord.add(word);
+            }
+        }
+        Random random = new Random();
+        quiz1 = random.nextInt(canQuizWord.size());
+        quiz2 = random.nextInt(canQuizWord.size());
+
+        while(true) {
+            if (quiz2 == quiz1)
+                quiz2 = random.nextInt(canQuizWord.size());
+            else
+                break;
+        }
+
+        for(int i=0; i< wordList.size(); i++) {
+            if(wordList.get(i).getEnglish().equals(canQuizWord.get(quiz1).getEnglish()))
+                quizString1 = wordList.get(i).getEnglish();
+            if(wordList.get(i).getEnglish().equals(canQuizWord.get(quiz2).getEnglish()))
+                quizString2 = wordList.get(i).getEnglish();
+        }
+
+        rightQuizWord.add(quizString1);
+        rightQuizWord.add(quizString2);
+    }
+
+    public static ArrayList<String> getRightQuizWord(){
+        return rightQuizWord;
+    }
+
+    public static void setQuizList(){
+        canQuizWord.clear();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +90,12 @@ public class GameActivity extends AppCompatActivity {
         binding.setActivity(this);
 
         final ImageView iv = (ImageView) findViewById(R.id.imageView1);
+
+        wordList = EWLADbHelper.WordList;
+
+        if (canQuizWord.isEmpty()) {
+            makeQuizList();
+        }
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chick_anim);
         iv.startAnimation(anim);

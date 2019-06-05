@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import com.application.EWLApplication;
 import com.application.R;
@@ -28,7 +29,13 @@ public class ResultActivity extends AppCompatActivity {
     private int sound_pop;
     private int sound_coins;
 
-    private EWLApplication application;
+    private EWLApplication application =  EWLApplication.getInstance();
+
+    String quizString1;
+    String quizString2;
+
+    TextView quizNum1;
+    TextView quizNum2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,16 @@ public class ResultActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result);
         binding.setActivity(this);
+
+        Intent intent = getIntent();
+        quizString1 = intent.getStringExtra("quizString1");
+        quizString2 = intent.getStringExtra("quizString2");
+
+        quizNum1 = (TextView)findViewById(R.id.quizNum1);
+        quizNum1.setText(quizString1);
+
+        quizNum2 = (TextView)findViewById(R.id.quizNum2);
+        quizNum2.setText(quizString2);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AudioAttributes audioAttributes = new AudioAttributes.Builder()

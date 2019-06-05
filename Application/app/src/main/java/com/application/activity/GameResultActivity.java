@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceHolder;
 import android.view.View;
 
+import com.application.EWLApplication;
 import com.application.R;
 import com.application.databinding.ActivityGameResultBinding;
 import com.application.fragment.FailFragment;
@@ -32,6 +33,12 @@ public class GameResultActivity extends AppCompatActivity {
     private SoundPool soundPool;
 
     private int sound_pop;
+
+    int index;
+    String quizString1;
+    String quizString2;
+
+    EWLApplication application = EWLApplication.getInstance();
 
     public void backgroundMusicPlay(int i) {
         if (player == null) {
@@ -63,6 +70,10 @@ public class GameResultActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game_result);
         binding.setActivity(this);
 
+        Intent intent = getIntent();
+        index = intent.getIntExtra("index", 0);
+        quizString1 = intent.getStringExtra("quizString1");
+        quizString2 = intent.getStringExtra("quizString2");
 
         //TODO: type 0 - 맞음, type 1 - 틀림
         int type = 1;
@@ -123,21 +134,23 @@ public class GameResultActivity extends AppCompatActivity {
 
     public void onResultButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
-      
-// <<<<<<< newlsh 소현아 너의 코드란다 어짜피 여기는 수정될거니까 내껄로 대충 놔둘게 -
-//         if(true){
-//             Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
-//             startActivity(intent);
-//         }else {
-//             Intent intent = new Intent(GameResultActivity.this, GameSpeakActivity.class);
-//             startActivity(intent);
-//         }
 
-        //TODO: 만약 첫번째 단어면 다음 단어 draw 액티비티로 이동
-        Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
-        startActivity(intent);
+        //TODO: 만약 첫번째 단어면 다음 단어 speak 액티비티로 이동 !!!!!!!!!
+        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizString1)) {
+            Intent intent = new Intent(GameResultActivity.this, GameSpeakActivity.class);
 
+            intent.putExtra("index", 1);
+            intent.putExtra("quizString1", quizString1);
+            intent.putExtra("quizString2", quizString2);
+            startActivity(intent);
+        }
         //TODO: 만약 두번쨰 단어면 결과 액티비티로 이동
+        else{
+            Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
 
+            intent.putExtra("quizString1", quizString1);
+            intent.putExtra("quizString2", quizString2);
+            startActivity(intent);
+        }
     }
 }

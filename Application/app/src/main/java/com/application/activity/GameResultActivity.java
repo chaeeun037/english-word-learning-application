@@ -134,29 +134,10 @@ public class GameResultActivity extends AppCompatActivity {
 
     public void onResultButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
-      
-// <<<<<<< newlsh 소현아 너의 코드란다 어짜피 여기는 수정될거니까 내껄로 대충 놔둘게 -
-//         if(true){
-//             Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
-//             startActivity(intent);
-//         }else {
-//             Intent intent = new Intent(GameResultActivity.this, GameSpeakActivity.class);
-//             startActivity(intent);
-//         }
 
-
-        //TODO: 만약 첫번째 단어면 다음 단어 draw 액티비티로 이동 !!!!!!!!!여기가 안돼요ㅠㅠ 같으면 true가 제대로 안넘어가요ㅠㅠ
-
-        boolean tf = (application.getWordList().get(application.getNowWordId()).getEnglish()) == quizString2;
-        System.out.println("지금단어:\t"+application.getWordList().get(application.getNowWordId()).getEnglish());
-        System.out.println(tf);
-
-        if(!tf) {
+        //TODO: 만약 첫번째 단어면 다음 단어 speak 액티비티로 이동 !!!!!!!!!
+        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizString1)) {
             Intent intent = new Intent(GameResultActivity.this, GameSpeakActivity.class);
-
-            System.out.println("GameResultActivity\t"+index);
-            System.out.println("GameResultActivity\t"+quizString1);
-            System.out.println("GameResultActivity\t"+quizString2);
 
             intent.putExtra("index", 1);
             intent.putExtra("quizString1", quizString1);
@@ -166,9 +147,6 @@ public class GameResultActivity extends AppCompatActivity {
         //TODO: 만약 두번쨰 단어면 결과 액티비티로 이동
         else{
             Intent intent = new Intent(GameResultActivity.this, ResultActivity.class);
-            System.out.println("GameResultActivity2\t"+index);
-            System.out.println("GameResultActivity2\t"+quizString1);
-            System.out.println("GameResultActivity2\t"+quizString2);
 
             intent.putExtra("quizString1", quizString1);
             intent.putExtra("quizString2", quizString2);

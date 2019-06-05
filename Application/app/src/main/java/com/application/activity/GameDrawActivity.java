@@ -121,8 +121,6 @@ public class GameDrawActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
-        System.out.println("GameDrawActivity2\t"+quizString1);
-        System.out.println("GameDrawActivity2\t"+quizString2);
 
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);
@@ -139,9 +137,6 @@ public class GameDrawActivity extends AppCompatActivity {
         Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
 
         intent.putExtra("handwriteImage", bs.toByteArray());
-
-        System.out.println("GameDrawActivity\t"+quizString1);
-        System.out.println("GameDrawActivity\t"+quizString2);
 
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);

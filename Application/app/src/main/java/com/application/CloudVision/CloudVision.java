@@ -236,9 +236,6 @@ public class CloudVision extends AppCompatActivity {
     public void goToResultButtonClick(View v){
 
         Intent intent = new Intent(CloudVision.this, GameResultActivity.class);
-        System.out.println("CloudVision\t"+quizString1);
-        System.out.println("CloudVision\t"+quizString2);
-
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);
         startActivity(intent);

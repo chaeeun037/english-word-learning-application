@@ -40,7 +40,7 @@ public class GameSpeakActivity extends AppCompatActivity {
 
     int index;
 
-    ArrayList<Word> quizWord  = new ArrayList<>();;
+    ArrayList<Word> quizWord  = new ArrayList<>();
     int quiz1;
     int quiz2;
 
@@ -147,13 +147,10 @@ public class GameSpeakActivity extends AppCompatActivity {
         /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
         Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
         //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
-        System.out.println("GameSpeakActivity\t" + index);
-        System.out.println("GameSpeakActivity\t" + quizWord.get(quiz1).getEnglish());
-        System.out.println("GameSpeakActivity\t" + quizWord.get(quiz2).getEnglish());
-
-        intent.putExtra("index", index);
         intent.putExtra("quizString1", quizWord.get(quiz1).getEnglish());
         intent.putExtra("quizString2", quizWord.get(quiz2).getEnglish());
+        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(quiz2).getEnglish()))
+            quizWord.clear();
         startActivity(intent);
     }
 

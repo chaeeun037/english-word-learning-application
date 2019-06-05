@@ -57,11 +57,11 @@ public class StartActivity extends AppCompatActivity {
                     .build();
 
             soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
+                    .setMaxStreams(10)
                     .setAudioAttributes(audioAttributes)
                     .build();
         } else {
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+            soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         }
 
         sound_walk = soundPool.load(this, R.raw.walk_step, 1);
@@ -85,7 +85,10 @@ public class StartActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                soundPool.play(sound_door, 2, 2, 0, 0, 1);
+                if (soundPool!= null) {
+                    soundPool.play(sound_door, 2, 2, 0, 0, 1);
+                }
+
             }
         }, 4000);
 

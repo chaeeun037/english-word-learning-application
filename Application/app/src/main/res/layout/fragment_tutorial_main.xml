@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.application.fragment.TutorialMainFragment" />
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/theme_unit_background"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:context=".fragment.TutorialMainFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/previous_button"
+                    android:onClick="onTutorialPrevButtonClick"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="40dp"
+                    android:background="@drawable/chicken_manager" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/imageView4"
+                    android:layout_width="320dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="top"
+                    android:background="@drawable/speech_buble"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/maplestory_light"
+                        android:gravity="center"
+                        android:text="안녕 신입사원친구?\n같이 일하게 되어서 반가워!\n궁금한 것은 무엇이든 물어봐!"
+                        android:textColor="#333"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/wooden_board"
+                        android:fontFamily="@font/maplestory_bold"
+                        android:gravity="center"
+                        android:onClick="onLearningMenuClick"
+                        android:text="단어 학습하기"
+                        android:textColor="#333"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/wooden_board"
+                        android:fontFamily="@font/maplestory_bold"
+                        android:gravity="center"
+                        android:onClick="onGameMenuClick"
+                        android:text="물건 판매 게임하기"
+                        android:textColor="#333"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/wooden_board"
+                        android:fontFamily="@font/maplestory_bold"
+                        android:gravity="center"
+                        android:onClick="onExerciseMenuClick"
+                        android:text="연습장 사용하기"
+                        android:textColor="#333"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

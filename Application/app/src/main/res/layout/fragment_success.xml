@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".fragment.SuccessFragment">
+        tools:context=".fragment.SuccessFragment"
+        android:onClick="onResultButtonClick">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -59,16 +60,17 @@
                 tools:context=".fragment.SpeakMainFragment">
 
                 <!--TODO: 정적으로 하기 위해 '모든 결과보기' -> 'NEXT'로 수정 - 지수190602 -->
-                <Button
-                    android:layout_width="120dp"
-                    android:layout_height="70dp"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/maplestory_light"
-                    android:onClick="onResultButtonClick"
-                    android:text="결과"
-                    android:textColor="#333"
-                    android:textSize="36sp" />
+                <!--화면 터치하면 넘어가게 변경 - 채은-->
+                <!--<Button-->
+                    <!--android:layout_width="120dp"-->
+                    <!--android:layout_height="70dp"-->
+                    <!--android:layout_gravity="bottom"-->
+                    <!--android:layout_marginBottom="10dp"-->
+                    <!--android:fontFamily="@font/maplestory_light"-->
+                    <!--android:onClick="onResultButtonClick"-->
+                    <!--android:text="다음"-->
+                    <!--android:textColor="#333"-->
+                    <!--android:textSize="36sp" />-->
             </LinearLayout>
 
 

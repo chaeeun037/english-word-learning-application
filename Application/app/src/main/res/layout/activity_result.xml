@@ -38,6 +38,16 @@
                 android:gravity="center">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/maplestory_light"
+                    android:gravity="right"
+                    android:text="1. "
+                    android:textColor="#fff"
+                    android:textSize="36sp" />
+
+                <TextView
                     android:id="@+id/quizNum1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -59,6 +69,16 @@
                 android:gravity="center">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/maplestory_light"
+                    android:gravity="right"
+                    android:text="2. "
+                    android:textColor="#fff"
+                    android:textSize="36sp" />
+
+                <TextView
                     android:id="@+id/quizNum2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,7 +91,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/o" />
+                    android:background="@drawable/x" />
             </LinearLayout>
 
         </LinearLayout>
@@ -91,30 +111,32 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/maplestory_light"
+                android:gravity="center"
+                android:text="50 X 1 = 50"
+                android:textColor="#fff"
+                android:textSize="36sp" />
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/coin" />
 
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/maplestory_light"
-                android:gravity="center"
-                android:text="100"
-                android:textColor="#fff"
-                android:textSize="36sp" />
-
         </LinearLayout>
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:background="#fff"
             android:fontFamily="@font/maplestory_light"
             android:onClick="onMainButtonClick"
             android:text="확인"
+            android:textColor="#333"
             android:textSize="26dp" />
 
 

@@ -9,6 +9,7 @@ import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -54,6 +55,7 @@ public class DrawCanvasView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
+        drawCanvas.drawRGB(255, 255, 255);
     }
 
     /* Touch 입력 받기 */
@@ -87,8 +89,8 @@ public class DrawCanvasView extends View {
 
     /* 지우개버튼이 눌렸을 때 */
     public void eraser() {
-        paintColor = Color.TRANSPARENT; //캔버스 지우개 - 컬러가 투명으로
-        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR); // 캔버스 초기화 함수 - 한번에 다 지우기
+        paintColor = Color.WHITE; //캔버스 지우개 - 컬러가 투명으로
+        drawCanvas.drawRGB(255, 255, 255); // 캔버스 초기화 함수 - 한번에 다 지우기
         drawPaint.setStrokeWidth(0); // 펜 굵기
     }
 

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,9 +24,9 @@ import com.application.database.Word;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
+import com.google.api.services.vision.v1.model.Image;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
 
 public class GameDrawActivity extends AppCompatActivity {
 
@@ -143,15 +145,14 @@ public class GameDrawActivity extends AppCompatActivity {
     }
 
 
-    public void callCouldVision(View v){
+    public void callCouldVision(View v) throws Exception {
         handwriteBitmap = drawInputFragment.getCanvasBitmap();
 
         ByteArrayOutputStream bs = new ByteArrayOutputStream();
-        handwriteBitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
-        byte[] handwriteImage = bs.toByteArray();
+        handwriteBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bs);
 
         Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
-        intent.putExtra("handwriteImage", handwriteImage );
+        intent.putExtra("handwriteImage", bs.toByteArray());
 
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,9 +41,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.lang.String;
 
 import static java.security.AccessController.getContext;
 
@@ -78,14 +81,14 @@ public class CloudVision extends AppCompatActivity {
         quizString2 = intent.getStringExtra("quizString2");
         mSpeakTerm = intent.getStringExtra("speakTerm");
 
-
-        byte[] arr = getIntent().getByteArrayExtra("handwriteImage");
+        byte[] arr = intent.getByteArrayExtra("handwriteImage");
         handwriteBitmap = BitmapFactory.decodeByteArray(arr, 0, arr.length);
 
         visionRes = findViewById(R.id.visionResult);
         handwriteImage = findViewById(R.id.handwriteImage);
 
         recogRes = callCloudVision(handwriteBitmap);
+
         handwriteImage.setImageBitmap(handwriteBitmap);
 
 
@@ -226,12 +229,14 @@ public class CloudVision extends AppCompatActivity {
 
         try {
             AsyncTask<Object, Void, String> labelDetectionTask = new LableDetectionTask(this, prepareAnnotationRequest(bitmap));
+
             try {
                 res = labelDetectionTask.execute().get();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
 
         } catch (IOException e) {
             Log.d(TAG, "failed to make API request because of other IOException " +

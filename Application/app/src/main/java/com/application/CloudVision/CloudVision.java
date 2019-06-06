@@ -2,13 +2,18 @@ package com.application.CloudVision;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.application.BuildConfig;
 import com.application.R;
@@ -28,12 +33,21 @@ import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse;
 import com.google.api.services.vision.v1.model.EntityAnnotation;
 import com.google.api.services.vision.v1.model.Feature;
 import com.google.api.services.vision.v1.model.Image;
+import com.google.api.services.vision.v1.model.TextAnnotation;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.lang.String;
+
+import static java.security.AccessController.getContext;
 
 /* Google Cloud Vision call  & use
  * 지수 작성
@@ -51,6 +65,9 @@ public class CloudVision extends AppCompatActivity {
     private Bitmap handwriteBitmap; // 아가들 글씨
     private String recogRes = new String("");
 
+    private TextView visionRes;
+    private ImageView handwriteImage;
+
     String quizString1;
     String quizString2;
     String mSpeakTerm;
@@ -64,24 +81,16 @@ public class CloudVision extends AppCompatActivity {
         quizString2 = intent.getStringExtra("quizString2");
         mSpeakTerm = intent.getStringExtra("speakTerm");
 
-
-        byte[] arr = getIntent().getByteArrayExtra("handwriteImage");
+        byte[] arr = intent.getByteArrayExtra("handwriteImage");
         handwriteBitmap = BitmapFactory.decodeByteArray(arr, 0, arr.length);
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                recogRes = callCloudVision(handwriteBitmap);
-                /* Result */
-                if(recogRes.equals("인식실패")){ // recognize fail
+        visionRes = findViewById(R.id.visionResult);
+        handwriteImage = findViewById(R.id.handwriteImage);
 
-                }
-                else{// recognize success
+        recogRes = callCloudVision(handwriteBitmap);
 
-                }
-            }
-        });
-        thread.start();
+        handwriteImage.setImageBitmap(handwriteBitmap);
+
 
     }
 
@@ -139,10 +148,10 @@ public class CloudVision extends AppCompatActivity {
 
             // add the features we want - 글자 인식
             annotateImageRequest.setFeatures(new ArrayList<Feature>() {{
-                Feature labelDetection = new Feature();
-                labelDetection.setType("TEXT_DETECTION");
-                labelDetection.setMaxResults(MAX_LABEL_RESULTS);
-                add(labelDetection);
+                Feature textDetection = new Feature();
+                textDetection.setType("TEXT_DETECTION");
+                textDetection.setMaxResults(MAX_LABEL_RESULTS);
+                add(textDetection);
             }});
 
             // Add the list of one thing to the request
@@ -154,7 +163,6 @@ public class CloudVision extends AppCompatActivity {
 
         // Due to a bug: requests to Vision API containing large images fail when GZipped.
         annotateRequest.setDisableGZipContent(true);
-
         Log.d(TAG, "created Cloud Vision request object, sending request");
 
         return annotateRequest;
@@ -194,21 +202,21 @@ public class CloudVision extends AppCompatActivity {
             CloudVision activity = mActivityWeakReference.get();
 
             if (activity != null && !activity.isFinishing()) {
-                TextView handwriteRecogRes = activity.findViewById(R.id.handwirteResult);
+                TextView handwriteRecogRes = activity.findViewById(R.id.visionResult);
                 handwriteRecogRes.setText(result);
             }
         }
     }
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
-        String message = new String("");
+        String message = "I found these things:\n\n";
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
+
         if (labels != null) {
-            message += labels.get(0).getDescription();
+            message  += labels.get(0).getDescription();
         } else {
-            message += "인식실패";
+            message  += "nothing";
         }
-        message = message.replaceAll("\n","");
         return message;
     }
 
@@ -216,17 +224,19 @@ public class CloudVision extends AppCompatActivity {
     private String callCloudVision(final Bitmap bitmap) {
 
         // Switch text to loading
-        //mImageDetails.setText(R.string.loading_message);
         // Do the real work in an async task, because we need to use the network anyway
         String res = "";
+
         try {
             AsyncTask<Object, Void, String> labelDetectionTask = new LableDetectionTask(this, prepareAnnotationRequest(bitmap));
-            try{
+
+            try {
                 res = labelDetectionTask.execute().get();
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+
 
         } catch (IOException e) {
             Log.d(TAG, "failed to make API request because of other IOException " +
@@ -236,7 +246,7 @@ public class CloudVision extends AppCompatActivity {
     }
 
     /* 다음 화살표*/
-    public void goToResultButtonClick(View v){
+    public void goToResultButtonClick(View v) {
 
         Intent intent = new Intent(CloudVision.this, GameResultActivity.class);
         intent.putExtra("quizString1", quizString1);

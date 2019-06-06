@@ -59,6 +59,5 @@ public class DrawInputFragment extends Fragment {
         Bitmap screenshot = shadowCanvasV.getDrawingCache();//캐시를 비트맵에 저장
 
         return screenshot;
-        }
-
+    }
 }

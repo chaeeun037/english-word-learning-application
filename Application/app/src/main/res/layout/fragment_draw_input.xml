@@ -94,14 +94,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp" />
 
-                <!-- Cloud Vision -->
-                <!--<Button-->
-                <!--android:id="@+id/couldVisionButton"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_height="60dp"-->
-                <!--android:text="결과"-->
-                <!--android:textSize="14dp"-->
-                <!--android:onClick="callCouldVision"/>-->
+                 Cloud Vision
+                <Button
+                android:id="@+id/couldVisionButton"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:text="결과"
+                android:textSize="14dp"
+                android:onClick="callCouldVision"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

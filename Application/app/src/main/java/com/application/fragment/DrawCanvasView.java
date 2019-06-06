@@ -17,7 +17,7 @@ public class DrawCanvasView extends View {
 
     private Path drawPath;
     private Paint drawPaint, canvasPaint;
-    private int paintColor = Color.BLACK; //펜색
+    private int paintColor = Color.rgb(61, 61 ,61); //펜색
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
 
@@ -55,7 +55,7 @@ public class DrawCanvasView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
-        drawCanvas.drawRGB(255, 255, 255);
+        drawCanvas.drawARGB(0, 255, 255, 255);
     }
 
     /* Touch 입력 받기 */
@@ -89,14 +89,15 @@ public class DrawCanvasView extends View {
 
     /* 지우개버튼이 눌렸을 때 */
     public void eraser() {
-        paintColor = Color.WHITE; //캔버스 지우개 - 컬러가 투명으로
-        drawCanvas.drawRGB(255, 255, 255); // 캔버스 초기화 함수 - 한번에 다 지우기
+        paintColor = Color.argb(0, 255, 255, 255); //캔버스 지우개 - 컬러가 투명으로
+        drawCanvas.drawARGB(0,255, 255, 255); // 캔버스 초기화 함수 - 한번에 다 지우기
+        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
         drawPaint.setStrokeWidth(0); // 펜 굵기
     }
 
     /* 펜버튼이 눌렸을 때 */
     public void pen() {
-        paintColor = Color.BLACK;
+        paintColor = Color.rgb(61, 61 ,61);
         drawPaint.setStrokeWidth(15); // 펜 굵기
     }
 }

@@ -7,6 +7,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,9 +25,10 @@ import com.application.fragment.SpeakInputFragment;
 import com.application.fragment.SpeakMainFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class GameSpeakActivity extends AppCompatActivity {
+public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFragment.returnSpeakTermListener {
 
     private ActivityGameSpeakBinding binding;
 
@@ -36,27 +38,18 @@ public class GameSpeakActivity extends AppCompatActivity {
     private SoundPool soundPool;
 
     private int sound_pop;
+    private  int sound_mumbling;
+    String mSpeakTerm;
+
     EWLApplication application = EWLApplication.getInstance();
 
-    ArrayList<Word> quizWord;
-    int quiz;
+    int index;
+    ArrayList<String> quizWord = GameActivity.getRightQuizWord();
+    List<Word> wordList;
 
-    //퀴즈 리스트 만드는 메소드
-    public void makeQuiz(){
-        quizWord = new ArrayList<>();
-
-        for(int i=0; i<18; i++) {
-            Log.d("UNITID", ""+application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown());
-            if (application.getUnitList().get((application.getWordList().get(i).getUnit_id()) - 1).getHasCrown()) {
-                Word word = application.getWordList().get(i);
-                Log.d("nowWord", "" + word.getEnglish());
-                quizWord.add(word);
-            }
-        }
-        Random random = new Random();
-        quiz = random.nextInt(quizWord.size()-1);
-        Log.d("NowQuiz", quizWord.get(quiz).getEnglish());
-        application.setNowWordId(quizWord.get(quiz).getId());
+    @Override
+    public void returnSpeakTerm(String speakTerm) {
+        mSpeakTerm = speakTerm;
     }
 
     @Override
@@ -71,18 +64,20 @@ public class GameSpeakActivity extends AppCompatActivity {
         speakMainFragment = new SpeakMainFragment();
         speakInputFragment = new SpeakInputFragment();
 
-        if(quizWord == null){
-            makeQuiz();
+        wordList = EWLADbHelper.WordList;
+
+        Intent intent = getIntent();
+        index = intent.getIntExtra("index", 0);
+
+        if (index == 0) {
+            for (int i = 0; i < wordList.size(); i++)
+                if (wordList.get(i).getEnglish().equals(quizWord.get(0)))
+                    application.setNowWordId(wordList.get(i).getId() - 1);
         }
-        else{
-            Random random = new Random();
-            int quiz2;
-            if(quiz!=0)
-                quiz2 = random.nextInt(quiz);
-            else
-                quiz2 = random.nextInt((quizWord.size()-1) - quiz);
-            Log.d("NowQuiz", "KKKKKKKKKKK\t"+quizWord.get(quiz+quiz2).getEnglish());
-            application.setNowWordId(quizWord.get(quiz + quiz2).getId());
+        else {
+            for (int i = 0; i < wordList.size(); i++)
+                if (wordList.get(i).getEnglish().equals(quizWord.get(1)))
+                    application.setNowWordId(wordList.get(i).getId() - 1);
         }
 
         if (savedInstanceState == null) {
@@ -106,6 +101,7 @@ public class GameSpeakActivity extends AppCompatActivity {
         }
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_mumbling = soundPool.load(this, R.raw.mumbling, 1);
     }
 
     @Override
@@ -116,8 +112,16 @@ public class GameSpeakActivity extends AppCompatActivity {
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
         if (iv != null) {
             iv.startAnimation(anim);
-        }
 
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    soundPool.play(sound_mumbling, 1, 1, 0, 0, 1);
+                }
+            }, 1000);
+        }
     }
 
     @Override
@@ -149,9 +153,16 @@ public class GameSpeakActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
-        Intent intent = new Intent(GameSpeakActivity.this, GameResultActivity.class);
+        Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
         //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
+        intent.putExtra("quizString1", quizWord.get(0));
+        intent.putExtra("quizString2", quizWord.get(1));
+        intent.putExtra("speakTerm", mSpeakTerm);
+
+        //게임이 두번돌면 quizWord 비우기
+        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(1)))
+            GameActivity.setQuizList();
+
         startActivity(intent);
     }
-
 }

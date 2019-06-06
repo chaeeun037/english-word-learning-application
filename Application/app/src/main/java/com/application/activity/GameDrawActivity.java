@@ -8,6 +8,7 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,11 +18,13 @@ import android.widget.ImageView;
 
 import com.application.CloudVision.CloudVision;
 import com.application.R;
+import com.application.database.Word;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class GameDrawActivity extends AppCompatActivity {
 
@@ -34,7 +37,11 @@ public class GameDrawActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
     private int sound_pop;
-    private int sound_coins;
+    private  int sound_mumbling;
+
+    String quizString1;
+    String quizString2;
+    String mSpeakTerm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,12 @@ public class GameDrawActivity extends AppCompatActivity {
 
         drawMainFragment = new DrawMainFragment();
         drawInputFragment = new DrawInputFragment();
+
+        Intent intent = getIntent();
+        quizString1 = intent.getStringExtra("quizString1");
+        quizString2 = intent.getStringExtra("quizString2");
+        mSpeakTerm = intent.getStringExtra("speakTerm");
+
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -69,6 +82,7 @@ public class GameDrawActivity extends AppCompatActivity {
         }
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_mumbling = soundPool.load(this, R.raw.mumbling, 1);
     }
 
     @Override
@@ -79,6 +93,15 @@ public class GameDrawActivity extends AppCompatActivity {
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chicken_anim);
         if (iv != null) {
             iv.startAnimation(anim);
+
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    soundPool.play(sound_mumbling, 1, 1, 0, 0, 1);
+                }
+            }, 1000);
         }
     }
 
@@ -111,6 +134,11 @@ public class GameDrawActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         Intent intent = new Intent(GameDrawActivity.this, GameResultActivity.class);
+
+        intent.putExtra("quizString1", quizString1);
+        intent.putExtra("quizString2", quizString2);
+        intent.putExtra("speakTerm", mSpeakTerm);
+
         startActivity(intent);
     }
 
@@ -124,6 +152,10 @@ public class GameDrawActivity extends AppCompatActivity {
 
         Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
         intent.putExtra("handwriteImage", handwriteImage );
+
+        intent.putExtra("quizString1", quizString1);
+        intent.putExtra("quizString2", quizString2);
+        intent.putExtra("speakTerm", mSpeakTerm);
 
         startActivity(intent);
     }

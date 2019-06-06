@@ -115,6 +115,7 @@ public class LearningActivity extends AppCompatActivity {
 
         if (nowPage == -1) {
             Intent intent = new Intent(LearningActivity.this, MainActivity.class);
+            intent.putExtra("type", 1);
             startActivity(intent);
         } else {
             application.setNowWordId(application.getNowWordId() - 1);

@@ -85,8 +85,7 @@ public class LearningThemeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 application.setNowThemeId(0);
-                Log.d("learningThemeFragment Now ThemeID", "" + application.getNowThemeId());
-                ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(0).getId());
+                ((MainActivity) getActivity()).onThemeButtonClick(v);
             }
         });
 
@@ -136,8 +135,7 @@ public class LearningThemeFragment extends Fragment {
                             application.setPointValue(application.getPointValue() - needPoint);
                         application.getThemeList().get(1).setIsLocked(true);
                         application.setNowThemeId(1);
-                        Log.d("learningThemeFragment Now ThemeID Locked", "" + application.getNowThemeId());
-                        ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(1).getId());
+                        ((MainActivity) getActivity()).onThemeButtonClick(v);
                         Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                     } else {
 
@@ -155,8 +153,7 @@ public class LearningThemeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     application.setNowThemeId(1);
-                    Log.d("learningThemeFragment Now ThemeID", "" + application.getNowThemeId());
-                    ((MainActivity) getActivity()).onThemeButtonClick(v, application.getThemeList().get(1).getId());
+                    ((MainActivity) getActivity()).onThemeButtonClick(v);
                 }
             });
         }

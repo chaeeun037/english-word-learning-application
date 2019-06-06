@@ -55,6 +55,9 @@
         <activity
             android:name=".CloudVision.CloudVision"
             android:screenOrientation="landscape"/>
+        <activity
+            android:name=".activity.TutorialActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

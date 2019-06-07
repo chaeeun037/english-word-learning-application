@@ -220,8 +220,10 @@ public class MainActivity extends AppCompatActivity {
             }
             application.setMainOpen(false);
         }
+        setPointView();
+    }
 
-        Log.d("now point", "" + application.getPointValue());
+    public void setPointView(){
         textView = (TextView) findViewById(R.id.textPoint);
         textView.setText("" + application.getPoint().getPointValue());
     }

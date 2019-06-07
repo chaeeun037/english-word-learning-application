@@ -41,6 +41,7 @@ public class GameResultActivity extends AppCompatActivity {
     String quizString1;
     String quizString2;
     String mSpeakTerm;
+    String mWriteTerm;
 
     static int result1;
     int result2;
@@ -82,13 +83,16 @@ public class GameResultActivity extends AppCompatActivity {
         quizString1 = intent.getStringExtra("quizString1");
         quizString2 = intent.getStringExtra("quizString2");
         mSpeakTerm = intent.getStringExtra("speakTerm");
+        mWriteTerm = intent.getStringExtra("writeTerm");
 
         //TODO: type 0 - 맞음, type 1 - 틀림
         int type;
 
         //맞았으면 SuccessFragment, 틀렸으면 FailFragment 세팅
         if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizString1)) {
-            if (mSpeakTerm.equals(quizString1)) {
+            boolean right = mSpeakTerm.equals(quizString1) && mWriteTerm.equals(quizString1);
+
+            if (right) {
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.container, new SuccessFragment())
                         .commit();
@@ -104,7 +108,9 @@ public class GameResultActivity extends AppCompatActivity {
             }
         }
         else{
-            if (mSpeakTerm.equals(quizString2)) {
+            boolean right = mSpeakTerm.equals(quizString1) && mWriteTerm.equals(quizString1);
+
+            if (right) {
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.container, new SuccessFragment())
                         .commit();

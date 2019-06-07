@@ -209,15 +209,16 @@ public class CloudVision extends AppCompatActivity {
     }
 
     private static String convertResponseToString(BatchAnnotateImagesResponse response) {
-        String message = "I found these things:\n\n";
+        String message;
         List<EntityAnnotation> labels = response.getResponses().get(0).getTextAnnotations();
 
         if (labels != null) {
-            message  += labels.get(0).getDescription();
+            message = labels.get(0).getDescription();
         } else {
-            message  += "nothing";
+            message = "nothing";
         }
-        return message;
+
+        return message.toLowerCase().replace("\n", "");
     }
 
     /* CloudVision 호출 부*/
@@ -252,6 +253,7 @@ public class CloudVision extends AppCompatActivity {
         intent.putExtra("quizString1", quizString1);
         intent.putExtra("quizString2", quizString2);
         intent.putExtra("speakTerm", mSpeakTerm);
+        intent.putExtra("writeTerm", recogRes);
 
         startActivity(intent);
     }

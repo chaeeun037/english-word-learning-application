@@ -35,8 +35,8 @@
             <!--글자 인식 확인용, 주석처리하면 오류나서 안보이게 만듦 -->
             <ImageView
                 android:id="@+id/handwriteImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                         android:gravity="center"
                         android:text="필기 인식 결과"
                         android:textColor="#333"
-                        android:textSize="40sp" />
+                        android:textSize="50sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                         android:gravity="center"
                         android:text="      1개"
                         android:textColor="#333"
-                        android:textSize="40sp" />
+                        android:textSize="32sp" />
 
                 </LinearLayout>
 

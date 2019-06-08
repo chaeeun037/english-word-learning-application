@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.View;
 
@@ -108,7 +109,7 @@ public class GameResultActivity extends AppCompatActivity {
             }
         }
         else{
-            boolean right = mSpeakTerm.equals(quizString1) && mWriteTerm.equals(quizString1);
+            boolean right = mSpeakTerm.equals(quizString2) && mWriteTerm.equals(quizString2);
 
             if (right) {
                 getSupportFragmentManager().beginTransaction()

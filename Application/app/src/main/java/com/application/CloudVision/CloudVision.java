@@ -91,6 +91,8 @@ public class CloudVision extends AppCompatActivity {
 
         handwriteImage.setImageBitmap(handwriteBitmap);
 
+        hideNavigationBar();
+
 
     }
 
@@ -246,6 +248,11 @@ public class CloudVision extends AppCompatActivity {
         return res;
     }
 
+    // 이전으로 돌아가기
+    public void onBackButtonClick(View v) {
+        finish();
+    }
+
     /* 다음 화살표*/
     public void goToResultButtonClick(View v) {
 
@@ -256,5 +263,14 @@ public class CloudVision extends AppCompatActivity {
         intent.putExtra("writeTerm", recogRes);
 
         startActivity(intent);
+    }
+
+    private void hideNavigationBar() {
+        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
+        int newUiOptions = uiOptions;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
     }
 }

@@ -58,6 +58,9 @@
         <activity
             android:name=".activity.TutorialActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.ExerciseActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

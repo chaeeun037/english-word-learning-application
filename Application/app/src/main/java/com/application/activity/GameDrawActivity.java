@@ -172,6 +172,8 @@ public class GameDrawActivity extends AppCompatActivity {
                 intent.putExtra("speakTerm", mSpeakTerm);
 
                 startActivity(intent);
+
+
             }
         }, 300);
     }
@@ -182,7 +184,7 @@ public class GameDrawActivity extends AppCompatActivity {
         Toast toast = new Toast(getApplicationContext());
 
         toast.setView(toastView);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0,0);
         toast.show();
     }

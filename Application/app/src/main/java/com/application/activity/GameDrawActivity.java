@@ -1,5 +1,6 @@
 package com.application.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -11,20 +12,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.application.CloudVision.CloudVision;
 import com.application.R;
-import com.application.database.Word;
 import com.application.databinding.ActivityGameDrawBinding;
 import com.application.fragment.DrawInputFragment;
 import com.application.fragment.DrawMainFragment;
-import com.google.api.services.vision.v1.model.Image;
 
 import java.io.ByteArrayOutputStream;
 
@@ -39,7 +40,7 @@ public class GameDrawActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
     private int sound_pop;
-    private  int sound_mumbling;
+    private int sound_mumbling;
 
     String quizString1;
     String quizString2;
@@ -111,8 +112,11 @@ public class GameDrawActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        soundPool.release();
-        soundPool = null;
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
+        //soundPool = null;
     }
 
     private void hideNavigationBar() {
@@ -146,18 +150,40 @@ public class GameDrawActivity extends AppCompatActivity {
 
 
     public void callCouldVision(View v) throws Exception {
-        handwriteBitmap = drawInputFragment.getCanvasBitmap();
+//        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
-        ByteArrayOutputStream bs = new ByteArrayOutputStream();
-        handwriteBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bs);
+        showLoadingToast();
 
-        Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
-        intent.putExtra("handwriteImage", bs.toByteArray());
+        final Handler handler = new Handler();
 
-        intent.putExtra("quizString1", quizString1);
-        intent.putExtra("quizString2", quizString2);
-        intent.putExtra("speakTerm", mSpeakTerm);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                handwriteBitmap = drawInputFragment.getCanvasBitmap();
 
-        startActivity(intent);
+                ByteArrayOutputStream bs = new ByteArrayOutputStream();
+                handwriteBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bs);
+
+                Intent intent = new Intent(GameDrawActivity.this, CloudVision.class);
+                intent.putExtra("handwriteImage", bs.toByteArray());
+
+                intent.putExtra("quizString1", quizString1);
+                intent.putExtra("quizString2", quizString2);
+                intent.putExtra("speakTerm", mSpeakTerm);
+
+                startActivity(intent);
+            }
+        }, 300);
+    }
+
+    private void showLoadingToast() {
+        View toastView = getLayoutInflater().inflate(R.layout.loading_toast, null);
+
+        Toast toast = new Toast(getApplicationContext());
+
+        toast.setView(toastView);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0,0);
+        toast.show();
     }
 }

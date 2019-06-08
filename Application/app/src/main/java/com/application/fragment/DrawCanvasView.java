@@ -13,11 +13,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.lang.reflect.Array;
+
 public class DrawCanvasView extends View {
 
     private Path drawPath;
     private Paint drawPaint, canvasPaint;
-    private int paintColor = Color.rgb(61, 61 ,61); //펜색
+    private int paintColor = Color.rgb(35, 87, 209); //펜색
     private Canvas drawCanvas;
     private Bitmap canvasBitmap;
 
@@ -97,7 +99,11 @@ public class DrawCanvasView extends View {
 
     /* 펜버튼이 눌렸을 때 */
     public void pen() {
-        paintColor = Color.rgb(61, 61 ,61);
-        drawPaint.setStrokeWidth(15); // 펜 굵기
+        paintColor = Color.rgb(35, 87, 209);
+        drawPaint.setStrokeWidth(15); //  펜굵기
+    }
+
+    public Bitmap getCanvasBitmap() {
+        return this.canvasBitmap;
     }
 }

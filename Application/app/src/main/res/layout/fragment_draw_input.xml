@@ -29,13 +29,6 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:background="@drawable/sketchbook"
                 android:orientation="vertical">
@@ -66,46 +59,21 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp" />
-
                 <!-- **펜 버튼**  -->
                 <Button
                     android:id="@+id/penButton"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/pen" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp" />
 
                 <!-- **지우개 버튼** -->
                 <Button
                     android:id="@+id/eraserButton"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/eraser" />
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp" />
-
-                 Cloud Vision
-                <Button
-                android:id="@+id/couldVisionButton"
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:text="결과"
-                android:textSize="14dp"
-                android:onClick="callCouldVision"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -119,7 +87,7 @@
                     android:layout_width="40dp"
                     android:layout_height="60dp"
                     android:background="@drawable/rightarrow"
-                    android:onClick="onInputNextButtonClick" />
+                    android:onClick="callCouldVision" />
 
             </LinearLayout>
 

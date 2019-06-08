@@ -137,6 +137,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onExerciseButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onBackPressed() {
         //super.onBackPressed();

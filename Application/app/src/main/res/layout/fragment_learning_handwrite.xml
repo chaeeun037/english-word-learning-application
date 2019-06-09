@@ -35,7 +35,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <!-- TODO: **캔버스**  -->
+            <!-- **캔버스**  -->
             <LinearLayout
                 android:id="@+id/linearlayout"
                 android:layout_width="0dp"
@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <!-- TODO: **펜 버튼**  -->
+                <!-- **펜 버튼**  -->
                 <Button
                     android:id="@+id/penButton"
                     android:layout_width="75dp"
@@ -71,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"></LinearLayout>
 
-                <!-- TODO: **지우개 버튼** -->
+                <!-- **지우개 버튼** -->
                 <Button
                     android:id="@+id/eraserButton"
                     android:layout_width="75dp"

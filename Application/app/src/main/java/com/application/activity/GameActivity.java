@@ -107,6 +107,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public static void setQuizList() {
+        rightQuizWord.clear();
         canQuizWord.clear();
     }
 

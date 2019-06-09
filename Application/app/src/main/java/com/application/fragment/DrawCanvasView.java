@@ -106,4 +106,29 @@ public class DrawCanvasView extends View {
     public Bitmap getCanvasBitmap() {
         return this.canvasBitmap;
     }
+
+    /* 펜 색 */
+    public void bluePen() {
+        paintColor = Color.parseColor("#0000FF");
+    }
+
+    public void redPen() {
+        paintColor = Color.parseColor("#FF0000");
+    }
+
+    public void greenPen() {
+        paintColor = Color.parseColor("#80E12A");
+    }
+
+    public void yellowPen() {
+        paintColor = Color.parseColor("#FFF064");
+    }
+
+    public void pinkPen() {
+        paintColor = Color.parseColor("#FF7A85");
+    }
+
+    public void purplePen() {
+        paintColor = Color.parseColor("#DA70D6");
+    }
 }

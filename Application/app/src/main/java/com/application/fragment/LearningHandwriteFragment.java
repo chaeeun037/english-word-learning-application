@@ -38,7 +38,6 @@ public class LearningHandwriteFragment extends Fragment {
         return new LearningSummaryFragment();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);

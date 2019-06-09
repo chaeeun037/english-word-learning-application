@@ -96,14 +96,6 @@
 
         </LinearLayout>
 
-        <!--  TODO: 정적으로 하기 위해서 맞는거 두개만~ -지수190602 -->
-        <!--
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/x"/>
-            -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

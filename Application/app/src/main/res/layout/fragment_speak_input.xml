@@ -60,7 +60,7 @@
                     android:gravity="center">
 
 
-                    <!-- TODO: 음성 인식 버튼에 마이크 이미지 씌우기 -->
+                    <!-- 음성 인식 버튼에 마이크 이미지 씌우기 -->
                     <Button
                         android:id="@+id/sttStart"
                         android:layout_width="80dp"

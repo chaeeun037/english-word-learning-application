@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
         sound_coins = soundPool.load(this, R.raw.coins, 1);
-        sound_stamp = soundPool.load(this, R.raw.stamping, 1);
+
     }
 
     private void hideNavigationBar() {
@@ -202,18 +202,6 @@ public class MainActivity extends AppCompatActivity {
                         .commit();
             }
         }
-
-        if (type == 1) {
-            final Handler handler = new Handler();
-
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    soundPool.play(sound_stamp, 0.6f, 0.6f, 0, 0, 1);
-                }
-            }, 1000);
-        }
-
     }
 
     @Override

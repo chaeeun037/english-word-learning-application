@@ -50,6 +50,11 @@ public class ResultActivity extends AppCompatActivity {
     int resultCount = 0;
 
     @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

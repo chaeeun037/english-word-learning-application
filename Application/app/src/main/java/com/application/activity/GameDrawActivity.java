@@ -1,6 +1,5 @@
 package com.application.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -12,13 +11,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.application.CloudVision.CloudVision;
@@ -45,6 +42,11 @@ public class GameDrawActivity extends AppCompatActivity {
     String quizString1;
     String quizString2;
     String mSpeakTerm;
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,7 +181,7 @@ public class GameDrawActivity extends AppCompatActivity {
     }
 
     private void showLoadingToast() {
-        View toastView = getLayoutInflater().inflate(R.layout.loading_toast, null);
+        View toastView = getLayoutInflater().inflate(R.layout.toast_loading, null);
 
         Toast toast = new Toast(getApplicationContext());
 

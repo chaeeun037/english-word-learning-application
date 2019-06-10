@@ -77,6 +77,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initSoundPool() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_coins = soundPool.load(this, R.raw.coins, 1);
+        sound_stamp = soundPool.load(this, R.raw.stamping, 1);
+    }
+
     private void hideNavigationBar() {
         int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
         int newUiOptions = uiOptions;
@@ -135,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void onExerciseButtonClick(View v) {
@@ -162,23 +183,9 @@ public class MainActivity extends AppCompatActivity {
         learningThemeFragment = new LearningThemeFragment();
         learningUnitFragment = new LearningUnitFragment();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build();
+        initSoundPool();
 
-            soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-        } else {
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
-        }
-
-        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
-        sound_coins = soundPool.load(this, R.raw.coins, 1);
-        sound_stamp = soundPool.load(this, R.raw.stamping, 1);
+        backgroundMusicPlay();
 
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
@@ -195,8 +202,6 @@ public class MainActivity extends AppCompatActivity {
                         .commit();
             }
         }
-
-        backgroundMusicPlay();
 
         if (type == 1) {
             final Handler handler = new Handler();
@@ -230,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         setPointView();
     }
 
-    public void setPointView(){
+    public void setPointView() {
         textView = (TextView) findViewById(R.id.textPoint);
         textView.setText("" + application.getPoint().getPointValue());
     }
@@ -241,14 +246,32 @@ public class MainActivity extends AppCompatActivity {
 
         stopPlayer();
 
-        soundPool.release();
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        initSoundPool();
+
+        backgroundMusicPlay();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        soundPool.release();
+
+        stopPlayer();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 }

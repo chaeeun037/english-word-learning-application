@@ -16,15 +16,29 @@
         android:orientation="vertical"
         tools:context=".activity.GameActivity">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/previous_button"
+                android:gravity="start"
+                android:onClick="onPrevButtonClick" />
+
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:layout_marginTop="40dp"
             android:fontFamily="@font/maplestory_light"
             android:gravity="center"
-            android:text="준비 되었나요?"
+            android:text="물건을 판매할 준비가 되었나요?"
             android:textColor="#333"
-            android:textSize="50sp" />
+            android:textSize="42sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

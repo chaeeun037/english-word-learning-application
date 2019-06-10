@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,7 +34,11 @@ public class GameActivity extends AppCompatActivity {
 
     private ActivityGameBinding binding;
     EWLApplication application = EWLApplication.getInstance();
+
+    MediaPlayer player;
+
     private SoundPool soundPool;
+
     private int sound_pop;
 
     //hasCrownWordList
@@ -62,10 +67,12 @@ public class GameActivity extends AppCompatActivity {
         if (canQuizWord.isEmpty()) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setMessage("손님을 맞이 하기 위해선 교육을 충분히 받아야 해요.\n학습을 선택해서 교육을 받아봐요!").setCancelable(
-                    false).setPositiveButton("Yes",
+                    false).setPositiveButton("알겠습니다.",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Action for 'Yes' Button
+                            soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
                             Intent intent = new Intent(GameActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
@@ -111,6 +118,72 @@ public class GameActivity extends AppCompatActivity {
         canQuizWord.clear();
     }
 
+    public void onPrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void onStartButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        //Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
+        Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
+        intent.putExtra("index", 0);
+        startActivity(intent);
+    }
+
+    public void initSoundPool() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+    }
+
+    public void backgroundMusicPlay() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.wexford);
+            player.setVolume((float) 0.1, (float) 0.1);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayer();
+                }
+            });
+        }
+
+        player.start();
+    }
+
+    private void stopPlayer() {
+        if (player != null) {
+            player.release();
+            player = null;
+        }
+    }
+
+    private void hideNavigationBar() {
+        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
+        int newUiOptions = uiOptions;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
+        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,46 +204,43 @@ public class GameActivity extends AppCompatActivity {
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.game_chick_anim);
         iv.startAnimation(anim);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build();
+        initSoundPool();
 
-            soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-        } else {
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
-        }
-
-        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        backgroundMusicPlay();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        soundPool.release();
+        stopPlayer();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 
-    private void hideNavigationBar() {
-        int uiOptions = getWindow().getDecorView().getSystemUiVisibility();
-        int newUiOptions = uiOptions;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-        getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        initSoundPool();
+
+        backgroundMusicPlay();
     }
 
-    public void onStartButtonClick(View v) {
-        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-        //Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
-        Intent intent = new Intent(GameActivity.this, GameSpeakActivity.class);
-        intent.putExtra("index", 0);
-        startActivity(intent);
+        stopPlayer();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
+        soundPool = null;
     }
 }

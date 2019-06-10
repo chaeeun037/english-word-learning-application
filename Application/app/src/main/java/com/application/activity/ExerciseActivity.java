@@ -37,6 +37,13 @@ public class ExerciseActivity extends AppCompatActivity {
         finish();
     }
 
+    public void onBackFromSpeakToMain(View v){
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, exerciseMainFragment).commit();
+    }
+
     public void onDrawButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 

@@ -67,15 +67,15 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:background="@drawable/mouth"
                 android:onClick="onSpeakButtonClick" />
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginStart="100dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="50dp"
                 android:background="@drawable/writing"
                 android:onClick="onDrawButtonClick" />
 

@@ -23,12 +23,19 @@ public class ExerciseActivity extends AppCompatActivity {
 
     ExerciseSpeakFragment exerciseSpeakFragment;
     ExerciseDrawFragment exerciseDrawFragment;
+    ExerciseMainFragment exerciseMainFragment;
 
     MediaPlayer player;
 
     private SoundPool soundPool;
 
     private int sound_pop;
+
+    public void onMainPrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        finish();
+    }
 
     public void onDrawButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
@@ -43,6 +50,13 @@ public class ExerciseActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, exerciseSpeakFragment).commit();
+    }
+
+    public void onDrawPrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, exerciseMainFragment).commit();
     }
 
     public void backgroundMusicPlay() {
@@ -87,10 +101,11 @@ public class ExerciseActivity extends AppCompatActivity {
 
         exerciseDrawFragment = new ExerciseDrawFragment();
         exerciseSpeakFragment = new ExerciseSpeakFragment();
+        exerciseMainFragment = new ExerciseMainFragment();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ExerciseMainFragment())
+                    .add(R.id.container, exerciseMainFragment)
                     .commit();
         }
 
@@ -119,14 +134,23 @@ public class ExerciseActivity extends AppCompatActivity {
 
         stopPlayer();
 
-        soundPool.release();
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        soundPool.release();
+
+        stopPlayer();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 }

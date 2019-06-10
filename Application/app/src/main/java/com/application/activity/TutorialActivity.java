@@ -1,6 +1,5 @@
 package com.application.activity;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
@@ -59,8 +58,26 @@ public class TutorialActivity extends AppCompatActivity {
     public void onTutorialPrevButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
-        Intent intent = new Intent(TutorialActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
+    }
+
+    private void initSoundPool() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_mumbling = soundPool.load(this, R.raw.mumbling, 1);
     }
 
     public void backgroundMusicPlay() {
@@ -113,22 +130,7 @@ public class TutorialActivity extends AppCompatActivity {
                     .commit();
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build();
-
-            soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-        } else {
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
-        }
-
-        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
-        sound_mumbling = soundPool.load(this, R.raw.mumbling, 1);
+        initSoundPool();
 
         backgroundMusicPlay();
     }
@@ -164,14 +166,30 @@ public class TutorialActivity extends AppCompatActivity {
 
         stopPlayer();
 
-        soundPool.release();
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        initSoundPool();
+
+        backgroundMusicPlay();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        soundPool.release();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 }

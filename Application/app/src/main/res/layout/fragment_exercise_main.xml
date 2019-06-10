@@ -32,7 +32,7 @@
                     android:layout_marginStart="24dp"
                     android:background="@drawable/previous_button"
                     android:gravity="left"
-                    android:onClick="onTutorialPrevButtonClick" />
+                    android:onClick="onMainPrevButtonClick" />
 
             </LinearLayout>
 
@@ -62,7 +62,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:orientation="horizontal">
 

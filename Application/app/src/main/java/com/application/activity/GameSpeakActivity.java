@@ -128,7 +128,10 @@ public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFr
     protected void onStop() {
         super.onStop();
 
-        soundPool.release();
+        if(soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 

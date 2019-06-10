@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
     private int sound_pop;
     private int sound_coins;
-    private int sound_stamp;
 
     MediaPlayer player;
 
@@ -94,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
         sound_coins = soundPool.load(this, R.raw.coins, 1);
-
     }
 
     private void hideNavigationBar() {
@@ -131,13 +129,23 @@ public class MainActivity extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
     }
 
-    public void onThemeButtonClick(View v) {
+    public void onThemeButtonClick(View v, boolean unlock) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        if (unlock) {
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    soundPool.play(sound_coins, 1, 1, 0, 0, 1);
+                }
+            }, 500);
+        }
 
         int tag = Integer.parseInt(v.getTag().toString());
         Log.d("***", "tag : " + tag);
 
-        //TODO: db에서 가져온 unitList에서 id가 tag와 일치하는 데이터를 가져와서 filteredUnitList에 저장
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
     }
@@ -153,9 +161,10 @@ public class MainActivity extends AppCompatActivity {
     public void onGameButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
+        finish();
+
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void onExerciseButtonClick(View v) {

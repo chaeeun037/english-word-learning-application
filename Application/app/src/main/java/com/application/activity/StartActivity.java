@@ -83,7 +83,9 @@ public class StartActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                soundPool.play(sound_walk, 1, 1, 0, 0, 1);
+                if (soundPool != null) {
+                    soundPool.play(sound_walk, 1, 1, 0, 0, 1);
+                }
             }
         }, 10);
 

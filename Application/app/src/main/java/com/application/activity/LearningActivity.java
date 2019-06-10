@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.application.CloudVision.CloudVision;
@@ -49,6 +50,7 @@ public class LearningActivity extends AppCompatActivity {
 
     private int sound_pop;
     private int sound_stamp;
+    private int sound_coin;
 
     @Override
     public void onBackPressed() {
@@ -99,6 +101,7 @@ public class LearningActivity extends AppCompatActivity {
 
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
         sound_stamp = soundPool.load(this, R.raw.stamping, 1);
+        sound_coin = soundPool.load(this, R.raw.coins, 1);
     }
 
     @Override
@@ -188,6 +191,16 @@ public class LearningActivity extends AppCompatActivity {
         nowPage = nowPage + 1;
 
         if(nowPage == 3){
+            Button prev = (Button) v.findViewById(R.id.button1);
+            Button next = (Button) v.findViewById(R.id.button2);
+
+            if (prev != null) {
+                prev.setEnabled(false);
+            }
+            if (next != null) {
+                next.setEnabled(false);
+            }
+
             showLoadingToast();
 
             final Handler handler = new Handler();
@@ -205,7 +218,7 @@ public class LearningActivity extends AppCompatActivity {
 
                     soundPool.play(sound_stamp, 0.6f, 0.6f, 0, 0, 1);
                 }
-            }, 1800);
+            }, 1500);
 
 
         } else {

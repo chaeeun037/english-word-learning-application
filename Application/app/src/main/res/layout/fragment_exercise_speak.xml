@@ -31,28 +31,10 @@
 
         <LinearLayout
             android:layout_width="600dp"
-            android:layout_height="300dp"
+            android:layout_height="320dp"
             android:layout_gravity="center"
             android:background="#80ffffff"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="460dp"
-                    android:layout_height="60dp"></LinearLayout>
-
-            <Button
-                android:id="@+id/reset"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/delete"
-                android:layout_marginRight="10dp"
-                android:gravity="left"/>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,15 +42,31 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="60dp"
+                    android:layout_height="55dp"></LinearLayout>
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="480dp"
                     android:layout_height="55dp"
                     android:gravity="center"
                     android:fontFamily="@font/maplestory_light"
                     android:text="마음껏 말해봐요!"
                     android:textColor="#000000"
                     android:textSize="40sp" />
+                <Button
+                    android:id="@+id/reset"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="right"
+                    android:background="@drawable/yellow_reset"
+                    android:layout_marginRight="10dp"
+                    android:gravity="left"/>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -100,7 +98,7 @@
                     <TextView
                         android:id="@+id/sttResult"
                         android:layout_width="300dp"
-                        android:layout_height="200dp"
+                        android:layout_height="170dp"
                         android:layout_marginLeft="55dp"
                         android:fontFamily="@font/maplestory_light"
                         android:gravity="center"

@@ -1,12 +1,8 @@
 package com.application.fragment;
 
-import android.content.Context;
+import android.os.Build;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -169,8 +165,6 @@ public class LearningThemeFragment extends Fragment {
                     int needPoint = application.getThemeList().get(1).getUnlockPoint();
 
                     if (isPoint >= needPoint) {
-                        playSound(R.raw.bubble_pop);
-
                         if (!application.getThemeList().get(1).getIsLocked()) {
                             AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
                             dialog.setMessage(needPoint + "포인트를 사용해서 채소 단어를 공부할 수 있어요.\n[테마: 채소]를 열어볼까요?").setCancelable(
@@ -178,21 +172,18 @@ public class LearningThemeFragment extends Fragment {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int whichButton) {
                                             // Cancel 버튼 클릭시
-                                            playSound(R.raw.bubble_pop);
-
                                             ((MainActivity) getActivity()).onLearningButtonClick(v);
                                         }
                                     }).setPositiveButton("네",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             // Action for 'Yes' Button
-                                            playSound(R.raw.coins);
-
                                             application.setPointValue(application.getPointValue() - needPoint);
                                             application.getThemeList().get(1).setIsLocked(true);
                                             application.setNowThemeId(1);
                                             ((MainActivity) getActivity()).setPointView();
                                             ((MainActivity) getActivity()).onThemeButtonClick(v, true);
+                                          
                                             Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                                         }
                                     });

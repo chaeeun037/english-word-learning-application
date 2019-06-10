@@ -205,7 +205,7 @@ public class LearningActivity extends AppCompatActivity {
 
                     soundPool.play(sound_stamp, 0.6f, 0.6f, 0, 0, 1);
                 }
-            }, 1500);
+            }, 1800);
 
 
         } else {

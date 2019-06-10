@@ -1,8 +1,11 @@
 package com.application.fragment;
 
+import android.os.Build;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -22,6 +25,7 @@ import com.application.database.EWLADbHelper;
 import com.application.database.Point;
 import com.application.database.Theme;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class LearningThemeFragment extends Fragment {
@@ -40,6 +44,30 @@ public class LearningThemeFragment extends Fragment {
         return new LearningThemeFragment();
     }
 
+    private SoundPool soundPool;
+    private HashMap<Integer, Integer> soundPoolMap;
+
+    public void initSounds(Context context) {
+        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 100);
+        soundPoolMap = new HashMap(1);
+        soundPoolMap.put(R.raw.coins, soundPool.load(context, R.raw.coins, 1));
+        soundPoolMap.put(R.raw.bubble_pop, soundPool.load(context, R.raw.bubble_pop, 1));
+    }
+
+    public void onCreate() {
+        initSounds(getActivity().getApplicationContext());
+    }
+
+    public void playSound(int soundId) {
+
+        float volume = 0.2f;
+
+        // play sound with same right and left volume, with a priority of 1,
+        // zero repeats (i.e play once), and a playback rate of 1f
+        if (soundPoolMap != null) {
+            soundPool.play(soundPoolMap.get(soundId), volume, volume, 1, 0, 1f);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -90,7 +118,7 @@ public class LearningThemeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 application.setNowThemeId(0);
-                ((MainActivity) getActivity()).onThemeButtonClick(v);
+                ((MainActivity) getActivity()).onThemeButtonClick(v, false);
             }
         });
 
@@ -144,7 +172,7 @@ public class LearningThemeFragment extends Fragment {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int whichButton) {
                                             // Cancel 버튼 클릭시
-                                            ((MainActivity)getActivity()).onLearningButtonClick(v);
+                                            ((MainActivity) getActivity()).onLearningButtonClick(v);
                                         }
                                     }).setPositiveButton("네",
                                     new DialogInterface.OnClickListener() {
@@ -153,8 +181,9 @@ public class LearningThemeFragment extends Fragment {
                                             application.setPointValue(application.getPointValue() - needPoint);
                                             application.getThemeList().get(1).setIsLocked(true);
                                             application.setNowThemeId(1);
-                                            ((MainActivity)getActivity()).setPointView();
-                                            ((MainActivity) getActivity()).onThemeButtonClick(v);
+                                            ((MainActivity) getActivity()).setPointView();
+                                            ((MainActivity) getActivity()).onThemeButtonClick(v, true);
+                                          
                                             Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -172,7 +201,7 @@ public class LearningThemeFragment extends Fragment {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // Action for 'Yes' Button
-                                        ((MainActivity)getActivity()).onGameButtonClick(v);
+                                        ((MainActivity) getActivity()).onGameButtonClick(v);
                                     }
                                 });
                         AlertDialog alert = dialog.create();
@@ -192,7 +221,7 @@ public class LearningThemeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     application.setNowThemeId(1);
-                    ((MainActivity) getActivity()).onThemeButtonClick(v);
+                    ((MainActivity) getActivity()).onThemeButtonClick(v, false);
                 }
             });
         }

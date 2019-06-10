@@ -53,6 +53,11 @@ public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFr
     }
 
     @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

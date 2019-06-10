@@ -37,6 +37,11 @@ public class StartActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -112,10 +117,5 @@ public class StartActivity extends AppCompatActivity {
         }
 
         soundPool = null;
-    }
-
-    @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
     }
 }

@@ -1,8 +1,11 @@
 package com.application.fragment;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +15,8 @@ import android.widget.Toast;
 
 import com.application.EWLApplication;
 import com.application.R;
+import com.application.activity.GameActivity;
+import com.application.activity.LearningActivity;
 import com.application.activity.MainActivity;
 import com.application.database.EWLADbHelper;
 import com.application.database.Point;
@@ -127,22 +132,55 @@ public class LearningThemeFragment extends Fragment {
             veget.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     int isPoint = application.getPointValue();
                     int needPoint = application.getThemeList().get(1).getUnlockPoint();
 
                     if (isPoint >= needPoint) {
-                        if (!application.getThemeList().get(1).getIsLocked())
-                            application.setPointValue(application.getPointValue() - needPoint);
-                        application.getThemeList().get(1).setIsLocked(true);
-                        application.setNowThemeId(1);
-                        ((MainActivity)getActivity()).setPointView();
-                        ((MainActivity) getActivity()).onThemeButtonClick(v);
-                        Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
+                        if (!application.getThemeList().get(1).getIsLocked()) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                            dialog.setMessage(needPoint + "포인트를 사용해서 채소 단어를 공부할 수 있어요.\n[테마: 채소]를 열어볼까요?").setCancelable(
+                                    false).setNegativeButton("아니요",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            // Cancel 버튼 클릭시
+                                            ((MainActivity)getActivity()).onLearningButtonClick(v);
+                                        }
+                                    }).setPositiveButton("네",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            // Action for 'Yes' Button
+                                            application.setPointValue(application.getPointValue() - needPoint);
+                                            application.getThemeList().get(1).setIsLocked(true);
+                                            application.setNowThemeId(1);
+                                            ((MainActivity)getActivity()).setPointView();
+                                            ((MainActivity) getActivity()).onThemeButtonClick(v);
+                                            Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialog.create();
+                            // Title for AlertDialog
+                            alert.setTitle("채소 해금");
+                            // Icon for AlertDialog
+                            alert.setIcon(R.drawable.veget);
+                            alert.show();
+                        }
                     } else {
-
-                        ((MainActivity) getActivity()).onLearningButtonClick(v);
-                        Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + needPoint + "가 필요해요!", Toast.LENGTH_SHORT).show();
-
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                        dialog.setMessage(needPoint + "만큼의 포인트가 필요해요. \n포인트를 얻기 위해 게임을 하러 가볼까요??").setCancelable(
+                                false).setPositiveButton("네",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Action for 'Yes' Button
+                                        ((MainActivity)getActivity()).onGameButtonClick(v);
+                                    }
+                                });
+                        AlertDialog alert = dialog.create();
+                        // Title for AlertDialog
+                        alert.setTitle("채소 해금");
+                        // Icon for AlertDialog
+                        alert.setIcon(R.drawable.veget);
+                        alert.show();
                     }
                 }
 

@@ -62,7 +62,7 @@ public class GameActivity extends AppCompatActivity {
         if (canQuizWord.isEmpty()) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(this);
             dialog.setMessage("손님을 맞이 하기 위해선 교육을 충분히 받아야 해요.\n학습을 선택해서 교육을 받아봐요!").setCancelable(
-                    false).setPositiveButton("Yes",
+                    false).setPositiveButton("확인",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Action for 'Yes' Button

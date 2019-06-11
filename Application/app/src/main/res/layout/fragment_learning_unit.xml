@@ -5,10 +5,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/theme_unit_background"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         tools:context=".fragment.LearningUnitFragment">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/previous"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/previous_button"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
         <Button
             android:id="@+id/num1"
             android:layout_width="165dp"
@@ -26,5 +42,6 @@
             android:layout_width="165dp"
             android:layout_height="175dp"
             android:layout_margin="20dp" />
+        </LinearLayout>
     </LinearLayout>
 </layout>

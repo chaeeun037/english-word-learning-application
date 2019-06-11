@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="activity"
+            type="com.application.fragment.DrawInputFragment" />
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/exercise_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".fragment.DrawInputFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="24dp"
+                android:background="@drawable/previous_button"
+                android:gravity="left"
+                android:onClick="onDrawPrevButtonClick" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="8"
+                android:background="#80ffffff">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/sketchbook"
+                    android:orientation="vertical">
+
+                    <!-- **캔버스** -->
+                    <com.application.fragment.DrawCanvasView
+                        android:id="@+id/shadowCanvas"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="8" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <!-- **색 선택 ** -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/penColorBlue"
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:background="@color/colorBlue" />
+
+                            <Button
+                                android:id="@+id/penColorRed"
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:background="@color/colorRed" />
+
+                            <Button
+                                android:id="@+id/penColorGreen"
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:background="@color/colorGreen" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp">
+
+                            <Button
+                                android:id="@+id/penColorYellow"
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:background="@color/colorYellow" />
+
+                            <Button
+                                android:id="@+id/penColorPink"
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:background="@color/colorPink" />
+
+                            <Button
+                                android:id="@+id/penColorPurple"
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:background="@color/colorPurple" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- **펜 버튼**  -->
+                    <Button
+                        android:id="@+id/penButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/pen" />
+
+                    <!-- **지우개 버튼** -->
+                    <Button
+                        android:id="@+id/eraserButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/eraser" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="30dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

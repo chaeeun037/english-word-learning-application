@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="activity"
             type="com.application.activity.StartActivity" />
@@ -16,8 +17,8 @@
             android:id="@+id/start_chick"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:background="@drawable/chick"
-            android:layout_gravity="bottom"/>
+            android:layout_gravity="bottom"
+            android:background="@drawable/chick" />
 
 
     </LinearLayout>

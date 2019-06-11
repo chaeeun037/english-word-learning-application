@@ -28,6 +28,7 @@ public class LearningSummaryFragment extends Fragment {
     ImageView imageView;
     TextView engView;
     TextView korView;
+    Button preBtn;
 
     EWLApplication application = EWLApplication.getInstance();
 
@@ -39,9 +40,9 @@ public class LearningSummaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_learning_summary, container, false);
-        imageView = (ImageView)view.findViewById(R.id.imageView2);
-        engView = (TextView)view.findViewById(R.id.english);
-        korView = (TextView)view.findViewById(R.id.korean);
+        imageView = (ImageView) view.findViewById(R.id.imageView2);
+        engView = (TextView) view.findViewById(R.id.english);
+        korView = (TextView) view.findViewById(R.id.korean);
 
         int id = getResources().getIdentifier(application.getWordList().get(application.getNowWordId()).getImageSrc(), "drawable", getContext().getPackageName());
         String english = application.getWordList().get(application.getNowWordId()).getEnglish();
@@ -51,11 +52,20 @@ public class LearningSummaryFragment extends Fragment {
         engView.setText(english);
         korView.setText(korean);
 
-        btn=(Button)view.findViewById(R.id.button);
-        btn.setOnClickListener(new View.OnClickListener(){
+        btn = (Button) view.findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                ((LearningActivity) getActivity()).onSummaryNextButtonClick(v, application.getWordList().get(application.getNowWordId()).getId()); }
+            public void onClick(View v) {
+                ((LearningActivity) getActivity()).onSummaryNextButtonClick(v);
+            }
+        });
+
+        preBtn = (Button) view.findViewById(R.id.button1);
+        preBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((LearningActivity) getActivity()).onSummaryPreButtonClick(v);
+            }
         });
 
         return view;

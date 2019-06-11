@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
-public class EWLApplication extends Application{
+public class EWLApplication extends Application {
 
     public static EWLApplication application;
     public EWLADbHelper DBHelper = new EWLADbHelper();
@@ -33,8 +33,8 @@ public class EWLApplication extends Application{
     public int nowWordId = 0;
 
     // activity 전체에서 사용 가능하도록 만드는 선언 메소드
-    public static EWLApplication getInstance(){
-        if(application == null){
+    public static EWLApplication getInstance() {
+        if (application == null) {
             application = new EWLApplication();
         }
         return application;
@@ -62,15 +62,15 @@ public class EWLApplication extends Application{
     }
 
     // 해당 클래스 내의 변수를 바꾸는 메소드들
-    public void setAllTheme(List<Theme> ThemeList){
+    public void setAllTheme(List<Theme> ThemeList) {
         this.ThemeList = ThemeList;
     }
 
-    public void setAllUnit(List<Unit> UnitList){
+    public void setAllUnit(List<Unit> UnitList) {
         this.UnitList = UnitList;
     }
 
-    public void setAllWord(List<Word> WordList){
+    public void setAllWord(List<Word> WordList) {
         this.WordList = WordList;
     }
 
@@ -78,7 +78,7 @@ public class EWLApplication extends Application{
         this.point.setPoint(point);
     }
 
-    public void setMainOpen(boolean open){
+    public void setMainOpen(boolean open) {
         this.MainOpen = open;
     }
 
@@ -86,11 +86,11 @@ public class EWLApplication extends Application{
         this.nowThemeId = nowThemeId;
     }
 
-    public void setNowUnitId(int nowUnitId){
+    public void setNowUnitId(int nowUnitId) {
         this.nowUnitId = nowUnitId;
     }
 
-    public void setNowWordId(int nowWordId){
+    public void setNowWordId(int nowWordId) {
         this.nowWordId = nowWordId;
     }
 
@@ -103,31 +103,31 @@ public class EWLApplication extends Application{
         return point.getPointValue();
     }
 
-    public List<Theme> getThemeList(){
+    public List<Theme> getThemeList() {
         return ThemeList;
     }
 
-    public List<Unit> getUnitList(){
+    public List<Unit> getUnitList() {
         return UnitList;
     }
 
-    public List<Word> getWordList(){
+    public List<Word> getWordList() {
         return WordList;
     }
 
-    public boolean getMainOpen(){
+    public boolean getMainOpen() {
         return MainOpen;
     }
 
-    public int getNowThemeId(){
+    public int getNowThemeId() {
         return nowThemeId;
     }
 
-    public int getNowUnitId(){
+    public int getNowUnitId() {
         return nowUnitId;
     }
 
-    public int getNowWordId(){
+    public int getNowWordId() {
         return nowWordId;
     }
 }

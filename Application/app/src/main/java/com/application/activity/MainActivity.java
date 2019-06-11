@@ -9,6 +9,7 @@ import android.media.AudioTimestamp;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public void backgroundMusicPlay() {
         if (player == null) {
             player = MediaPlayer.create(this, R.raw.background_bunny_garden);
+            player.setVolume((float) 0.1, (float) 0.1);
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
@@ -66,12 +68,31 @@ public class MainActivity extends AppCompatActivity {
 
         player.start();
     }
-    
+
     private void stopPlayer() {
         if (player != null) {
             player.release();
             player = null;
         }
+    }
+
+    private void initSoundPool() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(6)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
+        sound_coins = soundPool.load(this, R.raw.coins, 1);
     }
 
     private void hideNavigationBar() {
@@ -85,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onHelpButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        Intent intent = new Intent(MainActivity.this, TutorialActivity.class);
+        startActivity(intent);
     }
 
     public void onHomeButtonClick(View v) {
@@ -105,13 +129,23 @@ public class MainActivity extends AppCompatActivity {
         manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
     }
 
-    public void onThemeButtonClick(View v, int id) {
+    public void onThemeButtonClick(View v, boolean unlock) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        if (unlock) {
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    soundPool.play(sound_coins, 1, 1, 0, 0, 1);
+                }
+            }, 500);
+        }
 
         int tag = Integer.parseInt(v.getTag().toString());
         Log.d("***", "tag : " + tag);
 
-        //TODO: db에서 가져온 unitList에서 id가 tag와 일치하는 데이터를 가져와서 filteredUnitList에 저장
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.container, learningUnitFragment).commit();
     }
@@ -127,7 +161,16 @@ public class MainActivity extends AppCompatActivity {
     public void onGameButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
+        finish();
+
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
+        startActivity(intent);
+    }
+
+    public void onExerciseButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
         startActivity(intent);
     }
 
@@ -142,8 +185,6 @@ public class MainActivity extends AppCompatActivity {
 
         hideNavigationBar();
 
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
 
@@ -151,42 +192,36 @@ public class MainActivity extends AppCompatActivity {
         learningThemeFragment = new LearningThemeFragment();
         learningUnitFragment = new LearningUnitFragment();
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new MainMenuFragment())
-                    .commit();
-        }
+        initSoundPool();
 
         backgroundMusicPlay();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build();
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("type", 0);
 
-            soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
-                    .setAudioAttributes(audioAttributes)
-                    .build();
-        } else {
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+        if (savedInstanceState == null) {
+            // 학습을 완료한 후 unit 화면에 스탬프 찍히기
+            if (type == 1) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new LearningUnitFragment())
+                        .commit();
+            } else {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new MainMenuFragment())
+                        .commit();
+            }
         }
-
-        sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
-        sound_coins = soundPool.load(this, R.raw.coins, 1);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-
-            //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
+        //db = EWLADbHelper.getsInstance().DatabaseOpen(this).getReadableDatabase();
 
         application = EWLApplication.getInstance();
 
-        if(application.getMainOpen()) {
+        if (application.getMainOpen()) {
             try {
                 application.DBopen(this);
             } catch (IOException e) {
@@ -194,22 +229,46 @@ public class MainActivity extends AppCompatActivity {
             }
             application.setMainOpen(false);
         }
+        setPointView();
+    }
 
-        Log.d("now point", ""+application.getPointValue());
-        textView = (TextView)findViewById(R.id.textPoint);
-        textView.setText(""+application.getPoint().getPointValue());
+    public void setPointView() {
+        textView = (TextView) findViewById(R.id.textPoint);
+        textView.setText("" + application.getPoint().getPointValue());
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+
         stopPlayer();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
+        soundPool = null;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        initSoundPool();
+
+        backgroundMusicPlay();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        soundPool.release();
+
+        stopPlayer();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
         soundPool = null;
     }
 }

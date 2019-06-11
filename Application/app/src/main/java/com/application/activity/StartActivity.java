@@ -37,6 +37,11 @@ public class StartActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -45,7 +50,7 @@ public class StartActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start);
         binding.setActivity(this);
 
-        final ImageView iv = (ImageView)findViewById(R.id.start_chick);
+        final ImageView iv = (ImageView) findViewById(R.id.start_chick);
 
         Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.start_chick_anim);
         iv.startAnimation(anim);
@@ -57,11 +62,11 @@ public class StartActivity extends AppCompatActivity {
                     .build();
 
             soundPool = new SoundPool.Builder()
-                    .setMaxStreams(6)
+                    .setMaxStreams(10)
                     .setAudioAttributes(audioAttributes)
                     .build();
         } else {
-            soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 0);
+            soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         }
 
         sound_walk = soundPool.load(this, R.raw.walk_step, 1);
@@ -78,30 +83,41 @@ public class StartActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                soundPool.play(sound_walk, 1, 1, 0, 0, 1);
+                if (soundPool != null) {
+                    soundPool.play(sound_walk, 1, 1, 0, 0, 1);
+                }
             }
-        }, 0 );
+        }, 10);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                soundPool.play(sound_door, 2, 2, 0, 0, 1);
+                if (soundPool!= null) {
+                    soundPool.play(sound_door, 2, 2, 0, 0, 1);
+                }
+
             }
-        }, 4000 );
+        }, 4000);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(StartActivity.this, MainActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.fade_anim,R.anim.hold_anim);
+                overridePendingTransition(R.anim.fade_anim, R.anim.hold_anim);
             }
-        }, 6000 );
+        }, 6000);
 
     }
 
     @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
+    protected void onStop() {
+        super.onStop();
+
+        if (soundPool != null) {
+            soundPool.release();
+        }
+
+        soundPool = null;
     }
 }

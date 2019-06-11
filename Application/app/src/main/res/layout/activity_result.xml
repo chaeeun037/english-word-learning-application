@@ -11,21 +11,21 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/blackboard"
         android:gravity="center"
         android:orientation="vertical"
-        tools:context=".activity.ResultActivity"
-        android:background="@drawable/blackboard">
+        tools:context=".activity.ResultActivity">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="점 수 판"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:textSize="46sp"
             android:fontFamily="@font/maplestory_light"
             android:gravity="center"
-            android:textColor="#fff"/>
+            android:text="점 수 판"
+            android:textColor="#fff"
+            android:textSize="46sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,17 +40,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tomato 토마토"
-                    android:fontFamily="@font/maplestory_light"
-                    android:textSize="36sp"
-                    android:textColor="#fff"
                     android:layout_marginEnd="5dp"
-                    android:gravity="right"/>
+                    android:fontFamily="@font/maplestory_light"
+                    android:gravity="right"
+                    android:text="1. "
+                    android:textColor="#fff"
+                    android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/quizNum1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/maplestory_light"
+                    android:gravity="right"
+                    android:textColor="#fff"
+                    android:textSize="36sp" />
 
                 <ImageView
+                    android:id="@+id/gradeNum1"
                     android:layout_width="50dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/o"/>
+                    android:layout_height="80dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -61,62 +71,65 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Orange 오렌지"
                     android:layout_marginEnd="5dp"
                     android:fontFamily="@font/maplestory_light"
+                    android:gravity="right"
+                    android:text="2. "
                     android:textColor="#fff"
-                    android:textSize="36sp"
-                    android:gravity="right"/>
+                    android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/quizNum2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/maplestory_light"
+                    android:gravity="right"
+                    android:textColor="#fff"
+                    android:textSize="36sp" />
 
                 <ImageView
+                    android:id="@+id/gradeNum2"
                     android:layout_width="50dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/o"/>
+                    android:layout_height="80dp"/>
             </LinearLayout>
 
         </LinearLayout>
 
-        <!--  TODO: 정적으로 하기 위해서 맞는거 두개만~ -지수190602 -->
-        <!--
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/x"/>
-            -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/maplestory_light"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="36sp" />
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/coin"/>
-
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="100"
-                android:textSize="36sp"
-                android:textColor="#fff"
-                android:fontFamily="@font/maplestory_light"
-                android:gravity="center"
-                />
+                android:background="@drawable/coin" />
 
         </LinearLayout>
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:background="#fff"
             android:fontFamily="@font/maplestory_light"
+            android:onClick="onMainButtonClick"
             android:text="확인"
-            android:textSize="26dp"
-            android:onClick="onMainButtonClick"/>
+            android:textColor="#333"
+            android:textSize="26dp" />
 
 
     </LinearLayout>

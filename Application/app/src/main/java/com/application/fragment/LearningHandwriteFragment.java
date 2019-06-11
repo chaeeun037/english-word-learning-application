@@ -81,6 +81,7 @@ public class LearningHandwriteFragment extends Fragment {
         return view;
     }
 
+    //
     public void init(View view) {
         shadowCanvasV = (DrawCanvasView) view.findViewById(R.id.shadowCanvas);
     }

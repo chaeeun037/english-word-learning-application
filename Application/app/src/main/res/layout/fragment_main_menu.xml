@@ -25,7 +25,7 @@
             <Button
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="172.3dp"
-                android:layout_height="141.6dp"
+                android:layout_height="151.6dp"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/learning"
@@ -35,7 +35,7 @@
             <Button
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="172.3dp"
-                android:layout_height="141.6dp"
+                android:layout_height="151.6dp"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/game"
@@ -44,7 +44,7 @@
             <Button
                 style="@style/Widget.AppCompat.Button"
                 android:layout_width="227dp"
-                android:layout_height="141.6dp"
+                android:layout_height="151.6dp"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/exercise"

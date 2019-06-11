@@ -159,7 +159,9 @@ public class TutorialActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    soundPool.play(sound_mumbling, 1, 1, 0, 0, 1);
+                    if (soundPool != null) {
+                        soundPool.play(sound_mumbling, 1, 1, 0, 0, 1);
+                    }
                 }
             }, 1500);
         }

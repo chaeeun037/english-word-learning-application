@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.application.R;
+import com.application.activity.ExerciseActivity;
 
 public class ExerciseMainFragment extends Fragment {
 

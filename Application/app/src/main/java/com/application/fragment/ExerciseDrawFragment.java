@@ -42,7 +42,7 @@ public class ExerciseDrawFragment extends Fragment {
         pen.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shadowCanvasV.pen();
+                shadowCanvasV.exercisePen();
             }
         });
 
@@ -50,7 +50,7 @@ public class ExerciseDrawFragment extends Fragment {
         eraser.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shadowCanvasV.eraser();
+                shadowCanvasV.ExerciseEraser();
             }
         });
 

@@ -29,7 +29,8 @@
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
                 android:background="@drawable/learning"
-                android:onClick="onLearningButtonClick" />
+                android:onClick="onLearningButtonClick"
+                />
 
 
             <Button

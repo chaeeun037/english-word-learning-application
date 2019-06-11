@@ -49,6 +49,18 @@ public class EWLApplication extends Application {
         WordList = DBHelper.getWordList();
     }
 
+    public void PointUpgrade(Context context, Point point) throws IOException {
+        DBHelper.DBPointUpdate(point);
+    }
+
+    public void HasCrownUpgrade(Context context, Unit unit) throws IOException{
+        DBHelper.DBHasCrownUpdate(unit);
+    }
+
+    public void isLockedUpgrade(Context context, Theme theme) throws IOException{
+        DBHelper.DBIsLockUpdate(theme);
+    }
+
     // 해당 클래스 내의 변수를 바꾸는 메소드들
     public void setAllTheme(List<Theme> ThemeList) {
         this.ThemeList = ThemeList;
@@ -119,3 +131,4 @@ public class EWLApplication extends Application {
         return nowWordId;
     }
 }
+

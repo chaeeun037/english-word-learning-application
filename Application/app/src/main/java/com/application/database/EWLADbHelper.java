@@ -52,4 +52,16 @@ public class EWLADbHelper{
         WordList = opener.getWordList();
         point = opener.getPoint();
     }
+
+    public void DBPointUpdate(Point point){
+        opener.UpgradePoint(point);
+    }
+
+    public void DBHasCrownUpdate(Unit unit){
+        opener.UpgradeHasCrown(unit);
+    }
+
+    public void DBIsLockUpdate(Theme theme){
+        opener.UpgradeIsLocked(theme);
+    }
 }

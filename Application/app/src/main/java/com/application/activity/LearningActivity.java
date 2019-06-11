@@ -31,6 +31,8 @@ import com.application.fragment.LearningVoiceFragment;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
+import static android.icu.text.DisplayContext.LENGTH_SHORT;
+
 public class LearningActivity extends AppCompatActivity {
 
     private ActivityLearningBinding binding;
@@ -128,7 +130,6 @@ public class LearningActivity extends AppCompatActivity {
         View toastView = getLayoutInflater().inflate(R.layout.toast_complete, null);
 
         Toast toast = new Toast(getApplicationContext());
-
         toast.setView(toastView);
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0,0);
@@ -218,7 +219,7 @@ public class LearningActivity extends AppCompatActivity {
 
                     soundPool.play(sound_stamp, 0.6f, 0.6f, 0, 0, 1);
                 }
-            }, 1500);
+            }, 1600);
 
 
         } else {

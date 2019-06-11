@@ -44,30 +44,7 @@ public class LearningThemeFragment extends Fragment {
         return new LearningThemeFragment();
     }
 
-    private SoundPool soundPool;
     private HashMap<Integer, Integer> soundPoolMap;
-
-    public void initSounds(Context context) {
-        soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 100);
-        soundPoolMap = new HashMap(1);
-        soundPoolMap.put(R.raw.coins, soundPool.load(context, R.raw.coins, 1));
-        soundPoolMap.put(R.raw.bubble_pop, soundPool.load(context, R.raw.bubble_pop, 1));
-    }
-
-    public void onCreate() {
-        initSounds(getActivity().getApplicationContext());
-    }
-
-    public void playSound(int soundId) {
-
-        float volume = 0.2f;
-
-        // play sound with same right and left volume, with a priority of 1,
-        // zero repeats (i.e play once), and a playback rate of 1f
-        if (soundPoolMap != null) {
-            soundPool.play(soundPoolMap.get(soundId), volume, volume, 1, 0, 1f);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

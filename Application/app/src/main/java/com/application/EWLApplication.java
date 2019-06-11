@@ -131,3 +131,4 @@ public class EWLApplication extends Application{
         return nowWordId;
     }
 }
+

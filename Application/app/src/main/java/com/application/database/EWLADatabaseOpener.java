@@ -81,12 +81,6 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
                 word.setEnglish(cursor.getString(4));
                 word.setShadowSrc(cursor.getString(5));
                 WordList.add(word);
-                Log.d("wordUnitID", Integer.toString(word.getUnit_id()));
-                Log.d("wordID", Integer.toString(word.getId()));
-                Log.d("wordEnglish", word.getEnglish());
-                Log.d("wordKorean", word.getKorean());
-                Log.d("wordImageSrc", word.getImageSrc());
-                Log.d("wordShadowSrc", word.getShadowSrc());
             } while (cursor.moveToNext());
 
 
@@ -108,10 +102,6 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
                 unit.setTitle(cursor.getString(2));
                 unit.setHasCrown(Boolean.parseBoolean(cursor.getString(3)));
                 UnitList.add(unit);
-                Log.d("UnitID", Integer.toString(unit.getId()));
-                Log.d("UnitThemeId", Integer.toString(unit.getTheme_id()));
-                Log.d("UnitTitle", unit.getTitle());
-                Log.d("UnitHasCrown", Boolean.toString(unit.getHasCrown()));
             } while (cursor.moveToNext());
         }
 
@@ -128,8 +118,6 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
             do {
                 point.setId(Integer.parseInt(cursor.getString(0)));
                 point.setPoint(Integer.parseInt(cursor.getString(1)));
-                Log.d("PointId", Integer.toString(point.getId()));
-                Log.d("PointPoint", Integer.toString(point.getPointValue()));
             } while (cursor.moveToNext());
         }
 
@@ -154,10 +142,6 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
                     theme.setIsLocked(false);
                 theme.setUnlockPoint(Integer.parseInt(cursor.getString(3)));
                 ThemeList.add(theme);
-                Log.d("ThemeID", Integer.toString(theme.getId()));
-                Log.d("ThemeTitle", theme.getTltle());
-                Log.d("ThemeIsLocked", Boolean.toString(theme.getIsLocked()));
-                Log.d("ThemeUnlockPoint", Integer.toString(theme.getUnlockPoint()));
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -166,16 +150,13 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
 
     public void createdatabase() throws IOException {
         boolean dbexist = checkdatabase();
-        Log.d("createdatabase", String.valueOf(dbexist));
         if (dbexist) {
-            Log.d("createdatabase", "doesn't exists");
         } else {
             this.getReadableDatabase();
             this.close();
             try {
                 copydatabase();
             } catch (IOException e) {
-                Log.d("createdatabase", "copying error");
             }
         }
     }
@@ -183,18 +164,14 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
     public void opendatabase() throws SQLException {
         String mypath = DB_PATH + DB_NAME;
         myDataBase = SQLiteDatabase.openDatabase(mypath, null, SQLiteDatabase.OPEN_READWRITE);
-        Log.d("opendatabase", "finish");
-
     }
 
     private boolean checkdatabase() {
         boolean checkdb = false;
         try {
             String myPath = DB_PATH + DB_NAME;
-            Log.d("checkdatabase", myPath);
             File dbfile = new File(myPath);
             checkdb = dbfile.exists();
-            Log.d("checkdatabase", String.valueOf(checkdb));
         } catch (SQLiteException e) {
             Log.d("checkdatabase", "doesn't exists");
         }
@@ -218,6 +195,24 @@ public class EWLADatabaseOpener extends SQLiteOpenHelper {
         myoutput.close();
         myinput.close();
 
+    }
+
+    public void UpgradePoint(Point point){
+        String selectQuery = "UPDATE point SET point =" + point.getPointValue() + "WHERE id LIKE 1";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+    }
+
+    public void UpgradeHasCrown(Unit unit){
+        String selectQuery = "UPDATE unit SET hasCrown =" + unit.getHasCrown() + "WHERE id LIKE " + unit.getId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+    }
+
+    public void UpgradeIsLocked(Theme theme){
+        String selectQuery = "UPDATE theme SET isLocked =" + theme.getIsLocked() + "WHERE id LIKE " + theme.getId();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
     }
 
     @Override

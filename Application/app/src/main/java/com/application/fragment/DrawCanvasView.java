@@ -92,8 +92,8 @@ public class DrawCanvasView extends View {
     /* 지우개버튼이 눌렸을 때 */
     public void eraser() {
         paintColor = Color.argb(0, 255, 255, 255); //캔버스 지우개 - 컬러가 투명으로
-        drawCanvas.drawARGB(0,255, 255, 255); // 캔버스 초기화 함수 - 한번에 다 지우기
-        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        drawCanvas.drawARGB(0,255, 255, 255);
+        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);// 캔버스 초기화 함수 - 한번에 다 지우기
         drawPaint.setStrokeWidth(0); // 펜 굵기
     }
 
@@ -110,42 +110,34 @@ public class DrawCanvasView extends View {
     /* 펜 색 */
     public void bluePen() {
         paintColor = Color.parseColor("#0000FF");
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
     public void redPen() {
         paintColor = Color.parseColor("#FF0000");
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
     public void greenPen() {
         paintColor = Color.parseColor("#80E12A");
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
     public void yellowPen() {
         paintColor = Color.parseColor("#FFF064");
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
     public void pinkPen() {
         paintColor = Color.parseColor("#FF7A85");
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
     public void purplePen() {
         paintColor = Color.parseColor("#DA70D6");
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
     public void exercisePen() {
         paintColor = Color.BLACK;
-        drawPaint.setStrokeWidth(15); //  펜굵기
     }
 
+    /* 부분 지우개 */
     public void ExerciseEraser() {
-        drawPaint.setStrokeWidth(250); //  펜굵기
-        drawPaint.setColor(Color.WHITE);
         paintColor = Color.WHITE;
     }
 }

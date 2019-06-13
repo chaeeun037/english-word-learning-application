@@ -45,47 +45,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="40dp"
-                    android:fontFamily="@font/maplestory_light"
-                    android:text="손님이 주문한 것을 영어로 말하세요."
-                    android:textSize="30sp" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:layout_height="wrap_content">
 
-
-                    <!-- 음성 인식 버튼에 마이크 이미지 씌우기 -->
-                    <Button
-                        android:id="@+id/sttStart"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:background="@drawable/mic" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/maplestory_light"
+                        android:text="손님이 주문한 것을 영어로 말하세요."
+                        android:textSize="30sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/sttResult"
-                        android:layout_width="150dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="30dp"
-                        android:background="#fff"
-                        android:fontFamily="@font/maplestory_light"
-                        android:gravity="center"
-                        android:text="음성인식 결과"
-                        android:textColor="#333"
-                        android:textSize="24sp" />
+
+                    <!-- 음성 인식 버튼에 마이크 이미지 씌우기 -->
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp">
+
+                        <Button
+                            android:id="@+id/sttStart"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:background="@drawable/mic" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"></LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/sttResult"
+                            android:layout_width="220dp"
+                            android:layout_height="140dp"
+                            android:fontFamily="@font/maplestory_light"
+                            android:gravity="center"
+                            android:text="음성인식 결과"
+                            android:textColor="#000000"
+                            android:textSize="24sp" />
+                    </LinearLayout>
 
                     <!-- 잘했다는 toast띄우는 임시 버튼, 기능 없음 - 지수 -->
                     <!--<Button-->

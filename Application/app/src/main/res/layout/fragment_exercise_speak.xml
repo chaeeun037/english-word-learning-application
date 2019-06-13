@@ -42,10 +42,6 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="60dp"
-                    android:layout_height="55dp"></LinearLayout>
-
                 <TextView
                     android:layout_width="480dp"
                     android:layout_height="55dp"
@@ -54,25 +50,14 @@
                     android:text="마음껏 말해봐요!"
                     android:textColor="#000000"
                     android:textSize="40sp" />
-                <Button
-                    android:id="@+id/reset"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/yellow_reset"
-                    android:layout_marginRight="10dp"
-                    android:gravity="left"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -82,7 +67,7 @@
                         android:id="@+id/sttStart"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
-                        android:layout_marginLeft="45dp"
+                        android:layout_marginLeft="60dp"
                         android:background="@drawable/mic" />
                 </LinearLayout>
 

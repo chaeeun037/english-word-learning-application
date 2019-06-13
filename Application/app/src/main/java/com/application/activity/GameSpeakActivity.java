@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.application.EWLApplication;
 import com.application.R;
@@ -38,7 +39,7 @@ public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFr
     private SoundPool soundPool;
 
     private int sound_pop;
-    private  int sound_mumbling;
+    private int sound_mumbling;
     String mSpeakTerm;
 
     EWLApplication application = EWLApplication.getInstance();
@@ -78,8 +79,7 @@ public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFr
             for (int i = 0; i < wordList.size(); i++)
                 if (wordList.get(i).getEnglish().equals(quizWord.get(0)))
                     application.setNowWordId(wordList.get(i).getId() - 1);
-        }
-        else {
+        } else {
             for (int i = 0; i < wordList.size(); i++)
                 if (wordList.get(i).getEnglish().equals(quizWord.get(1)))
                     application.setNowWordId(wordList.get(i).getId() - 1);
@@ -133,7 +133,7 @@ public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFr
     protected void onStop() {
         super.onStop();
 
-        if(soundPool != null) {
+        if (soundPool != null) {
             soundPool.release();
         }
 
@@ -160,17 +160,23 @@ public class GameSpeakActivity extends AppCompatActivity implements SpeakInputFr
     public void onInputNextButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
-        /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
-        Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
-        //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
-        intent.putExtra("quizString1", quizWord.get(0));
-        intent.putExtra("quizString2", quizWord.get(1));
-        intent.putExtra("speakTerm", mSpeakTerm);
+        if (mSpeakTerm == null) {
+            Toast.makeText(this, "녹음이 제대로 되지 않았어요.\n다시 한 번 녹음해 볼까요?", Toast.LENGTH_SHORT).show();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.container, speakInputFragment).commit();
+        } else {
+            /* 정적으로 하기 위해서 임의 수정 추후 재수정 요망 - 지수 190602 */
+            Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
+            //Intent intent = new Intent(GameSpeakActivity.this, GameDrawActivity.class);
+            intent.putExtra("quizString1", quizWord.get(0));
+            intent.putExtra("quizString2", quizWord.get(1));
+            intent.putExtra("speakTerm", mSpeakTerm);
 
-        //게임이 두번돌면 quizWord 비우기
-        if(application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(1)))
-            GameActivity.setQuizList();
+            //게임이 두번돌면 quizWord 비우기
+            if (application.getWordList().get(application.getNowWordId()).getEnglish().equals(quizWord.get(1)))
+                GameActivity.setQuizList();
 
-        startActivity(intent);
+            startActivity(intent);
+        }
     }
 }

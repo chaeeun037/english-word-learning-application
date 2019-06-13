@@ -67,10 +67,19 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
+                    <Button
+                        android:id="@+id/reset"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/reset_circle"
+                        android:gravity="center" />
+
                     <!-- **색 선택 ** -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
+                        android:layout_marginLeft="5dp"
                         android:orientation="vertical">
 
                         <LinearLayout

@@ -31,7 +31,7 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="24dp"
                     android:background="@drawable/previous_button"
-                    android:onClick="onTutorialPrevButtonClick"/>
+                    android:onClick="onTutorialPrevButtonClick" />
 
                 <ImageView
                     android:id="@+id/imageView3"

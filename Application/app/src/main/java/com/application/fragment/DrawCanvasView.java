@@ -92,8 +92,8 @@ public class DrawCanvasView extends View {
     /* 지우개버튼이 눌렸을 때 */
     public void eraser() {
         paintColor = Color.argb(0, 255, 255, 255); //캔버스 지우개 - 컬러가 투명으로
-        drawCanvas.drawARGB(0,255, 255, 255); // 캔버스 초기화 함수 - 한번에 다 지우기
-        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+        drawCanvas.drawARGB(0,255, 255, 255);
+        drawCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);// 캔버스 초기화 함수 - 한번에 다 지우기
         drawPaint.setStrokeWidth(0); // 펜 굵기
     }
 
@@ -130,5 +130,14 @@ public class DrawCanvasView extends View {
 
     public void purplePen() {
         paintColor = Color.parseColor("#DA70D6");
+    }
+
+    public void exercisePen() {
+        paintColor = Color.BLACK;
+    }
+
+    /* 부분 지우개 */
+    public void ExerciseEraser() {
+        paintColor = Color.WHITE;
     }
 }

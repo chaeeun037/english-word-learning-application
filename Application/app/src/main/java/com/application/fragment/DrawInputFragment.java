@@ -57,13 +57,7 @@ public class DrawInputFragment extends Fragment {
 
     /* 화면 캡쳐후 비트맵으로 리턴 */
     public Bitmap getCanvasBitmap() {
-        /* 캐시 안지워지는 문제로 bitmap 가져오는 코드로 수정 - 2019. 6. 8
-        shadowCanvasV.setDrawingCacheEnabled(true); //캐시 열고
-        shadowCanvasV.buildDrawingCache(); // 캐시
-        Bitmap screenshot = shadowCanvasV.getDrawingCache();//캐시를 비트맵에 저장
 
-        return screenshot;
-        */
         return this.shadowCanvasV.getCanvasBitmap();
     }
 }

@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.application.R;
 import com.application.databinding.ActivityTutorialBinding;
+import com.application.fragment.TutorialExerciseFragment;
 import com.application.fragment.TutorialGameFragment;
 import com.application.fragment.TutorialLearningFragment;
 import com.application.fragment.TutorialMainFragment;
@@ -29,6 +30,7 @@ public class TutorialActivity extends AppCompatActivity {
     TutorialMainFragment tutorialMainFragment;
     TutorialLearningFragment tutorialLearningFragment;
     TutorialGameFragment tutorialGameFragment;
+    TutorialExerciseFragment tutorialExerciseFragment;
 
     MediaPlayer player;
 
@@ -53,6 +55,7 @@ public class TutorialActivity extends AppCompatActivity {
 
     public void onExerciseMenuClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
     }
 
     public void onTutorialPrevButtonClick(View v) {

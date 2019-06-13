@@ -12,12 +12,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
-                android:id="@+id/previous"
                 android:layout_width="43dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/previous_button"/>
+                android:background="@drawable/previous_button"
+                android:onClick="onThemePrevButtonClick" />
 
         </LinearLayout>
 
@@ -41,7 +42,7 @@
                 android:layout_height="120dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/locked_veget"
-                android:onClick="onThemeButtonClick"
+                android:onClick="onThemePrevButtonClick"
                 android:tag="2" />
 
             <Button

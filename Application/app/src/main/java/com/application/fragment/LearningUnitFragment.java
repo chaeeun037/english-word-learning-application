@@ -23,7 +23,6 @@ public class LearningUnitFragment extends Fragment {
     Button num1;
     Button num2;
     Button num3;
-    Button previous;
 
     EWLApplication application = EWLApplication.getInstance();
 
@@ -34,7 +33,6 @@ public class LearningUnitFragment extends Fragment {
         num1 = (Button) view.findViewById(R.id.num1);
         num2 = (Button) view.findViewById(R.id.num2);
         num3 = (Button) view.findViewById(R.id.num3);
-        previous = (Button)view.findViewById(R.id.previous);
 
 
         //정적 바인딩 - BASKET
@@ -69,13 +67,6 @@ public class LearningUnitFragment extends Fragment {
             else
                 num3.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.basket));
         }
-
-        previous.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                ((MainActivity)getActivity()).onLearningButtonClick(v);
-            }
-        });
 
         num1.setOnClickListener(new View.OnClickListener() {
             @Override

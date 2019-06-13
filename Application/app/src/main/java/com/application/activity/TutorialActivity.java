@@ -140,6 +140,7 @@ public class TutorialActivity extends AppCompatActivity {
         tutorialMainFragment = new TutorialMainFragment();
         tutorialGameFragment = new TutorialGameFragment();
         tutorialLearningFragment = new TutorialLearningFragment();
+        tutorialExerciseFragment = new TutorialExerciseFragment();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

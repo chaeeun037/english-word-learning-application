@@ -174,6 +174,20 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onThemePrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, mainMenuFragment).commit();
+    }
+
+    public void onUnitPrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, learningThemeFragment).commit();
+    }
+
     @Override
     public void onBackPressed() {
         //super.onBackPressed();

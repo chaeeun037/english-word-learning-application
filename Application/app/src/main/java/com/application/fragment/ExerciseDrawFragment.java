@@ -20,6 +20,7 @@ public class ExerciseDrawFragment extends Fragment {
     Button yellowPen;
     Button pinkPen;
     Button purplePen;
+    Button reset;
 
 
     @Override
@@ -38,11 +39,13 @@ public class ExerciseDrawFragment extends Fragment {
         pinkPen = (Button) view.findViewById(R.id.penColorPink);
         purplePen = (Button) view.findViewById(R.id.penColorPurple);
 
+        reset = (Button)view.findViewById(R.id.reset);
+
         /* 펜 버튼 눌렸을 때 */
         pen.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shadowCanvasV.pen();
+                shadowCanvasV.exercisePen();
             }
         });
 
@@ -50,7 +53,7 @@ public class ExerciseDrawFragment extends Fragment {
         eraser.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shadowCanvasV.eraser();
+                shadowCanvasV.ExerciseEraser();
             }
         });
 
@@ -98,6 +101,13 @@ public class ExerciseDrawFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 shadowCanvasV.purplePen();
+            }
+        });
+
+        reset.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                shadowCanvasV.eraser();
             }
         });
 

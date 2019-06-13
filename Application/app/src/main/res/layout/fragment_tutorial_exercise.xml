@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- TODO: 단어학습하기-튜토리얼 -->
 
     <data>
 
         <variable
             name="fragment"
-            type="com.application.fragment.TutorialExerciseFragment" />
+            type="com.application.fragment.TutorialMainFragment" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/theme_unit_background"
         android:gravity="center"
-        android:orientation="vertical"
-        tools:context=".fragment.TutorialExerciseFragment">
+        android:orientation="horizontal"
+        tools:context=".fragment.TutorialMainFragment">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Tutorial Exercise Fragment"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/previous_button"
+                    android:onClick="onTutorialPrevButtonClick" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/chicken_manager" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_gravity="top"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/speech_buble"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/maplestory_light"
+                        android:gravity="center"
+                        android:text="연습이 필요하니?\n언제든 연습장으로 찾아오렴!"
+                        android:textColor="#333"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="7"
+                    android:orientation="vertical">
+
+                        <!--TODO: 말하기 연습-->
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:background="@color/colorPurple" />
+
+                        <!--TODO: 쓰기 연습-->
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
+                            android:background="@color/colorPurple" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <!--TODO: 죽일지,,, 살릴지,,, 그것이 고민,,,, 만약 넘어가면 밑부문 imageView 다음장으로...-->
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/rightarrow"
+                    android:gravity="center" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 </layout>

@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.application.CloudVision.CloudVision;
@@ -67,6 +68,7 @@ public class LearningActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_learning);
         binding.setActivity(this);
+
         wordList = EWLADbHelper.WordList;
         unitList = EWLADbHelper.UnitList;
 
@@ -105,7 +107,10 @@ public class LearningActivity extends AppCompatActivity {
         sound_pop = soundPool.load(this, R.raw.bubble_pop, 1);
         sound_stamp = soundPool.load(this, R.raw.stamping, 1);
         sound_coin = soundPool.load(this, R.raw.coins, 1);
+
+        binding.value.setProgress(0);
     }
+
 
     @Override
     protected void onStop() {
@@ -192,6 +197,8 @@ public class LearningActivity extends AppCompatActivity {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         nowPage = nowPage + 1;
+
+        binding.value.setProgress(nowPage);
 
         if (nowPage == 3) {
             Button prev = (Button) v.findViewById(R.id.button1);

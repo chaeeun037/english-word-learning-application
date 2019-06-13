@@ -56,12 +56,21 @@ public class TutorialActivity extends AppCompatActivity {
     public void onExerciseMenuClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, tutorialExerciseFragment).commit();
     }
 
     public void onTutorialPrevButtonClick(View v) {
         soundPool.play(sound_pop, 1, 1, 0, 0, 1);
 
         finish();
+    }
+
+    public void onPrevButtonClick(View v) {
+        soundPool.play(sound_pop, 1, 1, 0, 0, 1);
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.container, tutorialMainFragment).commit();
     }
 
     private void initSoundPool() {

@@ -6,7 +6,7 @@
 
         <variable
             name="fragment"
-            type="com.application.fragment.TutorialMainFragment" />
+            type="com.application.fragment.TutorialLearningFragment" />
     </data>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -15,7 +15,7 @@
         android:background="@drawable/theme_unit_background"
         android:gravity="center"
         android:orientation="horizontal"
-        tools:context=".fragment.TutorialMainFragment">
+        tools:context=".fragment.TutorialLearningFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,9 +23,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
                 android:orientation="vertical">
 
                 <Button
@@ -33,115 +32,116 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="24dp"
                     android:background="@drawable/previous_button"
-                    android:onClick="onTutorialPrevButtonClick"/>
+                    android:onClick="onPrevButtonClick" />
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/chicken_manager" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_width="290dp"
+                    android:layout_height="110dp"
                     android:layout_gravity="top"
+                    android:layout_marginBottom="10dp"
                     android:background="@drawable/speech_buble"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="10dp">
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/maplestory_light"
                         android:gravity="center"
-                        android:text="다양한 품목을 배울 수 있어!\n잠겨있는 품목은 코인을 모아서\n잠금을 해제시킬 수 있단다."
+                        android:text="'학습'메뉴에서는\n다양한 품목을 배울 수 있어!\n잠겨있는 품목은 코인을 모아서\n잠금을 해제시킬 수 있단다."
                         android:textColor="#333"
-                        android:textSize="22sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="7"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        <!--TODO: 테마부 사진(잠겨있는 테마에 동그라미)-->
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:background="@color/colorPurple" />
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_1" />
 
-                        <!--TODO: 유닛 사진-->
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="@color/colorPurple"/>
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_2" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_3" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="10dp">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        <!--TODO: 읽기 부분 사진-->
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:background="@color/colorPurple"/>
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_4" />
 
-                        <!--TODO: 쓰기 부분 사진-->
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="@color/colorPurple"/>
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_5" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_6" />
 
                     </LinearLayout>
-
 
 
                 </LinearLayout>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <!--TODO: 죽일지,,, 살릴지,,, 그것이 고민,,,, 만약 넘어가면 밑부문 imageView 다음장으로...-->
-                <Button
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:background="@drawable/rightarrow"/>
-            </LinearLayout>
-
-
 
         </LinearLayout>
 

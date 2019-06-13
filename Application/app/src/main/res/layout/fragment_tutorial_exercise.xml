@@ -23,9 +23,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
                 android:orientation="vertical">
 
                 <Button
@@ -33,28 +32,28 @@
                     android:layout_height="60dp"
                     android:layout_marginStart="24dp"
                     android:background="@drawable/previous_button"
-                    android:onClick="onTutorialPrevButtonClick" />
+                    android:onClick="onPrevButtonClick" />
 
                 <ImageView
                     android:id="@+id/imageView3"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="20dp"
                     android:background="@drawable/chicken_manager" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="6"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_width="290dp"
+                    android:layout_height="110dp"
                     android:layout_gravity="top"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/speech_buble"
@@ -63,58 +62,86 @@
 
                     <TextView
                         android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/maplestory_light"
                         android:gravity="center"
-                        android:text="연습이 필요하니?\n언제든 연습장으로 찾아오렴!"
+                        android:text="연습이 필요하니?\n언제든 '연습장'으로 찾아오렴!"
                         android:textColor="#333"
-                        android:textSize="22sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_weight="7"
                     android:orientation="vertical">
 
-                        <!--TODO: 말하기 연습-->
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:layout_gravity="center"
-                            android:background="@color/colorPurple" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        <!--TODO: 쓰기 연습-->
                         <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_gravity="center"
-                            android:background="@color/colorPurple" />
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_1" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_2" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_3" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_4" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_5" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="125dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/learning_6" />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <!--TODO: 죽일지,,, 살릴지,,, 그것이 고민,,,, 만약 넘어가면 밑부문 imageView 다음장으로...-->
-                <Button
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/rightarrow"
-                    android:gravity="center" />
-            </LinearLayout>
-
 
         </LinearLayout>
 

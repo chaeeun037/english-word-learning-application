@@ -52,8 +52,8 @@
 
                 <LinearLayout
                     android:id="@+id/imageView4"
-                    android:layout_width="290dp"
-                    android:layout_height="110dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="95dp"
                     android:layout_gravity="top"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/speech_buble"
@@ -67,7 +67,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/maplestory_light"
                         android:gravity="center"
-                        android:text="'학습'메뉴에서는\n다양한 품목을 배울 수 있어!\n잠겨있는 품목은 코인을 모아서\n잠금을 해제시킬 수 있단다."
+                        android:text="'학습'메뉴에서는 다양한 품목을 배울 수 있어!\n잠겨있는 품목은 코인을 모아서 잠금을 해제시킬 수 있단다."
                         android:textColor="#333"
                         android:textSize="16sp" />
 
@@ -88,20 +88,20 @@
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="125dp"
+                            android:layout_height="130dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_1" />
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="125dp"
+                            android:layout_height="130dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_2" />
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="125dp"
+                            android:layout_height="130dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_3" />
@@ -118,20 +118,20 @@
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="125dp"
+                            android:layout_height="130dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_4" />
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="125dp"
+                            android:layout_height="130dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_5" />
 
                         <ImageView
                             android:layout_width="0dp"
-                            android:layout_height="125dp"
+                            android:layout_height="130dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_6" />

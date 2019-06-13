@@ -11,37 +11,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <Button
-                android:id="@+id/previous"
                 android:layout_width="43dp"
                 android:layout_height="43dp"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/previous_button"/>
+                android:background="@drawable/previous_button"
+                android:onClick="onUnitPrevButtonClick" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
-        <Button
-            android:id="@+id/num1"
-            android:layout_width="165dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp" />
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/num2"
-            android:layout_width="165dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp" />
+            <Button
+                android:id="@+id/num1"
+                android:layout_width="165dp"
+                android:layout_height="175dp"
+                android:layout_margin="20dp" />
 
-        <Button
-            android:id="@+id/num3"
-            android:layout_width="165dp"
-            android:layout_height="175dp"
-            android:layout_margin="20dp" />
+            <Button
+                android:id="@+id/num2"
+                android:layout_width="165dp"
+                android:layout_height="175dp"
+                android:layout_margin="20dp" />
+
+            <Button
+                android:id="@+id/num3"
+                android:layout_width="165dp"
+                android:layout_height="175dp"
+                android:layout_margin="20dp" />
         </LinearLayout>
     </LinearLayout>
 </layout>

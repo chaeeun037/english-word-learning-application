@@ -36,7 +36,6 @@ public class LearningThemeFragment extends Fragment {
     Button meat;
     Button dairy;
     Button snack;
-    Button previous;
 
     Point point;
     EWLApplication application = EWLApplication.getInstance();
@@ -58,7 +57,6 @@ public class LearningThemeFragment extends Fragment {
         meat = (Button) view.findViewById(R.id.meat);
         dairy = (Button) view.findViewById(R.id.dairy);
         snack = (Button) view.findViewById(R.id.snack);
-        previous = (Button) view.findViewById(R.id.previous);
 
         //잠겼는지 아닌지 확인 후 이미지 바꾸기
 
@@ -92,14 +90,6 @@ public class LearningThemeFragment extends Fragment {
                     snack.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.snack));
             }
         }
-
-        previous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
 
         fruit.setOnClickListener(new View.OnClickListener() {
             @Override

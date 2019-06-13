@@ -74,6 +74,7 @@ public class LearningActivity extends AppCompatActivity {
         Intent intent = getIntent();
         unitId = intent.getExtras().getInt("id");
         */
+
         learningUnitFragment = new LearningUnitFragment();
         learningSummaryFragment = new LearningSummaryFragment();
         learningVoiceFragment = new LearningVoiceFragment();
@@ -110,7 +111,7 @@ public class LearningActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        if(soundPool != null) {
+        if (soundPool != null) {
             soundPool.release();
         }
 
@@ -132,9 +133,10 @@ public class LearningActivity extends AppCompatActivity {
         Toast toast = new Toast(getApplicationContext());
         toast.setView(toastView);
         toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER, 0,0);
+        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
+
 
     //이전 Handwrite 화면으로 되돌아가기
     public void onSummaryPreButtonClick(View v) {
@@ -191,7 +193,7 @@ public class LearningActivity extends AppCompatActivity {
 
         nowPage = nowPage + 1;
 
-        if(nowPage == 3){
+        if (nowPage == 3) {
             Button prev = (Button) v.findViewById(R.id.button1);
             Button next = (Button) v.findViewById(R.id.button2);
 

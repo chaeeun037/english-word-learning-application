@@ -58,7 +58,7 @@ public class LearningThemeFragment extends Fragment {
         meat = (Button) view.findViewById(R.id.meat);
         dairy = (Button) view.findViewById(R.id.dairy);
         snack = (Button) view.findViewById(R.id.snack);
-        previous = (Button)view.findViewById(R.id.previous);
+        previous = (Button) view.findViewById(R.id.previous);
 
         //잠겼는지 아닌지 확인 후 이미지 바꾸기
 
@@ -93,9 +93,9 @@ public class LearningThemeFragment extends Fragment {
             }
         }
 
-        previous.setOnClickListener(new View.OnClickListener(){
+        previous.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -109,39 +109,307 @@ public class LearningThemeFragment extends Fragment {
             }
         });
 
-        fish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(2).getUnlockPoint() + "포인트가 필요해요!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (application.getThemeList().get(2).getIsLocked() == false) {
+            fish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        meat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(3).getUnlockPoint() + "포인트가 필요해요!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    int isPoint = application.getPointValue();
+                    int needPoint = application.getThemeList().get(2).getUnlockPoint();
 
-        dairy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(4).getUnlockPoint() + "포인트가 필요해요!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    if (isPoint >= needPoint) {
+                        if (!application.getThemeList().get(2).getIsLocked()) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                            dialog.setMessage(needPoint + "포인트를 사용해서 생선 단어를 공부할 수 있어요.\n[테마: 생선]을(를) 열어볼까요?").setCancelable(
+                                    false).setNegativeButton("아니요",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            // Cancel 버튼 클릭시
+                                            ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                        }
+                                    }).setPositiveButton("네",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            // Action for 'Yes' Button
+                                            application.setPointValue(application.getPointValue() - needPoint);
+                                            application.getThemeList().get(2).setIsLocked(true);
+                                            application.setNowThemeId(2);
+                                            ((MainActivity) getActivity()).setPointView();
+                                            ((MainActivity) getActivity()).onThemeButtonClick(v, true);
 
-        snack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity) getActivity()).onLearningButtonClick(v);
-                Toast.makeText(getContext(), "포인트가 부족해요ㅠㅠ\n" + application.getThemeList().get(5).getUnlockPoint() + " 포인트가 필요해요!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                                            Toast.makeText(getContext(), "생선 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialog.create();
+                            // Title for AlertDialog
+                            alert.setTitle("생선 해금");
+                            // Icon for AlertDialog
+                            alert.setIcon(R.drawable.fish);
+                            alert.show();
+                        }
+                    } else {
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                        dialog.setMessage(needPoint + "만큼의 포인트가 필요해요. \n포인트를 얻기 위해 게임을 하러 가볼까요??").setCancelable(
+                                false).setNegativeButton("아니요",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        // Cancel 버튼 클릭시
+                                        ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                    }
+                                }).setPositiveButton("네",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Action for 'Yes' Button
+                                        ((MainActivity) getActivity()).onGameButtonClick(v);
+                                    }
+                                });
+                        AlertDialog alert = dialog.create();
+                        // Title for AlertDialog
+                        alert.setTitle("생선 해금");
+                        // Icon for AlertDialog
+                        alert.setIcon(R.drawable.fish);
+                        alert.show();
+                    }
+                }
+            });
+        }
+        //아니면 화면 넘김
+        else {
+            veget.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    application.setNowThemeId(1);
+                    ((MainActivity) getActivity()).onThemeButtonClick(v, false);
+                }
+            });
+        }
+
+        if (application.getThemeList().get(3).getIsLocked() == false) {
+            meat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int isPoint = application.getPointValue();
+                    int needPoint = application.getThemeList().get(3).getUnlockPoint();
+
+                    if (isPoint >= needPoint) {
+                        if (!application.getThemeList().get(3).getIsLocked()) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                            dialog.setMessage(needPoint + "포인트를 사용해서 고기 단어를 공부할 수 있어요.\n[테마: 고기]을(를) 열어볼까요?").setCancelable(
+                                    false).setNegativeButton("아니요",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            // Cancel 버튼 클릭시
+                                            ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                        }
+                                    }).setPositiveButton("네",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            // Action for 'Yes' Button
+                                            application.setPointValue(application.getPointValue() - needPoint);
+                                            application.getThemeList().get(3).setIsLocked(true);
+                                            application.setNowThemeId(3);
+                                            ((MainActivity) getActivity()).setPointView();
+                                            ((MainActivity) getActivity()).onThemeButtonClick(v, true);
+
+                                            Toast.makeText(getContext(), "고기 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialog.create();
+                            // Title for AlertDialog
+                            alert.setTitle("고기 해금");
+                            // Icon for AlertDialog
+                            alert.setIcon(R.drawable.meat);
+                            alert.show();
+                        }
+                    } else {
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                        dialog.setMessage(needPoint + "만큼의 포인트가 필요해요. \n포인트를 얻기 위해 게임을 하러 가볼까요??").setCancelable(
+                                false).setNegativeButton("아니요",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        // Cancel 버튼 클릭시
+                                        ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                    }
+                                }).setPositiveButton("네",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Action for 'Yes' Button
+                                        ((MainActivity) getActivity()).onGameButtonClick(v);
+                                    }
+                                });
+                        AlertDialog alert = dialog.create();
+                        // Title for AlertDialog
+                        alert.setTitle("고기 해금");
+                        // Icon for AlertDialog
+                        alert.setIcon(R.drawable.meat);
+                        alert.show();
+                    }
+                }
+            });
+        }
+        //아니면 화면 넘김
+        else {
+            veget.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    application.setNowThemeId(1);
+                    ((MainActivity) getActivity()).onThemeButtonClick(v, false);
+                }
+            });
+        }
+
+        if (application.getThemeList().get(4).getIsLocked() == false) {
+            dairy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int isPoint = application.getPointValue();
+                    int needPoint = application.getThemeList().get(4).getUnlockPoint();
+
+                    if (isPoint >= needPoint) {
+                        if (!application.getThemeList().get(4).getIsLocked()) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                            dialog.setMessage(needPoint + "포인트를 사용해서 유제품 단어를 공부할 수 있어요.\n[테마: 유제품]을(를) 열어볼까요?").setCancelable(
+                                    false).setNegativeButton("아니요",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            // Cancel 버튼 클릭시
+                                            ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                        }
+                                    }).setPositiveButton("네",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            // Action for 'Yes' Button
+                                            application.setPointValue(application.getPointValue() - needPoint);
+                                            application.getThemeList().get(4).setIsLocked(true);
+                                            application.setNowThemeId(4);
+                                            ((MainActivity) getActivity()).setPointView();
+                                            ((MainActivity) getActivity()).onThemeButtonClick(v, true);
+
+                                            Toast.makeText(getContext(), "유제품 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialog.create();
+                            // Title for AlertDialog
+                            alert.setTitle("유제품 해금");
+                            // Icon for AlertDialog
+                            alert.setIcon(R.drawable.dairy);
+                            alert.show();
+                        }
+                    } else {
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                        dialog.setMessage(needPoint + "만큼의 포인트가 필요해요. \n포인트를 얻기 위해 게임을 하러 가볼까요??").setCancelable(
+                                false).setNegativeButton("아니요",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        // Cancel 버튼 클릭시
+                                        ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                    }
+                                }).setPositiveButton("네",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Action for 'Yes' Button
+                                        ((MainActivity) getActivity()).onGameButtonClick(v);
+                                    }
+                                });
+                        AlertDialog alert = dialog.create();
+                        // Title for AlertDialog
+                        alert.setTitle("유제품 해금");
+                        // Icon for AlertDialog
+                        alert.setIcon(R.drawable.dairy);
+                        alert.show();
+                    }
+                }
+            });
+        }
+        //아니면 화면 넘김
+        else {
+            veget.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    application.setNowThemeId(1);
+                    ((MainActivity) getActivity()).onThemeButtonClick(v, false);
+                }
+            });
+        }
+
+        if (application.getThemeList().get(5).getIsLocked() == false) {
+            snack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int isPoint = application.getPointValue();
+                    int needPoint = application.getThemeList().get(5).getUnlockPoint();
+
+                    if (isPoint >= needPoint) {
+                        if (!application.getThemeList().get(5).getIsLocked()) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                            dialog.setMessage(needPoint + "포인트를 사용해서 간식 단어를 공부할 수 있어요.\n[테마: 간식]을(를) 열어볼까요?").setCancelable(
+                                    false).setNegativeButton("아니요",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int whichButton) {
+                                            // Cancel 버튼 클릭시
+                                            ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                        }
+                                    }).setPositiveButton("네",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            // Action for 'Yes' Button
+                                            application.setPointValue(application.getPointValue() - needPoint);
+                                            application.getThemeList().get(5).setIsLocked(true);
+                                            application.setNowThemeId(5);
+                                            ((MainActivity) getActivity()).setPointView();
+                                            ((MainActivity) getActivity()).onThemeButtonClick(v, true);
+
+                                            Toast.makeText(getContext(), "간식 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                            AlertDialog alert = dialog.create();
+                            // Title for AlertDialog
+                            alert.setTitle("간식 해금");
+                            // Icon for AlertDialog
+                            alert.setIcon(R.drawable.snack);
+                            alert.show();
+                        }
+                    } else {
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                        dialog.setMessage(needPoint + "만큼의 포인트가 필요해요. \n포인트를 얻기 위해 게임을 하러 가볼까요??").setCancelable(
+                                false).setNegativeButton("아니요",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        // Cancel 버튼 클릭시
+                                        ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                    }
+                                }).setPositiveButton("네",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Action for 'Yes' Button
+                                        ((MainActivity) getActivity()).onGameButtonClick(v);
+                                    }
+                                });
+                        AlertDialog alert = dialog.create();
+                        // Title for AlertDialog
+                        alert.setTitle("간식 해금");
+                        // Icon for AlertDialog
+                        alert.setIcon(R.drawable.snack);
+                        alert.show();
+                    }
+                }
 
 
+            });
+        }
+        //아니면 화면 넘김
+        else {
+            veget.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    application.setNowThemeId(1);
+                    ((MainActivity) getActivity()).onThemeButtonClick(v, false);
+                }
+            });
+        }
         //잠겼으면 화면 유지
         if (application.getThemeList().get(1).getIsLocked() == false) {
             veget.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +422,7 @@ public class LearningThemeFragment extends Fragment {
                     if (isPoint >= needPoint) {
                         if (!application.getThemeList().get(1).getIsLocked()) {
                             AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-                            dialog.setMessage(needPoint + "포인트를 사용해서 채소 단어를 공부할 수 있어요.\n[테마: 채소]를 열어볼까요?").setCancelable(
+                            dialog.setMessage(needPoint + "포인트를 사용해서 채소 단어를 공부할 수 있어요.\n[테마: 채소]을(를) 열어볼까요?").setCancelable(
                                     false).setNegativeButton("아니요",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int whichButton) {
@@ -170,7 +438,7 @@ public class LearningThemeFragment extends Fragment {
                                             application.setNowThemeId(1);
                                             ((MainActivity) getActivity()).setPointView();
                                             ((MainActivity) getActivity()).onThemeButtonClick(v, true);
-                                          
+
                                             Toast.makeText(getContext(), "채소 교육을 시작한 걸 환영해요!", Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -184,7 +452,13 @@ public class LearningThemeFragment extends Fragment {
                     } else {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
                         dialog.setMessage(needPoint + "만큼의 포인트가 필요해요. \n포인트를 얻기 위해 게임을 하러 가볼까요??").setCancelable(
-                                false).setPositiveButton("네",
+                                false).setNegativeButton("아니요",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int whichButton) {
+                                        // Cancel 버튼 클릭시
+                                        ((MainActivity) getActivity()).onLearningButtonClick(v);
+                                    }
+                                }).setPositiveButton("네",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         // Action for 'Yes' Button

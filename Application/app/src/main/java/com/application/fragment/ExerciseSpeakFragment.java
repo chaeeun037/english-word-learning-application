@@ -23,7 +23,6 @@ public class ExerciseSpeakFragment extends Fragment {
     Button sttBtn;
     TextView textView;
     String speakTerm;
-    Button resetBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class ExerciseSpeakFragment extends Fragment {
 
         textView = (TextView) view.findViewById(R.id.sttResult);
         sttBtn = (Button) view.findViewById(R.id.sttStart);
-        resetBtn = (Button) view.findViewById(R.id.reset);
 
         intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getContext().getPackageName());
@@ -40,13 +38,6 @@ public class ExerciseSpeakFragment extends Fragment {
             mRecognizer = SpeechRecognizer.createSpeechRecognizer(getContext());
             mRecognizer.setRecognitionListener(listener);
             mRecognizer.startListening(intent);
-        });
-
-        resetBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                textView.setText("");
-            }
         });
 
         return view;

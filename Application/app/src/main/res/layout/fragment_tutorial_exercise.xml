@@ -89,15 +89,18 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/tutorial_exercise1" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="50dp"
                             android:layout_weight="1"
-                            android:background="@drawable/tutorial_exercise2"/>
+                            android:background="@drawable/tutorial_exercise2" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,13 +114,16 @@
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_4" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="50dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_5" />
 

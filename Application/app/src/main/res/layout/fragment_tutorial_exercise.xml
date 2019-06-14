@@ -90,22 +90,14 @@
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_1" />
+                            android:background="@drawable/tutorial_exercise1" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_2" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="125dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/learning_3" />
-
+                            android:background="@drawable/tutorial_exercise2"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -128,13 +120,6 @@
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/learning_5" />
-
-                        <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="125dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/learning_6" />
 
                     </LinearLayout>
 

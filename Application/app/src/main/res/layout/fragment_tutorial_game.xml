@@ -90,21 +90,21 @@
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_1" />
+                            android:background="@drawable/tutorial_game1" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_2" />
+                            android:background="@drawable/tutorial_game2" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_3" />
+                            android:background="@drawable/tutorial_game3" />
 
                     </LinearLayout>
 
@@ -120,21 +120,21 @@
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_4" />
+                            android:background="@drawable/tutorial_game4" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_5" />
+                            android:background="@drawable/tutorial_game5" />
 
                         <ImageView
                             android:layout_width="0dp"
                             android:layout_height="125dp"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/learning_6" />
+                            android:background="@drawable/tutorial_game6" />
 
                     </LinearLayout>
 

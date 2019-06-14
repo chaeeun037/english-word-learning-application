@@ -47,19 +47,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:fontFamily="@font/maplestory_light"
                         android:text="손님이 주문한 것을 영어로 말하세요."
                         android:textSize="30sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -74,8 +74,8 @@
 
                         <Button
                             android:id="@+id/sttStart"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
                             android:background="@drawable/mic" />
 
                     </LinearLayout>
@@ -87,14 +87,13 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#fff">
+                        android:gravity="center">
 
                         <TextView
                             android:id="@+id/sttResult"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/maplestory_light"
-                            android:gravity="center"
                             android:text="음성인식 결과"
                             android:textColor="#000000"
                             android:textSize="40sp" />
